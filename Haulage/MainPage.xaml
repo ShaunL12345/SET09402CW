@@ -12,10 +12,10 @@
                 Source="hh_logo.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
-                SemanticProperties.Description="Haulage hero Company Logo" />
+                SemanticProperties.Description="Haulage Hero Company Logo" />
 
             <Label
-                Text="Seamless Shipping, Every Mile!"
+                Text="Seamless Shipping, Every Mile"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
