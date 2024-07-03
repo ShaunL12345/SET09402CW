@@ -22,6 +22,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build Haulage.csproj -c Release -f net6.0-android --no-restore
+      run: dotnet build Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
