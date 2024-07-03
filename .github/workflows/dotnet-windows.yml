@@ -1,10 +1,6 @@
 name: Build .NET MAUI Windows
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on : [push]
 
 jobs:
   build:
