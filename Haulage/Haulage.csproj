@@ -57,6 +57,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\hh_admin_icon.png" />
+	  <None Remove="Resources\Images\hh_checked_icon.png" />
+	  <None Remove="Resources\Images\hh_check_list_icon.png" />
+	  <None Remove="Resources\Images\hh_customer_icon.png" />
+	  <None Remove="Resources\Images\hh_driver_icon.png" />
+	  <None Remove="Resources\Images\hh_icon.png" />
+	  <None Remove="Resources\Images\hh_inspect_icon.png" />
+	  <None Remove="Resources\Images\hh_logo.png" />
+	  <None Remove="Resources\Images\hh_manage_account_icon.png" />
+	  <None Remove="Resources\Images\hh_manifest_icon.png" />
+	  <None Remove="Resources\Images\hh_sign_off_icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
