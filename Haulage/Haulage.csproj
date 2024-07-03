@@ -62,4 +62,12 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidSigningKeyStore>myapp.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>myapp</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>env:AndroidSigningPassword</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>env:AndroidSigningPassword</AndroidSigningStorePass>
+	</PropertyGroup>
+
+
 </Project>
