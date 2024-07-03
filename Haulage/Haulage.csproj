@@ -62,6 +62,7 @@
 	  <None Remove="Resources\Images\hh_check_list_icon.png" />
 	  <None Remove="Resources\Images\hh_customer_icon.png" />
 	  <None Remove="Resources\Images\hh_driver_icon.png" />
+	  <None Remove="Resources\Images\hh_home_icon.png" />
 	  <None Remove="Resources\Images\hh_icon.png" />
 	  <None Remove="Resources\Images\hh_inspect_icon.png" />
 	  <None Remove="Resources\Images\hh_logo.png" />
@@ -74,6 +75,18 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AdminPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CustomerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DriverPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
