@@ -7,9 +7,30 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Haulage">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <!-- Home -->
+        <ShellContent
+            Icon="hh_home_icon.png"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+
+        <!-- Customer -->
+        <ShellContent
+            Icon="hh_customer_icon.png"
+            ContentTemplate="{DataTemplate local:CustomerPage}"
+            Route="CustomerPage" />
+
+        <!-- Driver -->
+        <ShellContent
+            Icon="hh_driver_icon.png"
+            ContentTemplate="{DataTemplate local:DriverPage}"
+            Route="DriverPage" />
+
+        <!-- Admin -->
+        <ShellContent
+            Icon="hh_admin_icon.png"
+            ContentTemplate="{DataTemplate local:AdminPage}"
+            Route="AdminPage" />
+    </TabBar>
 
 </Shell>
