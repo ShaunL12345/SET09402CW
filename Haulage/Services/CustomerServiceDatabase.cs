@@ -27,16 +27,16 @@ namespace Haulage.Services
             return _dbContext.connection.Table<Customer>().ToList();
         }
 
-        public Customer GetItem(string id)
+        public Customer GetItem(int id)
         {
             _dbContext.Init();
-            return _dbContext.connection.Table<Customer>().Where(i => i.id.ToString() == id).FirstOrDefault();
+            return _dbContext.connection.Table<Customer>().Where(i => i.Id == id).FirstOrDefault();
         }
 
         public int SaveItem(Customer item)
         {
             _dbContext.Init();
-            if (string.IsNullOrEmpty(item.id.ToString()))
+            if (item.Id == 0)
                 return _dbContext.connection.Update(item);
             else
                 return _dbContext.connection.Insert(item);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace Haulage.BaseClasses.Accounting
     {
         string name, emailAddress;
         int phoneNumber;
-        public Guid id;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         enum Role
         { driver, 
           administrator, 

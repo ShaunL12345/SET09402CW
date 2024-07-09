@@ -10,7 +10,7 @@ namespace Haulage.Services
     public interface ICustomerServiceDatabase
     {
         List<Customer> GetItems();
-        Customer GetItem(string id);
+        Customer GetItem(int id);
         int SaveItem(Customer item);
         int DeleteItem(Customer item);
     }
