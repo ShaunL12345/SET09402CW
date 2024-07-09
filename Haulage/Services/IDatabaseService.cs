@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Haulage.Services
 {
-    public interface ICustomerServiceDatabase
+    public interface IDatabaseService
     {
         List<Customer> GetItems();
         Customer GetItem(int id);

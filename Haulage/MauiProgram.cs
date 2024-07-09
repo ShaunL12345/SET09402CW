@@ -11,7 +11,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 
         builder.Services.AddSingleton<DbContext>();
-        builder.Services.AddSingleton<ICustomerServiceDatabase, CustomerServiceDatabase>();
+        builder.Services.AddSingleton<IDatabaseService, CustomerServiceDatabase>();
 
         builder
 			.UseMauiApp<App>()

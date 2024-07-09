@@ -4,6 +4,7 @@ public partial class CustomerPage : ContentPage
 {
 	public CustomerPage()
 	{
-		InitializeComponent();
+        //this.BindingContext = new CustomerViewModel();
+        InitializeComponent();
 	}
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Haulage.Services
 {
-    public class CustomerServiceDatabase : ICustomerServiceDatabase
+    public class CustomerServiceDatabase : IDatabaseService
     {
         public DbContext _dbContext;
         public CustomerServiceDatabase(DbContext dbContext)
