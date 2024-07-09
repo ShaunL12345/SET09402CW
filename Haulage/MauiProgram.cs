@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Haulage.Database;
+using Haulage.Services;
 
 namespace Haulage;
 
@@ -7,7 +9,11 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
+
+        builder.Services.AddSingleton<DbContext>();
+        builder.Services.AddSingleton<ICustomerServiceDatabase, CustomerServiceDatabase>();
+
+        builder
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{

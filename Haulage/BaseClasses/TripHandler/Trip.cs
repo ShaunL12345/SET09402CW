@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace Haulage.BaseClasses.TripHandler
 {
     public class Trip
     {
-        public Guid tripId;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string startLocation;
         public string endLocation;
         public enum tripStatus

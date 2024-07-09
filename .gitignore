@@ -3,3 +3,5 @@ Haulage/obj/
 /.vs
 Haulage/Haulage.csproj.user
 Haulage/Haulage.sln
+/ConsoleApp1/obj
+/DatabaseService/obj

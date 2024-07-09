@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace Haulage.BaseClasses.TripHandler
 {
     public  class PickupRequest
     {
-        public Guid requestId;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public Guid customerId;
         public string pickupLocation;
         public string deliveryLocation;

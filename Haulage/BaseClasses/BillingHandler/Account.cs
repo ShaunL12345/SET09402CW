@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace Haulage.BaseClasses.BillingHandler
 {
     public class Account
     {
-        public Guid accountID;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public Guid personID;
         public string billingDetails;
         public Account() { }
