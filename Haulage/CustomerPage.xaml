@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Haulage.CustomerPage"
              Title="Customer"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to Customer Page!"
+            Text="&#10; Welcome to Customer Page!"
+            TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

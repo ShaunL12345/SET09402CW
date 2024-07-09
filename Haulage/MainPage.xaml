@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Haulage.MainPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
 
     <ScrollView>
         <VerticalStackLayout
@@ -16,11 +17,13 @@
 
             <Label
                 Text="Seamless Shipping, Every Mile"
+                TextColor="Black"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label
                 Text="Welcome to &#10; The Haulage Hero App,&#10; Lets roll out"
+                TextColor="Black"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to the Haulage Hero App" />

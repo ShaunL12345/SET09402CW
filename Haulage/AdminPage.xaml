@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Haulage.AdminPage"
              Title="Admin"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to Admin Page!"
+            Text="&#10; Welcome to Admin Page!"
+            TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
