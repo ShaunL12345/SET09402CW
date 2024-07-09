@@ -68,6 +68,7 @@
 	  <None Remove="Resources\Images\hh_logo.png" />
 	  <None Remove="Resources\Images\hh_manage_account_icon.png" />
 	  <None Remove="Resources\Images\hh_manifest_icon.png" />
+	  <None Remove="Resources\Images\hh_question_mark.png" />
 	  <None Remove="Resources\Images\hh_sign_off_icon.png" />
 	</ItemGroup>
 
@@ -85,6 +86,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Team.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
