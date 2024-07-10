@@ -18,6 +18,8 @@ jobs:
         dotnet-version: 8.0.x
     - name: Install .NET MAUI
       run: dotnet workload install maui
+    - name: Install SQLite
+      run: dotnet add package System.Data.SQLite --version 1.0.118
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
