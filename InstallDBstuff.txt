@@ -1,0 +1,17 @@
+1.Startup Visual Studio
+2.Go to Solution Explorer
+3.Right-Hand Click Project and go to "Manage NuGet Packages..."
+4.Search for: "system.data.sqlite" and install
+5.Go to Extensions (top bar) and select "Manage Extensions"
+6.Search for: "SQLite and SQL Server Compact Toolbox" and install
+7.Once installed, go to Tools (top bar) and click on SQLite Toolbox
+8.Panel on left should open, you can right-hand click on "Data Connections"
+and select "add SQLite Connection"
+
+>IF YOU ARE MAKING FROM SCRATCH
+9.Hit the "Create"
+10.Add file, name, and Test Connection
+
+>IF YOU ARE FINDING AN EXISTING DB
+9.Hit "Browse", go into Haulage/Database/Haulage
+10.Test Connection
