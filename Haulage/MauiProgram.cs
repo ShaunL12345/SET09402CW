@@ -16,7 +16,7 @@ public static class MauiProgram
 			});
 
 		// Initialise Haulage Database on Startup
-		//DatabaseSetup.InitializeDatabase();
+		DatabaseSetup.InitializeDatabase();
 
 #if DEBUG
 		builder.Logging.AddDebug();
