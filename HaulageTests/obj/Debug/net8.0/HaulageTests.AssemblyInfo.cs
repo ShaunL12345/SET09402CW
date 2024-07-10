@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HaulageTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4e56dd30af0000cf8ba92711edae1da7d9ec071")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a16bab17c034a969dbd99336c2543a3c582635e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("HaulageTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HaulageTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

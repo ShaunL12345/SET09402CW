@@ -1,4 +1,4 @@
-using System.Data.SQLite;
+using SQLite;
 using System.IO;
 
 public static class DatabaseSetup
@@ -22,40 +22,40 @@ public static class DatabaseSetup
     {
         if (!File.Exists($@"{GetDatabasePath()}"))
         {
-            SQLiteConnection.CreateFile($@"{GetDatabasePath()}");
+            //SQLiteConnection.CreateFile($@"{GetDatabasePath()}");
 
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
+            //using (var connection = new SQLiteConnection(connectionString))
+            //{
+            //    connection.Open();
 
-                // Create User Table for Haulage Data
-                string createUsersTableQuery = @"
-                    CREATE TABLE IF NOT EXISTS users (
-                    UserID INTEGER PRIMARY KEY AUTOINCREMENT,
-                    RoleID INTEGER NOT NULL,
-                    FullName TEXT NOT NULL
-                    );";
+            //    // Create User Table for Haulage Data
+            //    string createUsersTableQuery = @"
+            //        CREATE TABLE IF NOT EXISTS users (
+            //        UserID INTEGER PRIMARY KEY AUTOINCREMENT,
+            //        RoleID INTEGER NOT NULL,
+            //        FullName TEXT NOT NULL
+            //        );";
 
-                //// Create <NAME> Table for Haulage Data
-                //string createUsersTableQuery = @"
-                //    CREATE TABLE IF NOT EXISTS users (
-                //    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                //    etc.
-                //    );";
+            //    //// Create <NAME> Table for Haulage Data
+            //    //string createUsersTableQuery = @"
+            //    //    CREATE TABLE IF NOT EXISTS users (
+            //    //    id INTEGER PRIMARY KEY AUTOINCREMENT,
+            //    //    etc.
+            //    //    );";
 
-                //using (var command = new SQLiteCommand(connection))
-                //{
-                //    command.CommandText = createUsersTableQuery;
-                //    command.ExecuteNonQuery();
-                //}
+            //    //using (var command = new SQLiteCommand(connection))
+            //    //{
+            //    //    command.CommandText = createUsersTableQuery;
+            //    //    command.ExecuteNonQuery();
+            //    //}
 
-                // Execute Creat Table Commands
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = createUsersTableQuery;
-                    command.ExecuteNonQuery();
-                }
-            }
+            //    // Execute Creat Table Commands
+            //    using (var command = new SQLiteCommand(connection))
+            //    {
+            //        command.CommandText = createUsersTableQuery;
+            //        command.ExecuteNonQuery();
+            //    }
+            //}
         }
     }
 
