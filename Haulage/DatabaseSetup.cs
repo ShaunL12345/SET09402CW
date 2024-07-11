@@ -1,5 +1,8 @@
 using SQLite;
+using System.Data.SqlTypes;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
 
 public static class DatabaseSetup
 {
@@ -15,47 +18,34 @@ public static class DatabaseSetup
         return Path.GetFullPath(relativePath);
     }
 
-    private static string connectionString = $"Data Source={GetDatabasePath()};Version=3;";
+    public static string connectionString = $"Data Source={GetDatabasePath()};Version=3;";
 
 
     public static void InitializeDatabase()
     {
-        if (!File.Exists($@"{GetDatabasePath()}"))
+        if (File.Exists($@"{GetDatabasePath()}"))
         {
-            //SQLiteConnection.CreateFile($@"{GetDatabasePath()}");
 
-            //using (var connection = new SQLiteConnection(connectionString))
-            //{
-            //    connection.Open();
+            using (var connection = new SQLiteConnection(GetDatabasePath()))
+            {
 
-            //    // Create User Table for Haulage Data
-            //    string createUsersTableQuery = @"
-            //        CREATE TABLE IF NOT EXISTS users (
-            //        UserID INTEGER PRIMARY KEY AUTOINCREMENT,
-            //        RoleID INTEGER NOT NULL,
-            //        FullName TEXT NOT NULL
-            //        );";
 
-            //    //// Create <NAME> Table for Haulage Data
-            //    //string createUsersTableQuery = @"
-            //    //    CREATE TABLE IF NOT EXISTS users (
-            //    //    id INTEGER PRIMARY KEY AUTOINCREMENT,
-            //    //    etc.
-            //    //    );";
+                //Create User Table for Haulage Data;
 
-            //    //using (var command = new SQLiteCommand(connection))
-            //    //{
-            //    //    command.CommandText = createUsersTableQuery;
-            //    //    command.ExecuteNonQuery();
-            //    //}
+                string createUsersTableQuery = @"
+                CREATE TABLE IF NOT EXISTS users (
+                UserID INTEGER PRIMARY KEY AUTOINCREMENT,
+                RoleID INTEGER NOT NULL,
+                FullName TEXT NOT NULL
+                 );"
+                ;
 
-            //    // Execute Creat Table Commands
-            //    using (var command = new SQLiteCommand(connection))
-            //    {
-            //        command.CommandText = createUsersTableQuery;
-            //        command.ExecuteNonQuery();
-            //    }
-            //}
+
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = createUsersTableQuery;
+                command.ExecuteNonQuery();
+
+            }
         }
     }
 
