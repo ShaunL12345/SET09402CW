@@ -15,6 +15,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		// Initialise Haulage Database on Startup
+		DatabaseSetup.InitializeDatabase();
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
