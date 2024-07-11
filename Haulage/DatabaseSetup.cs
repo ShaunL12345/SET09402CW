@@ -28,24 +28,24 @@ public static class DatabaseSetup
 
             using (var connection = new SQLiteConnection(GetDatabasePath()))
             {
-
-
+                List<string> createTableScripts = new List<string>();
+               
                 //Create User Table for Haulage Data;
-
-                string createUsersTableQuery = @"
+                createTableScripts.Add(@"
                 CREATE TABLE IF NOT EXISTS users (
                 UserID INTEGER PRIMARY KEY AUTOINCREMENT,
                 RoleID INTEGER NOT NULL,
                 FullName TEXT NOT NULL
-                 );"
-                ;
+                 );");
 
-
-                var command = new SQLite.SQLiteCommand(connection);
-                command.CommandText = createUsersTableQuery;
-                command.ExecuteNonQuery();
-
+                foreach (string tableScript in createTableScripts) 
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = tableScript;
+                    command.ExecuteNonQuery();
+                }
             }
+
         }
     }
 
