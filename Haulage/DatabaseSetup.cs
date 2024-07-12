@@ -65,14 +65,14 @@ public static class DatabaseSetup
                 VehicleId INTEGER PRIMARY KEY AUTOINCREMENT,
                 LicensePlate TEXT UNIQUE NOT NULL,
                 Capacity INTEGER NOT NULL,
-                DriverId INTEGER NOT NULL,
+                DriverId INTEGER NOT NULL
                 );");
 
                 createTableScripts.Add(@"
                 CREATE TABLE IF NOT EXISTS TripManifest (
                 ManifestId INTEGER PRIMARY KEY AUTOINCREMENT,
                 TripId INTEGER NOT NULL,
-                PickUpRequest INTEGER NOT NULL,
+                PickUpRequest INTEGER NOT NULL
                 );");
 
                 createTableScripts.Add(@"
@@ -92,13 +92,13 @@ public static class DatabaseSetup
                 createTableScripts.Add(@"
                 CREATE TABLE IF NOT EXISTS Event (
                 EventId INTEGER PRIMARY KEY AUTOINCREMENT,
-                DriverId INTEGER NOT NULL,
+                DriverId INTEGER NOT NULL
                 );");
 
-                createTableScripts.Add(@"
-                CREATE TABLE IF NOT EXISTS Waypoint (
+              //  createTableScripts.Add(@"
+              //  CREATE TABLE IF NOT EXISTS Waypoint (
                  
-                )");
+              //  )");
 
                 
 
