@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 
 public static class DatabaseSetup
 {
-    private static string GetDatabasePath()
+    public static string GetDatabasePath()
     {
         // Get the base directory of the application
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
