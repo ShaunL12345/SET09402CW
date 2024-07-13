@@ -44,6 +44,12 @@ jobs:
       - name: Download and install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
 
+      - name: Restore dependencies
+        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+
+      - name: Build
+        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release --no-restore
+
       - name: Analyze with SonarCloud
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
