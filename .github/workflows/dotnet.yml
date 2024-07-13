@@ -19,7 +19,7 @@ jobs:
     - name: Install .NET MAUI
       run: dotnet workload install maui
     - name: Restore dependencies
-      run: dotnet restore HaulageApplication/Haulage
+      run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
     - name: Build
       run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
     - name: Test
