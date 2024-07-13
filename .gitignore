@@ -1,7 +1,5 @@
-Haulage/bin/
-Haulage/obj/
-HaulageTests/bin/
-HaulageTests/obj/
+bin
+obj
 /.vs
 Haulage/Haulage.csproj.user
 Haulage/Haulage.sln
