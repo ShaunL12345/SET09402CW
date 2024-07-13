@@ -2,8 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 using SQLite;
-using HaulageTests;
-
+using Haulage;
 namespace HaulageTests
 {
     [TestClass]
