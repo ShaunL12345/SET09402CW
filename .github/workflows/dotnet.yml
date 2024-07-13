@@ -40,13 +40,15 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-
       - name: Download and install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
-
-      - name: Install .NET MAUI
-        run: dotnet workload install maui
-
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'microsoft'
+          java-version: '11'
+          architecture: 'x64'
+#        Set up JAVA_HOME- name: Set up JAVA_HOMErun: echo "JAVA_HOME_11_X64=/Users/runner/hostedtoolcache/Java_Adopt_jdk/11.x.x/x64" >> $GITHUB_ENV
       - name: Restore dependencies
         run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
 
