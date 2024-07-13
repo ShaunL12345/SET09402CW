@@ -6,6 +6,7 @@ name: Build .NET MAUI
 on:
   push:
 
+
 jobs:
   build:
     runs-on: windows-latest
@@ -28,31 +29,36 @@ jobs:
       uses: codecov/codecov-action@v4.0.1
       with: 
         token: ${{ secrets.CODECOV_TOKEN }}
-
-
-  Analysis:
+       
+        
+  analysis:
     runs-on: ubuntu-latest
   
     steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+
+      - name: Build
+        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release --no-restore
+
+      - name: Test with code coverage
+        run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
+      - name: Download and install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
       - name: Analyze with SonarCloud
-  
-        # You can pin the exact commit or the version.
-        # uses: SonarSource/sonarcloud-github-action@v2.2.0
-        uses: SonarSource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }} 
-        with:
-          # Additional arguments for the SonarScanner CLI
-          args:
-            # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
-            # mandatory
-            -Dsonar.projectKey=ShaunL12345_SET09402CW
-            -Dsonar.organization=shaunl12345
-            #-Dsonar.sources= # optional, default is project base directory
-            # Comma-separated paths to directories containing test source files.
-            #-Dsonar.tests= # optional. For more info about Code Coverage, please refer to https://docs.sonarcloud.io/enriching/test-coverage/overview/
-            # Adds more detail to both client and server-side analysis logs, activating DEBUG mode for the scanner, and adding client-side environment variables and system properties to the server-side log of analysis report processing.
-            #-Dsonar.verbose= # optional, default is false
-          # When you need the analysis to take place in a directory other than the one from which it was launched, default is .
-          projectBaseDir: ../../
+        run: |
+          dotnet-sonarscanner begin /k:"ShaunL12345_SET09402CW" /o:"shaunl12345" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml"
+          dotnet build HaulageApplication/Haulage/Haulage.csproj
+          dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        working-directory: HaulageApplication/
