@@ -23,7 +23,7 @@ jobs:
     - name: Build
       run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
     - name: Test
-      run: dotnet test
+      run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with: 
