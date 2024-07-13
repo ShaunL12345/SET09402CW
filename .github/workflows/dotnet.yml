@@ -44,17 +44,14 @@ jobs:
       - name: Download and install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
 
-      - name: Install .NET MAUI Workloads
-        run: |
-         dotnet workload install maui-android
-         dotnet workload install maui-windows
-         dotnet workload install maui-ios
+      - name: Install .NET MAUI
+        run: dotnet workload install maui
 
       - name: Restore dependencies
         run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
 
       - name: Build
-        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release --no-restore
+        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
 
       - name: Analyze with SonarCloud
         env:
