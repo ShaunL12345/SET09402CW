@@ -24,3 +24,7 @@ jobs:
       run: dotnet build Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
     - name: Test
       run: dotnet test
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with: 
+        token: ${{ secrets.CODECOV_TOKEN }}
