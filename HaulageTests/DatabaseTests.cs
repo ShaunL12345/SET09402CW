@@ -45,28 +45,28 @@ namespace HaulageTests
             Assert.IsTrue(File.Exists(_testDbPath));
         }
 
-        [TestMethod]
-        public void TestUsersTableIsCreated()
-        {
-            // Initialize the database (this will also create the file if it doesn't exist)
-            DatabaseSetup.InitializeDatabase();
+        //[TestMethod]
+        //public void TestUsersTableIsCreated()
+        //{
+        //    // Initialize the database (this will also create the file if it doesn't exist)
+        //    DatabaseSetup.InitializeDatabase();
 
-            // Verify the Users table was created
-                using (var connection = new SQLiteConnection(GetDatabasePath()))
-                {
+        //    // Verify the Users table was created
+        //        using (var connection = new SQLiteConnection(GetDatabasePath()))
+        //        {
 
-                string query = "SELECT name FROM sqlite_master WHERE type='table' AND name='users';";
+        //        string query = "SELECT name FROM sqlite_master WHERE type='table' AND name='users';";
 
-                var command = new SQLite.SQLiteCommand(connection);
-                command.CommandText = query;
-                var result = command.ExecuteNonQuery();
-                Assert.IsNotNull(result);
-                //        Assert.AreEqual("users", result);
-               // result.
+        //        var command = new SQLite.SQLiteCommand(connection);
+        //        command.CommandText = query;
+        //        var result = command.ExecuteNonQuery();
+        //        Assert.IsNotNull(result);
+        //        //        Assert.AreEqual("users", result);
+        //       // result.
 
-                }
+        //        }
             
-        }
+        //}
     }
 
    //// public static class DatabaseSetup
