@@ -6,7 +6,6 @@ name: Build .NET MAUI
 on:
   push:
 
-
 jobs:
   build:
     runs-on: windows-latest
@@ -17,14 +16,30 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
+      # Install Java
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '11'
+
+      # Set up JAVA_HOME
+    - name: Set up JAVA_HOME
+      run: echo "JAVA_HOME_11_X64=/usr/lib/jvm/java-11-openjdk-amd64" >> $GITHUB_ENV
+
     - name: Install .NET MAUI
       run: dotnet workload install maui
+
     - name: Restore dependencies
       run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+
     - name: Build
       run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
+
     - name: Test
       run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with: 
@@ -40,6 +55,17 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+
+      # Install Java
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '11'
+
+      # Set up JAVA_HOME
+      - name: Set up JAVA_HOME
+        run: echo "JAVA_HOME_11_X64=/usr/lib/jvm/java-11-openjdk-amd64" >> $GITHUB_ENV
 
       - name: Download and install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
