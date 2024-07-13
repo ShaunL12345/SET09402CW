@@ -22,14 +22,11 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
-    - name: Test
-      run: dotnet test
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with: 
         token: ${{ secrets.CODECOV_TOKEN }}
-
-  Analysis:
     - name: Install SonarScanner
       run: dotnet tool install --global dotnet-sonarscanner
     - name: Run SonarCloud analysis
@@ -39,3 +36,5 @@ jobs:
         dotnet-sonarscanner begin /k:"ShaunL12345_SET09402CW" /o:"shaunl12345" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         dotnet build --no-incremental
         dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+    - name: Test
+      run: dotnet test
