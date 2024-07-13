@@ -41,15 +41,6 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
-
-      - name: Build
-        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release --no-restore
-
-      - name: Test with code coverage
-        run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-
       - name: Download and install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
 
