@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "S:\\MAUI APPs\\shell app\\SET09402CW\\HaulaugeApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8A3E15FF-6CCF-4922-89EA-2DB6DF16947F}|HaulageTests\\HaulageTests.csproj|s:\\maui apps\\shell app\\set09402cw\\haulaugeapplication\\haulagetests\\databasetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A3E15FF-6CCF-4922-89EA-2DB6DF16947F}|HaulageTests\\HaulageTests.csproj|solutionrelative:haulagetests\\databasetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseTests.cs",
+              "DocumentMoniker": "S:\\MAUI APPs\\shell app\\SET09402CW\\HaulaugeApplication\\HaulageTests\\DatabaseTests.cs",
+              "RelativeDocumentMoniker": "HaulageTests\\DatabaseTests.cs",
+              "ToolTip": "S:\\MAUI APPs\\shell app\\SET09402CW\\HaulaugeApplication\\HaulageTests\\DatabaseTests.cs",
+              "RelativeToolTip": "HaulageTests\\DatabaseTests.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAASwC0AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T15:09:24.936Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
