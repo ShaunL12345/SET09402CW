@@ -7,18 +7,23 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.Accounting
 {
+    //Class to hold vehicle functionality
     public class Vehicle
     {
+        //variables to contain vehicle attributes
         public Guid tripID;
         public string licensePlate;
         public int capacity;
         public Guid driverID;
+
+
         public enum status
         {
 
         }
 
 
+        //Method to assign trip to a driver
         public void assignTrip()
         {
             
