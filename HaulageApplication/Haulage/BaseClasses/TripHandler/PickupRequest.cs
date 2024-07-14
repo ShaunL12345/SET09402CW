@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.TripHandler
 {
+    //Class to contain PickUpRequest functionality
     public  class PickupRequest
     {
+        //Variables to contain pickup request details to assist drivers
         public Guid requestId;
         public Guid customerId;
         public string pickupLocation;
         public string deliveryLocation;
         public Guid itemId;
+
+        //Enum to contain status of item in transit
         public enum requestStatus
         {
             pickUpRequested,
@@ -21,6 +25,7 @@ namespace Haulage.BaseClasses.TripHandler
         }
         public PickupRequest() { }
 
+        //Method to inspect item
         public void inspectitem()
         {
 
