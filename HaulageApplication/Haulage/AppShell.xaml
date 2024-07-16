@@ -42,10 +42,10 @@
 
         
     </FlyoutItem>
-    <ShellContent
+    <!--<ShellContent
             Icon="hh_admin_icon.png"
             ContentTemplate="{DataTemplate local:ManageVehiclesPage}"
-            Route="ManageVehiclesPage" />
+            Route="ManageVehiclesPage" />-->
     <!-- Team -->
     <ShellContent
             Icon="hh_question_mark.png"

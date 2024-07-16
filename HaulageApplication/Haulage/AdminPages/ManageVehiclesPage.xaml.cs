@@ -7,5 +7,5 @@ public partial class ManageVehiclesPage : ContentPage
 		InitializeComponent();
     }
 
-
+	
 }

@@ -99,7 +99,7 @@
 	  <MauiXaml Update="AdminPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ManageVehiclesPage.xaml">
+	  <MauiXaml Update="AdminPages\ManageVehiclesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="CustomerPage.xaml">
@@ -114,13 +114,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="ManageVehiclesPage.xaml.cs">
+	  <Compile Update="AdminPages\ManageVehiclesPage.xaml.cs">
 	    <DependentUpon>ManageVehiclesPage.xaml</DependentUpon>
 	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="AdminPages\" />
 	</ItemGroup>
 
 </Project>

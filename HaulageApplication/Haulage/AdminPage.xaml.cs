@@ -8,6 +8,6 @@ public partial class AdminPage : ContentPage
 	}
     private async void VehiclesNavigationButtonClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync($"//ManageVehiclesPage.xaml");
+        await Navigation.PushAsync(new ManageVehiclesPage()); 
     }
 }
