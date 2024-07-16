@@ -39,16 +39,20 @@
             Icon="hh_admin_icon.png"
             ContentTemplate="{DataTemplate local:AdminPage}"
             Route="AdminPage" />
-        </FlyoutItem>
 
+        
+    </FlyoutItem>
+    <ShellContent
+            Icon="hh_admin_icon.png"
+            ContentTemplate="{DataTemplate local:ManageVehiclesPage}"
+            Route="ManageVehiclesPage" />
     <!-- Team -->
     <ShellContent
             Icon="hh_question_mark.png"
             ContentTemplate="{DataTemplate local:Team}"
             Route="Team" />
-
     <!-- Footer -->
     <!--<Shell.FlyoutFooter>
     </Shell.FlyoutFooter>-->
-
+    
 </Shell>
