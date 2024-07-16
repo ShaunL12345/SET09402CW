@@ -33,6 +33,7 @@ public static class DatabaseSetup
         }
     }
 
+    //Drops all the tables inside the database 
     public static void DropTables(SQLiteConnection connection) 
     {
         List<string> dropTableScripts = new List<string>();
@@ -59,10 +60,6 @@ public static class DatabaseSetup
     {
         //Vehicle data
         CreateVehicles(connection);
-
-
-
-
     }
 
     private static void CreateVehicles(SQLiteConnection connection)
@@ -72,32 +69,35 @@ public static class DatabaseSetup
         dataScripts.Add(@"
         INSERT INTO[Vehicle]
            ([VehicleId]
+           , [tripID]
            , [LicensePlate]
            , [Capacity]
            , [DriverId]
            , [Status])
              VALUES
-            (1, 'test1', 1, 1,1);");
+            (1, 1, 'test1', 1, 1,1);");
         
         dataScripts.Add(@"
         INSERT INTO[Vehicle]
            ([VehicleId]
+           , [tripID]
            , [LicensePlate]
            , [Capacity]
            , [DriverId]
            , [Status])
              VALUES
-           (2, 'test2', 2, 2,1);");
+           (2,2, 'test2', 2, 2,1);");
         
         dataScripts.Add(@"
         INSERT INTO[Vehicle]
            ([VehicleId]
+           , [tripID]
            , [LicensePlate]
            , [Capacity]
            , [DriverId]
            , [Status])
              VALUES
-           (3, 'test3', 3, 3,3);");
+           (3,3, 'test3', 3, 3,3);");
 
         foreach (string tableScript in dataScripts)
         {
@@ -145,6 +145,7 @@ public static class DatabaseSetup
         createTableScripts.Add(@"
                 CREATE TABLE IF NOT EXISTS Vehicle (
                 VehicleId INTEGER PRIMARY KEY AUTOINCREMENT,
+                TripID INTEGER INTEGER,
                 LicensePlate TEXT UNIQUE NOT NULL,
                 Capacity INTEGER NOT NULL,
                 DriverId INTEGER NOT NULL,

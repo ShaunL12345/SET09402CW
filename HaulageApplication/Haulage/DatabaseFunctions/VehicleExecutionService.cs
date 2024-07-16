@@ -9,12 +9,13 @@ using Haulage.BaseClasses.Accounting;
 
 namespace Haulage.DatabaseFunctions
 {
-    class VehicleExecutionService
+    public static class VehicleExecutionService
     {
-        public List<Vehicle> getVehicles() 
+        public static List<Vehicle> getVehicles() 
         {
             var vehicles = new List<Vehicle>();
-            var sql = "SELECT [VehicleId]     " +
+            var sql = "SELECT [VehicleId]" +
+                ",[tripID]    " +
                 ",[LicensePlate]     " +
                 ",[Capacity]      " +
                 ",[DriverId]  " +
