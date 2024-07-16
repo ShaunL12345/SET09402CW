@@ -9,10 +9,10 @@ namespace Haulage.BaseClasses.Accounting
 {
     public class Vehicle
     {
-        public Guid tripID;
+        public int tripID;
         public string licensePlate;
         public int capacity;
-        public Guid driverID;
+        public int driverID;
         public enum status
         {
 
