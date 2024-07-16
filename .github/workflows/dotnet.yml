@@ -16,15 +16,72 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
+      # Install Java
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+
+      # Set up JAVA_HOME
+    - name: Set up JAVA_HOME
+      run: echo "JAVA_HOME_11_X64=/usr/lib/jvm/java-11-openjdk-amd64" >> $GITHUB_ENV
+
     - name: Install .NET MAUI
       run: dotnet workload install maui
+
     - name: Restore dependencies
       run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+
     - name: Build
       run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
+
     - name: Test
       run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with: 
         token: ${{ secrets.CODECOV_TOKEN }}
+       
+        
+  analysis:
+    runs-on: windows-latest
+  
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      # Install Java
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+
+      # Set up JAVA_HOME
+      - name: Set up JAVA_HOME
+        run: echo "JAVA_HOME_11_X64=/usr/lib/jvm/java-11-openjdk-amd64" >> $GITHUB_ENV
+
+      - name: Download and install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Restore dependencies
+        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+
+      - name: Build
+        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
+
+      - name: Analyze with SonarCloud
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }} 
+        run: |
+          dotnet-sonarscanner begin /k:"ShaunL12345_SET09402CW" /o:"shaunl12345" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml"
+          dotnet build Haulage/Haulage.csproj
+          dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        working-directory: HaulageApplication/
