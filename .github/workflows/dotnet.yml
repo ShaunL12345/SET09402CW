@@ -29,9 +29,9 @@ jobs:
       run: dotnet workload install maui
 
     - name: Restore dependencies
-      run: dotnet restore HaulageApplication/Haulage/Haulage.csproj --runtime win-x64 --runtime maccatalyst-arm64
+      run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
 
-    - name: Build
+    - name: Build for Windows
       run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r win-x64 --no-restore
 
     - name: Build for macCatalyst
@@ -71,9 +71,9 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner
 
       - name: Restore dependencies
-        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj --runtime win-x64 --runtime maccatalyst-arm64
+        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
 
-      - name: Build
+      - name: Build for Windows
         run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r win-x64 --no-restore
 
       - name: Build for macCatalyst
