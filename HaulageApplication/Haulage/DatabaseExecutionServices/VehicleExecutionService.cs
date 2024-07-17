@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Haulage.BaseClasses;
 using Haulage.BaseClasses.Accounting;
 
-namespace Haulage.DatabaseFunctions
+namespace Haulage.DatabaseExecutionServices
 {
     public static class VehicleExecutionService
     {

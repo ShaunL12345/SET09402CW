@@ -1,15 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:Haulage"
              x:Class="Haulage.ManageVehiclesPage"
+             xmlns:viewModel ="clr-namespace:Haulage.viewModel"
              Title="ManageVehiclesPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <viewModel:VehicleViewModel/>
+    </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label 
-            Text="&#10; Welcome to manage vehicles page!"
+        <!--<Label 
+            Text="&#xA; Welcome to manage vehicles page!"
             TextColor="Black"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" />-->
+        <CollectionView x:Name ="VehicleListCollection" ItemsSource="{Binding Vehicles}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Grid.Row="1"
+                       Text="test {Binding VehicleId}"
+                       FontAttributes="Bold" />
+                        
+                        <Label Grid.Row="1"
+                       Grid.Column="2"
+                       Text="{Binding tripID}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+                        
+                        <Label Grid.Row="1"
+                       Grid.Column="3"
+                       Text="{Binding Capacity}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+
+                        <Label Grid.Row="1"
+                       Grid.Column="4"
+                       Text="{Binding DriverId}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+                        <Label Grid.Row="1"
+                       Grid.Column="5"
+                       Text="{Binding Status}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+
+                        <Label Grid.Row="1"
+                       Grid.Column="6"
+                       Text="{Binding LicensePlate}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
+
+
+
 </ContentPage>
