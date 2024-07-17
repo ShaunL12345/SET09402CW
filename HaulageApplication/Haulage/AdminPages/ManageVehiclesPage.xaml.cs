@@ -1,4 +1,5 @@
 using Haulage.BaseClasses.Accounting;
+using Haulage.DatabaseExecutionServices;
 using Haulage.viewModel;
 using Microsoft.Maui.Controls;
 
@@ -12,9 +13,7 @@ public partial class ManageVehiclesPage : ContentPage
     public ManageVehiclesPage()
     {
         InitializeComponent();
-        //VehicleListCollection.SetBinding(ItemsView.ItemsSourceProperty, "Vehicles");
-        //createGrid();
-        var test = VehicleListCollection;
+        //VehiclesCollectionView.ItemsSource = VehicleViewModel().vehicle;
     }
     public static void createGrid() 
     {

@@ -17,64 +17,76 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />-->
-        <CollectionView x:Name ="VehicleListCollection" ItemsSource="{Binding Vehicles}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            
+            <CollectionView Grid.Row="1" x:Name="VehiclesCollectionView" ItemsSource="{Binding Vehicles}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame BackgroundColor="#2b2b2b" CornerRadius="14" Margin="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Stroke="White" Grid.RowSpan="2"
+                                         WidthRequest="60"
+                                         HeightRequest="60"
+                                         HorizontalOptions="Start"
+                                         Fill="WhiteSmoke"
+                                         StrokeThickness="1"
+                                         Margin="0,0,10,0"/>
+                                    <Label Grid.Column="1" TextColor="White"
+                                       Text="{Binding VehicleId}"
+                                       FontAttributes="Bold"/>
 
-                        <Label Grid.Column="1" Grid.Row="1"
-                       Text="test {Binding VehicleId}"
-                       FontAttributes="Bold" />
-                        
-                        <Label Grid.Row="1"
-                       Grid.Column="2"
-                       Text="{Binding tripID}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-                        
-                        <Label Grid.Row="1"
-                       Grid.Column="3"
-                       Text="{Binding Capacity}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
+                                    <Label Grid.Row="1" TextColor="White"
+                                       Grid.Column="3"
+                                       Text="{Binding tripID}"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="End"/>
+                                    
+                                    <Label Grid.Row="1" TextColor="White"
+                                       Grid.Column="4"
+                                       Text="{Binding Capacity}"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="End"/>
+                                    
+                                    <Label Grid.Row="2" TextColor="White"
+                                       Grid.Column="5"
+                                       Text="{Binding DriverId}"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="End"/>
+                                    
+                                    <Label Grid.Row="2" TextColor="White"
+                                       Grid.Column="6"
+                                       Text="{Binding LicensePlate}"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="End"/>
 
-                        <Label Grid.Row="1"
-                       Grid.Column="4"
-                       Text="{Binding DriverId}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-                        <Label Grid.Row="1"
-                       Grid.Column="5"
-                       Text="{Binding Status}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-
-                        <Label Grid.Row="1"
-                       Grid.Column="6"
-                       Text="{Binding LicensePlate}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                    <Label Grid.Row="2" TextColor="White"
+                                       Grid.Column="7"
+                                       Text="{Binding Status}"
+                                       FontAttributes="Italic"
+                                       VerticalOptions="End"/>
+                                </Grid>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </VerticalStackLayout>
-
-
-
 </ContentPage>
