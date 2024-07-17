@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;
+using Haulage;
 
 namespace HaulageTests
 {
@@ -42,6 +43,81 @@ namespace HaulageTests
 
             // Act
             DatabaseSetup.InitializeDatabase();
+
+            // Assert
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                var vehicles = connection.Table<Vehicle>().ToList();
+                Assert.Equal(3, vehicles.Count);
+                Assert.Equal("test1", vehicles[0].LicensePlate);
+                Assert.Equal("test2", vehicles[1].LicensePlate);
+                Assert.Equal("test3", vehicles[2].LicensePlate);
+            }
+        }
+
+        [Fact]
+        public void TestDropTables_DropsAllTables()
+        {
+            // Arrange
+            string testDatabasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestDatabasePath);
+            DatabaseSetup.SetDatabasePath(testDatabasePath);
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                DatabaseSetup.CreateTables(connection);
+            }
+
+            // Act
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                DatabaseSetup.DropTables(connection);
+            }
+
+            // Assert
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                Assert.Throws<SQLiteException>(() => connection.Table<User>().ToList());
+            }
+        }
+
+        [Fact]
+        public void TestCreateTables_CreatesAllTables()
+        {
+            // Arrange
+            string testDatabasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestDatabasePath);
+            DatabaseSetup.SetDatabasePath(testDatabasePath);
+
+            // Act
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                DatabaseSetup.CreateTables(connection);
+            }
+
+            // Assert
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                var userCount = connection.Table<User>().Count();
+                var vehicleCount = connection.Table<Vehicle>().Count();
+                Assert.Equal(0, userCount);
+                Assert.Equal(0, vehicleCount);
+            }
+        }
+
+        [Fact]
+        public void TestGenerateData_InsertsDataIntoTables()
+        {
+            // Arrange
+            string testDatabasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestDatabasePath);
+            DatabaseSetup.SetDatabasePath(testDatabasePath);
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                DatabaseSetup.CreateTables(connection);
+            }
+
+            // Act
+            using (var connection = new SQLiteConnection(testDatabasePath))
+            {
+                DatabaseSetup.GenerateData(connection);
+            }
 
             // Assert
             using (var connection = new SQLiteConnection(testDatabasePath))
@@ -132,7 +208,7 @@ namespace HaulageTests
 
     public static class DatabaseSetup
     {
-        private static string databasePath = "Haulage.db";
+        public static string databasePath = "Haulage.db";
 
         public static void SetDatabasePath(string path)
         {
@@ -179,13 +255,13 @@ namespace HaulageTests
             }
         }
 
-        private static void GenerateData(SQLiteConnection connection)
+        public static void GenerateData(SQLiteConnection connection)
         {
             // Vehicle data
             CreateVehicles(connection);
         }
 
-        private static void CreateVehicles(SQLiteConnection connection)
+        public static void CreateVehicles(SQLiteConnection connection)
         {
             List<string> dataScripts = new List<string>
             {
@@ -201,7 +277,7 @@ namespace HaulageTests
             }
         }
 
-        private static void CreateTables(SQLiteConnection connection)
+        public static void CreateTables(SQLiteConnection connection)
         {
             List<string> createTableScripts = new List<string>
             {

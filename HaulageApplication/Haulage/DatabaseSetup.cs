@@ -59,13 +59,13 @@ public static class DatabaseSetup
         }
     }
 
-    private static void GenerateData(SQLiteConnection connection)
+    public static void GenerateData(SQLiteConnection connection)
     {
         //Vehicle data
         CreateVehicles(connection);
     }
 
-    private static void CreateVehicles(SQLiteConnection connection)
+    public static void CreateVehicles(SQLiteConnection connection)
     {
         List<string> dataScripts = new List<string>
         {
@@ -84,7 +84,7 @@ public static class DatabaseSetup
         }
     }
 
-    private static void CreateTables(SQLiteConnection connection)
+    public static void CreateTables(SQLiteConnection connection)
     {
         //Create User Table for Haulage Data;
         List<string> createTableScripts = new List<string>
