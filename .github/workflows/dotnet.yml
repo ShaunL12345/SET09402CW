@@ -29,10 +29,13 @@ jobs:
       run: dotnet workload install maui
 
     - name: Restore dependencies
-      run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+      run: dotnet restore HaulageApplication/Haulage/Haulage.csproj --runtime win-x64 --runtime maccatalyst-arm64
 
     - name: Build
-      run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
+      run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r win-x64 --no-restore
+
+    - name: Build for macCatalyst
+      run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r maccatalyst-arm64 --no-restore
 
     - name: Test with coverage
       run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj --collect:"XPlat Code Coverage" /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
@@ -68,10 +71,13 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner
 
       - name: Restore dependencies
-        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj
+        run: dotnet restore HaulageApplication/Haulage/Haulage.csproj --runtime win-x64 --runtime maccatalyst-arm64
 
       - name: Build
-        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release --no-restore
+        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r win-x64 --no-restore
+
+      - name: Build for macCatalyst
+        run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r maccatalyst-arm64 --no-restore
 
       - name: Analyze with SonarCloud
         env:
@@ -79,6 +85,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }} 
         run: |
           dotnet-sonarscanner begin /k:"ShaunL12345_SET09402CW" /o:"shaunl12345" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths="HaulageApplication/HaulageTests/TestResults/coverage.opencover.xml"
-          dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release --no-restore
+          dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r win-x64 --no-restore
+          dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -r maccatalyst-arm64 --no-restore
           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         working-directory: HaulageApplication/
