@@ -7,13 +7,12 @@
              Title="ManageVehiclesPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
-
+    
     <ContentPage.BindingContext>
         <viewModel:VehicleViewModel/>
     </ContentPage.BindingContext>
     <StackLayout>
-        <Grid  BackgroundColor="#2b2b2b" Margin="30,0,30,0">
-
+        <Grid  BackgroundColor="DarkGrey" Margin="30,20,30,10">
             <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="0.9*"/>
@@ -44,7 +43,7 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <ContentView>
-                    <Frame BackgroundColor="#2b2b2b" Margin="30,0,30,0">
+                        <Frame BackgroundColor="#ac99ea" Margin="30,15,30,0">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>

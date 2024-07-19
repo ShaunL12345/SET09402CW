@@ -11,6 +11,8 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class VehicleModel
     {
+        
         public static List<Vehicle> vehicles = VehicleExecutionService.GetVehicles();
+
     }
 }
