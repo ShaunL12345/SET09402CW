@@ -9,26 +9,8 @@ using Haulage.BaseClasses.Accounting;
 
 namespace Haulage.DatabaseExecutionServices
 {
-    public static class VehicleExecutionService
+    public static class VehicleModel
     {
-        public static List<Vehicle> getVehicles() 
-        {
-            var vehicles = new List<Vehicle>();
-            var sql = "SELECT [VehicleId]" +
-                ",[tripID]    " +
-                ",[LicensePlate]     " +
-                ",[Capacity]      " +
-                ",[DriverId]  " +
-                ",[Status]  " +
-                "FROM [Vehicle];";
-
-            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-            {
-                var command = new SQLite.SQLiteCommand(connection);
-                command.CommandText = sql;
-                vehicles = command.ExecuteQuery<Vehicle>();
-            }
-            return vehicles;
-        }
+        public static List<Vehicle> vehicles = VehicleExecutionService.GetVehicles();
     }
 }

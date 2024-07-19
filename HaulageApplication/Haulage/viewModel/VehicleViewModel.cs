@@ -17,7 +17,7 @@ namespace Haulage.viewModel
         public VehicleViewModel() 
         {
             Vehicles = new ObservableCollection<Vehicle>();
-            var vehicleObjects = VehicleExecutionService.getVehicles();
+            var vehicleObjects = VehicleModel.vehicles;
             foreach (var vehicleObject in vehicleObjects) 
             {
                 Vehicles.Add(vehicleObject);
