@@ -13,6 +13,12 @@ namespace HaulageTests
 {
     public class DatabaseSetupTests
     {
+        private SQLiteConnection GetInMemoryConnection()
+        {
+            var connection = new SQLiteConnection(":memory:");
+            return connection;
+        }
+
         [Fact]
         public void GetDatabasePath_ShouldReturnCorrectPath()
         {
@@ -28,8 +34,7 @@ namespace HaulageTests
         public void InitializeDatabase_ShouldDropAndCreateTables()
         {
             // Arrange
-            var options = new SQLiteConnectionString("Data Source=:memory:", false);
-            using var connection = new SQLiteConnection(options.DatabasePath);
+            using var connection = GetInMemoryConnection();
 
             // Act
             DatabaseSetup.CreateTables(connection);
@@ -43,9 +48,7 @@ namespace HaulageTests
         public void DropTables_ShouldDropAllTables()
         {
             // Arrange
-            var options = new SQLiteConnectionString("Data Source=:memory:", false);
-            using var connection = new SQLiteConnection(options.DatabasePath);
-
+            using var connection = GetInMemoryConnection();
             DatabaseSetup.CreateTables(connection);
 
             // Act
@@ -59,9 +62,7 @@ namespace HaulageTests
         public void GenerateData_ShouldInsertDataIntoTables()
         {
             // Arrange
-            var options = new SQLiteConnectionString("Data Source=:memory:", false);
-            using var connection = new SQLiteConnection(options.DatabasePath);
-
+            using var connection = GetInMemoryConnection();
             DatabaseSetup.CreateTables(connection);
 
             // Act
@@ -80,8 +81,7 @@ namespace HaulageTests
         public void CreateTables_ShouldCreateAllTables()
         {
             // Arrange
-            var options = new SQLiteConnectionString("Data Source=:memory:", false);
-            using var connection = new SQLiteConnection(options.DatabasePath);
+            using var connection = GetInMemoryConnection();
 
             // Act
             DatabaseSetup.CreateTables(connection);
