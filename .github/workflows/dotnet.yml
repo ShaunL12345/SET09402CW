@@ -69,7 +69,7 @@ jobs:
         run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
 
       - name: Test with Coverage
-      run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj --collect:"XPlat Code Coverage" /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
+        run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj --collect:"XPlat Code Coverage" /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
 
       - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
