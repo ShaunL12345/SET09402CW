@@ -108,6 +108,7 @@ public static class DatabaseSetup
             };
             command.ExecuteNonQuery();
         }
+
     }
 
 }
