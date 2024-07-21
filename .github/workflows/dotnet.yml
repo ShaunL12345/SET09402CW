@@ -37,14 +37,6 @@ jobs:
     - name: Build
       run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
 
-    - name: Test
-      run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj
-
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4.0.1
-      with: 
-        token: ${{ secrets.CODECOV_TOKEN }}
-
 
   analysis:
     runs-on: windows-latest
@@ -76,8 +68,14 @@ jobs:
       - name: Build
         run: dotnet build HaulageApplication/Haulage/Haulage.csproj -c Release -f net8.0-android --no-restore
 
-      - name: Test with code coverage
-        run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=../coverage/
+      - name: Test with Coverage
+        run: dotnet test HaulageApplication/HaulageTests/HaulageTests.csproj --collect:"XPlat Code Coverage" /p:CoverletOutputFormat=opencover /p:CoverletOutput=TestResults/
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with: 
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: "**/TestResults/coverage.opencover.xml"
 
       - name: Analyze with SonarCloud
         env:
