@@ -30,15 +30,16 @@ namespace HaulageTests
         {
             // Arrange
             var admin = new Administrator();
-            var manifest = new TripManifest();
+            var manifest = new TripManifest { ManifestId = 1, TripId = 1 };
             var item = new ManifestItem(1, "Item 1", "Other");
-            manifest.Items.Add(item);
 
             // Act
-            admin.AddManifestItem(manifest, item);
+            admin.AddManifestItem(manifest, item); // First addition
+            admin.AddManifestItem(manifest, item); // Attempt to add duplicate
 
             // Assert
             Assert.Single(manifest.Items);
+            Assert.Equal(item, manifest.Items[0]);
         }
 
         [Fact]

@@ -37,7 +37,10 @@ namespace Haulage.BaseClasses.Accounting
 
         public void AddManifestItem(TripManifest manifest, ManifestItem item)
         {
-            manifest.Items.Add(item);
+            if (!manifest.Items.Any(existingItem => existingItem.ItemId == item.ItemId))
+            {
+                manifest.Items.Add(item);
+            }
         }
 
         public void RemoveManifestItem(TripManifest manifest, ManifestItem item)
