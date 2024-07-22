@@ -56,17 +56,24 @@ namespace Haulage.BaseClasses.Accounting
 
         public void planRoutes()
         {
-
+            // Plan routes logic here
         }
 
         public void resourceTrips()
         {
-
+            // Resource trips logic here
         }
 
-        public void trackProgress()
+        public void trackProgress(List<Trip> trips)
         {
-
+            foreach (var trip in trips)
+            {
+                Console.WriteLine($"Trip ID: {trip.TripId}");
+                Console.WriteLine($"Current Location: {trip.CurrentLocation}");
+                Console.WriteLine($"Status: {trip.Status}");
+                Console.WriteLine($"Issues: {trip.Issues}");
+                Console.WriteLine();
+            }
         }
     }
 
@@ -89,6 +96,14 @@ namespace Haulage.BaseClasses.Accounting
             Description = description ?? throw new ArgumentNullException(nameof(description));
             Category = category ?? throw new ArgumentNullException(nameof(category));
         }
+    }
+
+    public class Trip
+    {
+        public int TripId { get; set; }
+        public string CurrentLocation { get; set; }
+        public string Status { get; set; }
+        public string Issues { get; set; }
     }
 
 }
