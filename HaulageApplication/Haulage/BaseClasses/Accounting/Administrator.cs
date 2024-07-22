@@ -72,7 +72,6 @@ namespace Haulage.BaseClasses.Accounting
                 Console.WriteLine($"Current Location: {trip.CurrentLocation}");
                 Console.WriteLine($"Status: {trip.Status}");
                 Console.WriteLine($"Issues: {trip.Issues}");
-                Console.WriteLine();
             }
         }
     }
@@ -101,9 +100,17 @@ namespace Haulage.BaseClasses.Accounting
     public class Trip
     {
         public int TripId { get; set; }
-        public string CurrentLocation { get; set; }
-        public string Status { get; set; }
-        public string Issues { get; set; }
+        public string CurrentLocation { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
+        public string Issues { get; set; } = string.Empty;
+
+        public Trip(int tripId, string currentLocation, string status, string issues)
+        {
+            TripId = tripId;
+            CurrentLocation = currentLocation ?? throw new ArgumentNullException(nameof(currentLocation));
+            Status = status ?? throw new ArgumentNullException(nameof(status));
+            Issues = issues ?? throw new ArgumentNullException(nameof(issues));
+        }
     }
 
 }
