@@ -26,6 +26,22 @@ namespace HaulageTests
         }
 
         [Fact]
+        public void AddManifestItem_ShouldNotAddDuplicateItem()
+        {
+            // Arrange
+            var admin = new Administrator();
+            var manifest = new TripManifest();
+            var item = new ManifestItem(1, "Item 1", "Other");
+            manifest.Items.Add(item);
+
+            // Act
+            admin.AddManifestItem(manifest, item);
+
+            // Assert
+            Assert.Single(manifest.Items);
+        }
+
+        [Fact]
         public void RemoveManifestItem_ShouldRemoveItemFromManifest()
         {
             // Arrange
@@ -39,6 +55,24 @@ namespace HaulageTests
 
             // Assert
             Assert.DoesNotContain(item, manifest.Items);
+        }
+
+        [Fact]
+        public void RemoveManifestItem_ShouldNotRemoveNonExistingItem()
+        {
+            // Arrange
+            var admin = new Administrator();
+            var manifest = new TripManifest();
+            var item = new ManifestItem(1, "Item 1", "Other");
+            var nonExistingItem = new ManifestItem(2, "Item 2", "Fragile");
+            manifest.Items.Add(item);
+
+            // Act
+            admin.RemoveManifestItem(manifest, nonExistingItem);
+
+            // Assert
+            Assert.Contains(item, manifest.Items);
+            Assert.Single(manifest.Items);
         }
 
         [Fact]
@@ -57,6 +91,26 @@ namespace HaulageTests
             // Assert
             Assert.Contains(newItem, manifest.Items);
             Assert.DoesNotContain(oldItem, manifest.Items);
+        }
+
+        [Fact]
+        public void UpdateManifestItem_ShouldNotUpdateIfItemNotFound()
+        {
+            // Arrange
+            var admin = new Administrator();
+            var manifest = new TripManifest();
+            var oldItem = new ManifestItem(1, "Item 1", "Other");
+            var newItem = new ManifestItem(1, "Updated Item 1", "Fragile");
+            var nonExistingItem = new ManifestItem(2, "Non-existing Item", "Other");
+            manifest.Items.Add(oldItem);
+
+            // Act
+            admin.UpdateManifestItem(manifest, nonExistingItem, newItem);
+
+            // Assert
+            Assert.Contains(oldItem, manifest.Items);
+            Assert.DoesNotContain(newItem, manifest.Items);
+            Assert.Single(manifest.Items);
         }
     }
 }
