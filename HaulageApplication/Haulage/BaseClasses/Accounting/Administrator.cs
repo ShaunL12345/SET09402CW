@@ -82,6 +82,13 @@ namespace Haulage.BaseClasses.Accounting
         public int ItemId { get; set; }
         public string Description { get; set; }
         public string Category { get; set; } // Fragile, Dangerous, Other
+
+        public ManifestItem(int itemId, string description, string category)
+        {
+            ItemId = itemId;
+            Description = description ?? throw new ArgumentNullException(nameof(description));
+            Category = category ?? throw new ArgumentNullException(nameof(category));
+        }
     }
 
 }
