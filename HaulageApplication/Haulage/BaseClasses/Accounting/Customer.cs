@@ -10,9 +10,10 @@ namespace Haulage.BaseClasses.Accounting
     {
         public Customer() { }
 
-        public void manageAccount()
+        public void ManageAccount(Account account, string billingDetails, string contactDetails)
         {
-
+            account.BillingDetails = billingDetails;
+            account.ContactDetails = contactDetails;
         }
 
         public void requestPickupOrDelivery()
@@ -35,5 +36,22 @@ namespace Haulage.BaseClasses.Accounting
 
         }
 
+        public class Account
+        {
+            public Guid AccountID { get; set; }
+            public Guid PersonID { get; set; }
+            public string BillingDetails { get; set; } = string.Empty;
+            public string ContactDetails { get; set; } = string.Empty;
+
+            public Account() { }
+
+            public Account(Guid personID, string billingDetails, string contactDetails)
+            {
+                AccountID = Guid.NewGuid();
+                PersonID = personID;
+                BillingDetails = billingDetails;
+                ContactDetails = contactDetails;
+            }
+        }
     }
 }
