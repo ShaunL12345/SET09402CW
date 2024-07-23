@@ -16,10 +16,6 @@ public partial class ManageEmployees : ContentPage
 
     }
 
-    private void UpdateEmployee_Clicked(object sender, EventArgs e)
-    {
-
-    }
 
     private void DeleteEmployee_Clicked(object sender, EventArgs e)
     {

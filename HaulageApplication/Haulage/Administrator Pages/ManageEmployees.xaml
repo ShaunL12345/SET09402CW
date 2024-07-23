@@ -113,13 +113,6 @@ Clicked="AddEmployee_Clicked"
 Padding="10"
 BorderColor="#9D00FF"/>
             <Button
-x:Name="UpdateEmployee"
-Text="Update Employee Record" 
-Clicked="UpdateEmployee_Clicked" 
-Padding="10"
-HorizontalOptions="Center" 
-BorderColor="#9D00FF"/>
-            <Button
 x:Name="DeleteEmployee"
 HeightRequest="10"
 Text="Delete Employee Record" 

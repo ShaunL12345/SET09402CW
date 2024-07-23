@@ -8,6 +8,7 @@ namespace Haulage.BaseClasses.Accounting
 {
     public  class Administrator : User
     {
+
         public Administrator() { }
 
         public void manageEmployees()

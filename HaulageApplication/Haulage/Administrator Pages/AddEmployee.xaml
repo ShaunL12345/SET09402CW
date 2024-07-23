@@ -33,8 +33,44 @@
                      Text ="Address"/>
                 <Label Grid.Row="0" Grid.Column="6" TextColor="White" Grid.RowSpan="2"
                      Text ="Qualification"/>
-            </Grid>
 
+                <Entry
+                    Placeholder="Id"
+                    Grid.Row="1"
+                    Grid.Column="0">
+                </Entry>
+                <Entry
+                    Placeholder="Name"
+                    Grid.Row="1"
+                    Grid.Column="1">
+                </Entry>
+                <Entry
+                    Placeholder="Email"
+                    Grid.Row="1"
+                    Grid.Column="2">
+                </Entry>
+                <Entry
+                    Placeholder="PhoneNumber"
+                    Grid.Row="1"
+                    Grid.Column="3">
+                </Entry>
+                <Entry
+                    Placeholder="Role"
+                    Grid.Row="1"
+                    Grid.Column="4">
+                </Entry>
+                <Entry
+                    Placeholder="Address"
+                    Grid.Row="1"
+                    Grid.Column="5">
+                </Entry>
+                <Entry
+                    Placeholder="Qualification"
+                    Grid.Row="1"
+                    Grid.Column="6">
+                </Entry>
+
+            </Grid>
             <CollectionView x:Name="DriversCollectionView" ItemsSource="{Binding drivers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -65,7 +101,7 @@
                                Grid.Column="2"
                                Text="{Binding Email}"
                                FontAttributes="Italic"/>
-
+                                    
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="3"
                                Text="{Binding PhoneNumber}"
