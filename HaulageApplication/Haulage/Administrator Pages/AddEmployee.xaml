@@ -35,36 +35,44 @@
                      Text ="Qualification"/>
 
                 <Entry
+                    x:Name="idEntry"
                     Placeholder="Id"
                     Grid.Row="1"
-                    Grid.Column="0">
+                    Grid.Column="0"
+                    Keyboard="Numeric">
                 </Entry>
                 <Entry
+                    x:Name="nameEntry"
                     Placeholder="Name"
                     Grid.Row="1"
                     Grid.Column="1">
                 </Entry>
                 <Entry
+                    x:Name="emailEntry"
                     Placeholder="Email"
                     Grid.Row="1"
                     Grid.Column="2">
                 </Entry>
                 <Entry
+                    x:Name="phoneNumberEntry"
                     Placeholder="PhoneNumber"
                     Grid.Row="1"
                     Grid.Column="3">
                 </Entry>
                 <Entry
+                    x:Name="roleEntry"
                     Placeholder="Role"
                     Grid.Row="1"
                     Grid.Column="4">
                 </Entry>
                 <Entry
+                    x:Name="addressEntry"
                     Placeholder="Address"
                     Grid.Row="1"
                     Grid.Column="5">
                 </Entry>
                 <Entry
+                    x:Name="qualificationEntry"
                     Placeholder="Qualification"
                     Grid.Row="1"
                     Grid.Column="6">

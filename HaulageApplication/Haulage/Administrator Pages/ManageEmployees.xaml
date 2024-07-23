@@ -98,6 +98,7 @@
                                       Grid.Column="6"
                                       Text="{Binding Qualification}"
                                       FontAttributes="Italic"/>
+                                    
                                 </Grid>
                             </Frame>
                         </ContentView>
