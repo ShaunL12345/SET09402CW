@@ -11,10 +11,8 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Label Text="Billing Details:" TextColor="Black" Margin="10"/>
-        <Entry x:Name="BillingDetailsEntry" Margin="10"/>
-        <Label Text="Contact Details:" TextColor="Black" Margin="10"/>
-        <Entry x:Name="ContactDetailsEntry" Margin="10"/>
-        <!--<Button Text="Save" Margin="10" Clicked="SaveButton_Click"/>-->
+        <Entry Placeholder="Enter Billing Details" x:Name="BillingDetailsEntry" />
+        <Entry Placeholder="Enter Contact Details" x:Name="ContactDetailsEntry" />
+        <Button Text="Save" Clicked="SaveButton_Click" />
     </VerticalStackLayout>
 </ContentPage>

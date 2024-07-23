@@ -10,11 +10,23 @@ namespace Haulage.BaseClasses.Accounting
     {
         public Customer() { }
 
-        public void ManageAccount(Account account, string newBillingDetails, string newContactDetails)
+// = MANAGE ACCOUNT = START ========================================================================================================= //
+        public void ManageAccount(Account account, string billingDetails, string contactDetails)
         {
-            account.BillingDetails = newBillingDetails;
-            account.ContactDetails = newContactDetails;
+            if (account == null) throw new ArgumentNullException(nameof(account));
+            if (billingDetails == null) throw new ArgumentNullException(nameof(billingDetails));
+            if (contactDetails == null) throw new ArgumentNullException(nameof(contactDetails));
+
+            account.BillingDetails = billingDetails;
+            account.ContactDetails = contactDetails;
         }
+
+        public void RequestPickupOrDelivery() { }
+        public void ConfirmPickupOrDelivery() { }
+        public void TrackItem() { }
+        public void ManageBilling() { }
+
+// = MANAGE ACCOUNT = END =========================================================================================================== //
 
         public void requestPickupOrDelivery()
         {
@@ -37,21 +49,22 @@ namespace Haulage.BaseClasses.Accounting
         }
 
     }
+
+// = ACCOUNT = START ================================================================================================================ //
     public class Account
     {
-        public Guid AccountID { get; set; }
-        public Guid PersonID { get; set; }
-        public string BillingDetails { get; set; } = string.Empty;
-        public string ContactDetails { get; set; } = string.Empty;
+        public Guid AccountId { get; set; }
+        public string BillingDetails { get; set; }
+        public string ContactDetails { get; set; }
 
-        public Account() { }
-
-        public Account(Guid personID, string billingDetails, string contactDetails)
+        public Account(Guid accountId, string billingDetails, string contactDetails)
         {
-            AccountID = Guid.NewGuid();
-            PersonID = personID;
+            AccountId = accountId;
             BillingDetails = billingDetails ?? throw new ArgumentNullException(nameof(billingDetails));
             ContactDetails = contactDetails ?? throw new ArgumentNullException(nameof(contactDetails));
         }
     }
+
+// = ACCOUNT = END ================================================================================================================== //
+
 }
