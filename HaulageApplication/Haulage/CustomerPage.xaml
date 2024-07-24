@@ -5,19 +5,47 @@
              Title="Customer"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
-    <VerticalStackLayout>
+    
+    <VerticalStackLayout Spacing="15">
+
+        <!-- Page Title -->
         <Label 
             Text="&#10; Welcome to Customer Page!"
             TextColor="Black"
             VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Margin="0,0,0,50" /><!-- Add margin to create space below the label -->
+
+        <!-- Content : Manage Account-Updated Details - Start -->
+        <Label 
+            Text="&#10; Enter the details below that you want to update."
+            TextColor="Black"
+            VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Entry Placeholder="Enter Billing Details" x:Name="BillingDetailsEntry" />
-        <Entry Placeholder="Enter Contact Details" x:Name="ContactDetailsEntry" />
+        
+        <Entry 
+            Placeholder="Enter Billing Details" 
+            x:Name="BillingDetailsEntry" 
+            TextColor="Black"
+            WidthRequest="300"
+            HorizontalOptions="Center" />
+        
+        <Entry 
+            Placeholder="Enter Contact Details" 
+            x:Name="ContactDetailsEntry" 
+            TextColor="Black"
+            WidthRequest="300"
+            HorizontalOptions="Center" />
+
         <Button
-            x:Name="Save"
-            Text="Save" 
-            SemanticProperties.Hint="Save your changes"
+            x:Name="SaveChanges"
+            Text="Save Changes" 
+            SemanticProperties.Hint="Save your changes by clicking this button."
             Clicked="SaveButton_Click"
-            HorizontalOptions="Fill" />
+            WidthRequest="300"
+            HorizontalOptions="Center" />
+        <!-- Content : Manage Account-Updated Details - End -->
+        
     </VerticalStackLayout>
+    
 </ContentPage>
