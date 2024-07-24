@@ -11,7 +11,7 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class VehicleExecutionService
     {
-        public static List<Vehicle> GetVehicles() 
+        public static List<Vehicle> GetVehicles(SQLiteConnection? connection = null)
         {
             var vehicles = new List<Vehicle>();
             var sql = "SELECT [VehicleId]" +
@@ -21,8 +21,16 @@ namespace Haulage.DatabaseExecutionServices
                 ",[DriverId]  " +
                 ",[Status]  " +
                 "FROM [Vehicle];";
-
-            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            if (connection == null)
+            {
+                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = sql;
+                    vehicles = command.ExecuteQuery<Vehicle>();
+                }
+            }
+            else
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
@@ -30,19 +38,29 @@ namespace Haulage.DatabaseExecutionServices
             }
             return vehicles;
         }
-        public static void DeleteVehicle(int vehicleId)
+        public static void DeleteVehicle(int vehicleId, SQLiteConnection? connection = null)
         {
             var vehicles = new List<Vehicle>();
             var sql = $"DELETE FROM [Vehicle] WHERE [VehicleId] = {vehicleId};";
 
-            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            if (connection == null)
+            {
+                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = sql;
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            else
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
         }
-        public static void SaveVehicle(Vehicle vehicle)
+        public static void SaveVehicle(Vehicle vehicle, SQLiteConnection? connection = null)
         {
             var vehicles = new List<Vehicle>();
             var sql = $"Insert into [Vehicle]" +
@@ -52,13 +70,25 @@ namespace Haulage.DatabaseExecutionServices
             ",[Capacity]      " +
             ",[DriverId]  " +
             ",[Status])  " +
-            $"VALUES ({vehicle.VehicleId},{vehicle.tripID},{vehicle.LicensePlate},{vehicle.Capacity},{vehicle.DriverId},{vehicle.Status});";
+            $"VALUES ({vehicle.VehicleId},{vehicle.tripID},'{vehicle.LicensePlate}',{vehicle.Capacity},{vehicle.DriverId},'{vehicle.Status}');";
 
-            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            if (connection == null)
             {
+                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = sql;
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            else
+            {
+
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
+
             }
         }
     }

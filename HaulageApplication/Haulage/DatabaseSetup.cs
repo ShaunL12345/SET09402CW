@@ -20,21 +20,22 @@ public static class DatabaseSetup
 
     public static string connectionString = $"Data Source={GetDatabasePath()};Version=3;";
 
-    public static void InitializeDatabase()
+    public static void InitializeDatabase(SQLiteConnection? connection = null)
     {
         if (File.Exists($@"{GetDatabasePath()}"))
         {
-            using (var connection = new SQLiteConnection(GetDatabasePath()))
+            using (connection = new SQLiteConnection(GetDatabasePath()))
             {
                 DropTables(connection);
                 CreateTables(connection);
                 GenerateData(connection);
             }
         }
+
     }
 
     //Drops all the tables inside the database 
-    public static void DropTables(SQLiteConnection connection) 
+    public static void DropTables(SQLiteConnection connection)
     {
         List<string> dropTableScripts = new List<string>
         {
