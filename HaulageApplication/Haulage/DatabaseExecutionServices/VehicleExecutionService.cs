@@ -46,13 +46,13 @@ namespace Haulage.DatabaseExecutionServices
         {
             var vehicles = new List<Vehicle>();
             var sql = $"Insert into [Vehicle]" +
-            " [VehicleId]" +
+            " ([VehicleId]" +
             ",[tripID]    " +
             ",[LicensePlate]     " +
             ",[Capacity]      " +
             ",[DriverId]  " +
-            ",[Status]  " +
-            $"VALUES {vehicle.VehicleId},{vehicle.tripID},{vehicle.LicensePlate},{vehicle.Capacity},{vehicle.DriverId},{vehicle.Status};";
+            ",[Status])  " +
+            $"VALUES ({vehicle.VehicleId},{vehicle.tripID},{vehicle.LicensePlate},{vehicle.Capacity},{vehicle.DriverId},{vehicle.Status});";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {

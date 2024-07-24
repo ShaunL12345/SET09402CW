@@ -95,8 +95,7 @@
         </StackLayout>
         <HorizontalStackLayout>
             <Button x:Name="AddVehicle"
-            Text="Add Vehicle Record" 
-            Clicked="AddVehicle_Clicked" 
+            Text="Add Vehicle Record"  
             Padding="10"
             BorderColor="#9D00FF"/>
             <Button

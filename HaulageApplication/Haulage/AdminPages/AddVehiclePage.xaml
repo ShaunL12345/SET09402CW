@@ -68,5 +68,14 @@
                     Grid.Column="5">
             </Entry>
         </Grid>
+        <HorizontalStackLayout>
+            <Button
+x:Name="SaveVehicle"
+Text="Save Vehicle Record" 
+Clicked="SaveVehicle_Clicked" 
+Padding="10"
+BorderColor="#9D00FF"/>
+
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
