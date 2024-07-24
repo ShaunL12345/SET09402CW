@@ -11,16 +11,4 @@ public partial class AppShell : Shell
         InitializeComponent();
         Routing.RegisterRoute(nameof(CustomerPage), typeof(CustomerPage));
     }
-
-    private async void OnCustomerMenuItemClicked(object sender, EventArgs e)
-    {
-        var customer = new Customer();
-        var account = new Account
-        {
-            BillingDetails = "Test Billing Details",
-            ContactDetails = "Test Contact Details"
-        };
-
-        await App.NavigationService.NavigateToCustomerPage(customer, account);
-    }
 }

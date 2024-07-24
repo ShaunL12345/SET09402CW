@@ -43,7 +43,7 @@
             x:Name="SaveChanges"
             Text="Save Changes" 
             SemanticProperties.Hint="Save your changes by clicking this button."
-            Command="{Binding SaveChangesCommand}"
+            Clicked="SaveButton_Click"
             WidthRequest="300"
             HorizontalOptions="Center" />
         <!-- Content : Manage Account-Updated Details - End -->
