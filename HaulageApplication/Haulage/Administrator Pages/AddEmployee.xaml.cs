@@ -17,7 +17,7 @@ public partial class AddEmployee : ContentPage
        
     }
 
-    private void SaveEmployee_Clicked(object sender, EventArgs e)
+    public void SaveEmployee_Clicked(object sender, EventArgs e)
     {
 
         string employeeID = idEntry.Text;

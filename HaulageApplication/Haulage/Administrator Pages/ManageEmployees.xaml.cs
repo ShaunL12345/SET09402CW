@@ -1,3 +1,9 @@
+using Haulage.BaseClasses.Accounting;
+using Haulage.viewModel;
+using SQLite;
+using System.Runtime.CompilerServices;
+
+
 namespace Haulage;
 
 public partial class ManageEmployees : ContentPage
@@ -19,6 +25,27 @@ public partial class ManageEmployees : ContentPage
 
     private void DeleteEmployee_Clicked(object sender, EventArgs e)
     {
+        string userInput = entryId.Text;
 
+        var sql = $"DELETE FROM User WHERE Id = {entryId.Text}";
+
+        using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = sql;
+            command.ExecuteNonQuery();
+        }
+
+        //DriversCollectionView.ItemsSource = null;
+        //DriversCollectionView.ItemsSource = "{Binding drivers}";
     }
+
+    private void Collection_Loaded(object sender, EventArgs e)
+    {
+        OnPropertyChanged(nameof(DriversCollectionView));
+    }
+
+
+
+
 }

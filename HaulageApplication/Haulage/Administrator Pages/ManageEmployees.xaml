@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Haulage.ManageEmployees"
+    x:Class="Haulage.ManageEmployees"
              Title="ManageEmployees"
              xmlns:local ="clr-namespace:Haulage"
     xmlns:viewModel ="clr-namespace:Haulage.viewModel">
@@ -46,7 +46,7 @@
                              Text ="Qualification"/>
             </Grid>
 
-            <CollectionView x:Name="DriversCollectionView" ItemsSource="{Binding drivers}">
+            <CollectionView Loaded="Collection_Loaded" x:Name="DriversCollectionView" ItemsSource="{Binding drivers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -98,7 +98,6 @@
                                       Grid.Column="6"
                                       Text="{Binding Qualification}"
                                       FontAttributes="Italic"/>
-                                    
                                 </Grid>
                             </Frame>
                         </ContentView>
@@ -121,8 +120,7 @@ Clicked="DeleteEmployee_Clicked"
 Padding="10"
 HorizontalOptions="End" 
 BorderColor="#9D00FF"/>
-
+            <Entry x:Name="entryId" Placeholder="Id to delete" />
         </HorizontalStackLayout>
-      
     </VerticalStackLayout>
 </ContentPage>
