@@ -26,6 +26,7 @@
         <Entry 
             Placeholder="Enter Billing Details" 
             x:Name="BillingDetailsEntry" 
+            Text="{Binding Account.BillingDetails, Mode=TwoWay}"
             TextColor="Black"
             WidthRequest="300"
             HorizontalOptions="Center" />
@@ -33,6 +34,7 @@
         <Entry 
             Placeholder="Enter Contact Details" 
             x:Name="ContactDetailsEntry" 
+            Text="{Binding Account.ContactDetails, Mode=TwoWay}"
             TextColor="Black"
             WidthRequest="300"
             HorizontalOptions="Center" />
@@ -41,7 +43,7 @@
             x:Name="SaveChanges"
             Text="Save Changes" 
             SemanticProperties.Hint="Save your changes by clicking this button."
-            Clicked="SaveButton_Click"
+            Command="{Binding SaveChangesCommand}"
             WidthRequest="300"
             HorizontalOptions="Center" />
         <!-- Content : Manage Account-Updated Details - End -->

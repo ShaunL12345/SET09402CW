@@ -11,14 +11,13 @@ namespace Haulage.BaseClasses.Accounting
         public Customer() { }
 
 // = MANAGE ACCOUNT = START ========================================================================================================= //
-        public void ManageAccount(Account account, string billingDetails, string contactDetails)
+
+        public void ManageAccount(Account account)
         {
             if (account == null) throw new ArgumentNullException(nameof(account));
-            if (billingDetails == null) throw new ArgumentNullException(nameof(billingDetails));
-            if (contactDetails == null) throw new ArgumentNullException(nameof(contactDetails));
 
-            account.BillingDetails = billingDetails;
-            account.ContactDetails = contactDetails;
+            // Assume some logic here to save account details
+            Console.WriteLine("Account details managed successfully.");
         }
 
         public void RequestPickupOrDelivery() { }
@@ -53,16 +52,8 @@ namespace Haulage.BaseClasses.Accounting
 // = ACCOUNT = START ================================================================================================================ //
     public class Account
     {
-        public Guid AccountId { get; set; }
         public string BillingDetails { get; set; }
         public string ContactDetails { get; set; }
-
-        public Account(Guid accountId, string billingDetails, string contactDetails)
-        {
-            AccountId = accountId;
-            BillingDetails = billingDetails ?? throw new ArgumentNullException(nameof(billingDetails));
-            ContactDetails = contactDetails ?? throw new ArgumentNullException(nameof(contactDetails));
-        }
     }
 
 // = ACCOUNT = END ================================================================================================================== //

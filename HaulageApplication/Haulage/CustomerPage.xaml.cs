@@ -1,6 +1,7 @@
 using Haulage.BaseClasses.Accounting;
 using System;
 using Microsoft.Maui.Controls;
+using Haulage.ViewModels;
 
 namespace Haulage;
 
@@ -12,6 +13,7 @@ public partial class CustomerPage : ContentPage
     public CustomerPage()
     {
         InitializeComponent();
+        BindingContext = new CustomerViewModel();
     }
 
     public CustomerPage(Customer customer, Account account)
@@ -25,16 +27,4 @@ public partial class CustomerPage : ContentPage
         ContactDetailsEntry.Text = account.ContactDetails;
     }
 
-    public void SaveButton_Click(object sender, EventArgs e)
-    {
-        if (_customer != null && _account != null)
-        {
-            _customer.ManageAccount(_account, BillingDetailsEntry.Text, ContactDetailsEntry.Text);
-            DisplayAlert("Success", "Account details updated successfully.", "OK");
-        }
-        else
-        {
-            DisplayAlert("Error", "Failed to update account details.", "OK");
-        }
-    }
 }
