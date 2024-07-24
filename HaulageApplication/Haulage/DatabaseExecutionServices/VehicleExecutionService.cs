@@ -30,5 +30,36 @@ namespace Haulage.DatabaseExecutionServices
             }
             return vehicles;
         }
+        public static void DeleteVehicle(int vehicleId)
+        {
+            var vehicles = new List<Vehicle>();
+            var sql = $"DELETE FROM [Vehicle] WHERE [VehicleId] = {vehicleId};";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void SaveVehicle(Vehicle vehicle)
+        {
+            var vehicles = new List<Vehicle>();
+            var sql = $"Insert into [Vehicle]" +
+            " [VehicleId]" +
+            ",[tripID]    " +
+            ",[LicensePlate]     " +
+            ",[Capacity]      " +
+            ",[DriverId]  " +
+            ",[Status]  " +
+            $"VALUES {vehicle.VehicleId},{vehicle.tripID},{vehicle.LicensePlate},{vehicle.Capacity},{vehicle.DriverId},{vehicle.Status};";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
