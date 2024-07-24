@@ -13,6 +13,11 @@
             HorizontalOptions="Center" />
         <Entry Placeholder="Enter Billing Details" x:Name="BillingDetailsEntry" />
         <Entry Placeholder="Enter Contact Details" x:Name="ContactDetailsEntry" />
-        <Button Text="Save" Clicked="SaveButton_Click" />
+        <Button
+            x:Name="Save"
+            Text="Save" 
+            SemanticProperties.Hint="Save your changes"
+            Clicked="SaveButton_Click"
+            HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>

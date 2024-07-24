@@ -6,27 +6,27 @@ namespace Haulage;
 
 public partial class CustomerPage : ContentPage
 {
-    private Customer _customer;
-    private Account _account;
+    //private Customer _customer;
+    //private Account _account;
 
-    public CustomerPage(Customer customer, Account account)
-    {
-        InitializeComponent();
-        _customer = customer;
-        _account = account;
+    //public CustomerPage(Customer customer, Account account)
+    //{
+    //    InitializeComponent();
+    //    _customer = customer;
+    //    _account = account;
 
-        // Initialize the entries
-        BillingDetailsEntry.Text = account.BillingDetails;
-        ContactDetailsEntry.Text = account.ContactDetails;
-    }
+    //    // Initialize the entries
+    //    BillingDetailsEntry.Text = account.BillingDetails;
+    //    ContactDetailsEntry.Text = account.ContactDetails;
+    //}
 
     public void SaveButton_Click(object sender, EventArgs e)
     {
-        _customer.ManageAccount(_account, BillingDetailsEntry.Text, ContactDetailsEntry.Text);
+        //_customer.ManageAccount(_account, BillingDetailsEntry.Text, ContactDetailsEntry.Text);
     }
 
-    //public CustomerPage()
-    //{
-    //    InitializeComponent();
-    //}
+    public CustomerPage()
+    {
+        InitializeComponent();
+    }
 }
