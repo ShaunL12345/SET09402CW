@@ -26,8 +26,11 @@ namespace HaulageTests
         public void CustomerPage_ShouldDisplayAccountDetails()
         {
             // Assert
-            Assert.Equal("Billing Info", _customerPage.FindByName<Entry>("BillingDetailsEntry").Text);
-            Assert.Equal("Contact Info", _customerPage.FindByName<Entry>("ContactDetailsEntry").Text);
+            var billingEntry = _customerPage.FindByName<Entry>("BillingDetailsEntry");
+            var contactEntry = _customerPage.FindByName<Entry>("ContactDetailsEntry");
+
+            Assert.Equal("Billing Info", billingEntry.Text);
+            Assert.Equal("Contact Info", contactEntry.Text);
         }
 
         [Fact]
