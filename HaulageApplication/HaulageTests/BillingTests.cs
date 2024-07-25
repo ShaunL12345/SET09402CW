@@ -11,7 +11,7 @@ using NuGet.Frameworks;
 
 namespace HaulageTests
 {
-    public class CustomerTests
+    public class BillingTests
     {
         private SQLiteConnection GetInMemoryConnection()
         {
