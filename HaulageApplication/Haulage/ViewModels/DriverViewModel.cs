@@ -14,14 +14,14 @@ namespace Haulage.viewModel
 {
     public class DriverViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Driver>? drivers { get; set; }
+        public ObservableCollection<Driver>? Drivers { get; set; }
         public DriverViewModel()
         {
-            drivers = new ObservableCollection<Driver>();
-            var DriverObjects = DriverModel.drivers;
+            Drivers = new ObservableCollection<Driver>();
+            var DriverObjects = DriverModel.Drivers;
             foreach (var DriverObject in DriverObjects)
             {
-                drivers.Add(DriverObject);
+                Drivers.Add(DriverObject);
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

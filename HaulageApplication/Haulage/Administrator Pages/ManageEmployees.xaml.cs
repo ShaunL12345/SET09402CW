@@ -25,9 +25,8 @@ public partial class ManageEmployees : ContentPage
 
     private void DeleteEmployee_Clicked(object sender, EventArgs e)
     {
-        string userInput = entryId.Text;
 
-        var sql = $"DELETE FROM User WHERE Id = {entryId.Text}";
+        var sql = $"DELETE FROM User WHERE UserId = {entryUserId.Text}";
 
         using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
         {

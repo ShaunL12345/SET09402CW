@@ -18,64 +18,74 @@
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" TextColor="White" Grid.RowSpan="2"
-                     Text ="Id"/>
+                     Text ="UserId"/>
                 <Label Grid.Row="0" Grid.Column="1" TextColor="White" Grid.RowSpan="2"
-                     Text ="Name"/>
+                     Text ="RoleId"/>
                 <Label Grid.Row="0" Grid.Column="2" TextColor="White" Grid.RowSpan="2"
-                     Text ="Email"/>
+                     Text ="Fullname"/>
                 <Label Grid.Row="0" Grid.Column="3" TextColor="White" Grid.RowSpan="2"
-                     Text ="PhoneNumber"/>
+                     Text ="Email"/>
                 <Label Grid.Row="0" Grid.Column="4" TextColor="White" Grid.RowSpan="2"
-                     Text ="Role"/>
+                     Text ="PhoneNumber"/>
                 <Label Grid.Row="0" Grid.Column="5" TextColor="White" Grid.RowSpan="2"
-                     Text ="Address"/>
+                     Text ="Role"/>
                 <Label Grid.Row="0" Grid.Column="6" TextColor="White" Grid.RowSpan="2"
+                     Text ="Address"/>
+                <Label Grid.Row="0" Grid.Column="7" TextColor="White" Grid.RowSpan="2"
                      Text ="Qualification"/>
 
                 <Entry
-                    x:Name="idEntry"
-                    Placeholder="Id"
+                    x:Name="UserIdEntry"
+                    Placeholder="UserId"
                     Grid.Row="1"
                     Grid.Column="0"
                     Keyboard="Numeric">
                 </Entry>
                 <Entry
-                    x:Name="nameEntry"
+                    x:Name="RoleIdEntry"
+                    Placeholder="RoleId"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Keyboard="Numeric">
+                </Entry>
+                <Entry
+                    x:Name="FullnameEntry"
                     Placeholder="Name"
                     Grid.Row="1"
-                    Grid.Column="1">
+                    Grid.Column="2">
                 </Entry>
                 <Entry
                     x:Name="emailEntry"
                     Placeholder="Email"
                     Grid.Row="1"
-                    Grid.Column="2">
+                    Grid.Column="3">
                 </Entry>
                 <Entry
                     x:Name="phoneNumberEntry"
                     Placeholder="PhoneNumber"
                     Grid.Row="1"
-                    Grid.Column="3">
+                    Grid.Column="4">
                 </Entry>
                 <Entry
                     x:Name="roleEntry"
                     Placeholder="Role"
                     Grid.Row="1"
-                    Grid.Column="4">
+                    Grid.Column="5">
                 </Entry>
                 <Entry
                     x:Name="addressEntry"
                     Placeholder="Address"
                     Grid.Row="1"
-                    Grid.Column="5">
+                    Grid.Column="6">
                 </Entry>
                 <Entry
                     x:Name="qualificationEntry"
                     Placeholder="Qualification"
                     Grid.Row="1"
-                    Grid.Column="6">
+                    Grid.Column="7">
                 </Entry>
 
             </Grid>
@@ -96,37 +106,46 @@
                                         <ColumnDefinition Width="0.5*"/>
                                         <ColumnDefinition Width="0.5*"/>
                                         <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" Grid.Column="0"
-                               Text="{Binding Id}"
+                                    <Label  TextColor="White" Grid.RowSpan="2" 
+                               Grid.Row="1" 
+                               Grid.Column="0"
+                               Text="{Binding UserId}"
                                FontAttributes="Bold"/>
-                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
-                               Grid.Column="1"
-                               Text="{Binding Name}"
-                               FontAttributes="Italic"/>
+                                    
+                                    <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" 
+                                Grid.Column="1"
+                                Text="{Binding RoleId}"
+                                FontAttributes="Bold"/>
                                     
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="2"
-                               Text="{Binding Email}"
+                               Text="{Binding Fullname}"
                                FontAttributes="Italic"/>
                                     
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="3"
+                               Text="{Binding Email}"
+                               FontAttributes="Italic"/>
+                                    
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                               Grid.Column="4"
                                Text="{Binding PhoneNumber}"
                                FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
-                               Grid.Column="4"
+                               Grid.Column="5"
                                Text="{Binding Role}"
                                FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
-                               Grid.Column="5"
+                               Grid.Column="6"
                                Text="{Binding Address}"
                                FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
-                              Grid.Column="6"
+                              Grid.Column="7"
                               Text="{Binding Qualification}"
                               FontAttributes="Italic"/>
 

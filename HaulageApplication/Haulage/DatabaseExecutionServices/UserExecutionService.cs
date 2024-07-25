@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 using Haulage.BaseClasses;
 using Haulage.BaseClasses.Accounting;
 
+
 namespace Haulage.DatabaseExecutionServices
 {
     public static class UserExecutionService
     {
-        public static List<Driver> GetDrivers()
+        public static List<Driver> GetDrivers(SQLiteConnection? connection = null)
         {
             var drivers = new List<Driver>();
-            var sql = "SELECT [Id]" +
-                ",[Name]    " +
+            var sql = "SELECT [UserId]" +
+                ",[RoleId]    " +
+                ",[Fullname]    " +
                 ",[Email]     " +
                 ",[PhoneNumber]      " +
                 ",[Role]  " +
@@ -23,7 +25,17 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Qualification] " +
                 "FROM [User];";
 
-            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            if (connection == null)
+            {
+                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = sql;
+                    drivers = command.ExecuteQuery<Driver>();
+                }
+
+            } 
+            else
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
@@ -31,6 +43,27 @@ namespace Haulage.DatabaseExecutionServices
             }
             return drivers;
         }
+        public static void DeleteDriver(int UserId, SQLiteConnection? connection = null)
+        {
+            var drivers = new List<Driver>();
+            var sql = $"DELETE FROM [User] WHERE [UserId] = {UserId};";
 
+            if (connection == null)
+            {
+                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = sql;
+                    command.ExecuteNonQuery();
+                }
+            } 
+
+
+
+            
+        }
+
+       
+    
     }
 }
