@@ -71,7 +71,10 @@ public static class DatabaseSetup
         {
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (1, 1, 'test1', 1, 1, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (2, 2, 'test2', 2, 2, 1);",
-            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);"
+            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES (74509284724, 'John Smith', 'john.smith@gmail.com');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES (84038493942, 'John Smith', 'john.smith@gmail.com');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES (74947397392, 'John Smith', 'john.smith@gmail.com');",
         };
 
         foreach (string tableScript in dataScripts)

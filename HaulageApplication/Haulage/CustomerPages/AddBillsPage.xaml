@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Haulage.CustomerPage"
-             Title="Customer"
-             Shell.NavBarIsVisible="False"
-             BackgroundColor="White">
+             x:Class="Haulage.CustomerPages.AddBillsPage"
+             Title="AddBillsPage">
     <VerticalStackLayout>
         <Label 
-            Text="&#10; Welcome to Customer Page!"
-            TextColor="Black"
+            Text="Below you can add a new bill"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

@@ -8,20 +8,10 @@ namespace Haulage.BaseClasses.BillingHandler
 {
     public class Billing
     {
-        public Guid BillID;
-        public Guid customerID;
-        public float totalAmount;
-        enum Billingstatus
-        {
-            notPaid,
-            paid
-
-        }
+       public int BillId { get; set; }
+       public string fullName { get; set; }
+       public string email { get; set; }
         public Billing() { }
 
-        public void updateBillingStatus()
-        {
-
-        }
     }
 }
