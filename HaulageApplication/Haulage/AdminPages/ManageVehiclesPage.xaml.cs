@@ -27,8 +27,13 @@ public partial class ManageVehiclesPage : ContentPage
             {
                 VehicleExecutionService.DeleteVehicle(parsedID);
                 Console.WriteLine("Vehicle Removed Successfully");
+                DisplayAlert("Success", $"{vehicleId} removed successfully.", "OK");
             }
-            else Console.WriteLine("Unable to parse value");
+            else
+            {
+                Console.WriteLine("Unable to parse value");
+                DisplayAlert("Error", $"Failed to delete {vehicleId}", "OK");
+            }
         }
     }
 }

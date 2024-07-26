@@ -51,7 +51,7 @@ namespace HaulageTests
                 Capacity = 123321,
                 DriverId = 321213,
                 LicensePlate = "ASD23HF",
-                Status = Vehicle.StatusType.TestEnum1
+                Status = Vehicle.StatusType.onroute
             };
             VehicleExecutionService.SaveVehicle(vehicle);
             var vehiclesCountAfter = VehicleExecutionService.GetVehicles().Count;

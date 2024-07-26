@@ -45,19 +45,19 @@
             </Entry>
             <Entry
                     x:Name="CapacityEntry"
-                    Placeholder="Email"
+                    Placeholder="Capacity"
                     Grid.Row="1"
                     Grid.Column="2">
             </Entry>
             <Entry
                     x:Name="DriverIdEntry"
-                    Placeholder="PhoneNumber"
+                    Placeholder="DriverId"
                     Grid.Row="1"
                     Grid.Column="3">
             </Entry>
             <Entry
                     x:Name="LicensePlateEntry"
-                    Placeholder="Role"
+                    Placeholder="LicencePlate"
                     Grid.Row="1"
                     Grid.Column="4">
             </Entry>

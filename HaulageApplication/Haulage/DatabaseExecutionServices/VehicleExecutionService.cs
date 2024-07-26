@@ -14,13 +14,7 @@ namespace Haulage.DatabaseExecutionServices
         public static List<Vehicle> GetVehicles()
         {
             var vehicles = new List<Vehicle>();
-            var sql = "SELECT [VehicleId]" +
-                ",[tripID]    " +
-                ",[LicensePlate]     " +
-                ",[Capacity]      " +
-                ",[DriverId]  " +
-                ",[Status]  " +
-                "FROM [Vehicle];";
+            var sql = "SELECT [VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status] FROM [Vehicle];";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -48,15 +42,7 @@ namespace Haulage.DatabaseExecutionServices
         public static void SaveVehicle(Vehicle vehicle)
         {
             var vehicles = new List<Vehicle>();
-            var sql = $"Insert into [Vehicle]" +
-            " ([VehicleId]" +
-            ",[tripID]    " +
-            ",[LicensePlate]     " +
-            ",[Capacity]      " +
-            ",[DriverId]  " +
-            ",[Status])  " +
-            $"VALUES ({vehicle.VehicleId},{vehicle.tripID},'{vehicle.LicensePlate}',{vehicle.Capacity},{vehicle.DriverId},'{vehicle.Status}');";
-
+            var sql = $"Insert into [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES ({vehicle.VehicleId},{vehicle.tripID},'{vehicle.LicensePlate}',{vehicle.Capacity},{vehicle.DriverId},'{vehicle.Status}');";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -64,7 +50,6 @@ namespace Haulage.DatabaseExecutionServices
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
-
         }
     }
 }

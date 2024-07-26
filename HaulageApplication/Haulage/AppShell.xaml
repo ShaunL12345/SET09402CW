@@ -16,36 +16,32 @@
     </Shell.FlyoutHeader>-->
 
     <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems">
-            <!-- Home -->
-            <ShellContent
+        <!-- Home -->
+        <ShellContent
             Icon="hh_home_icon.png"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
 
-            <!-- Customer -->
-            <ShellContent
+        <!-- Customer -->
+        <ShellContent
             Icon="hh_customer_icon.png"
             ContentTemplate="{DataTemplate local:CustomerPage}"
             Route="CustomerPage" />
 
-            <!-- Driver -->
-            <ShellContent
+        <!-- Driver -->
+        <ShellContent
             Icon="hh_driver_icon.png"
             ContentTemplate="{DataTemplate local:DriverPage}"
             Route="DriverPage" />
 
-            <!-- Admin -->
-            <ShellContent
+        <!-- Admin -->
+        <ShellContent
             Icon="hh_admin_icon.png"
             ContentTemplate="{DataTemplate local:AdminPage}"
             Route="AdminPage" />
 
-        
+
     </FlyoutItem>
-    <!--<ShellContent
-            Icon="hh_admin_icon.png"
-            ContentTemplate="{DataTemplate local:ManageVehiclesPage}"
-            Route="ManageVehiclesPage" />-->
     <!-- Team -->
     <ShellContent
             Icon="hh_question_mark.png"
