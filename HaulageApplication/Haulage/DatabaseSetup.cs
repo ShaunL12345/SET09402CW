@@ -8,11 +8,15 @@ public static class DatabaseSetup
 {
     public static string GetDatabasePath()
     {
+        // This will get the current WORKING directory (i.e. \bin\Debug)
+        string workingDirectory = Environment.CurrentDirectory;
+        if (!Directory.Exists(workingDirectory)) throw new Exception("unable to find working directory");
+
         // Get the base directory of the application
-        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
 
         // Combine the base directory with the relative path to the database
-        string relativePath = Path.Combine(baseDirectory, @"..\..\..\..\..\Database\Haulage.db");
+        string relativePath = Path.Combine(projectDirectory, @"Database\Haulage.db");
 
         // Resolve to a full absolute path
         return Path.GetFullPath(relativePath);

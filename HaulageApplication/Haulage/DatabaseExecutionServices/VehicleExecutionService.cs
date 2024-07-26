@@ -21,21 +21,14 @@ namespace Haulage.DatabaseExecutionServices
                 ",[DriverId]  " +
                 ",[Status]  " +
                 "FROM [Vehicle];";
-            if (connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    vehicles = command.ExecuteQuery<Vehicle>();
-                }
-            }
-            else
+
+            using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 vehicles = command.ExecuteQuery<Vehicle>();
-            }
+            };
+
             return vehicles;
         }
         public static void DeleteVehicle(int vehicleId, SQLiteConnection? connection = null)
@@ -43,22 +36,14 @@ namespace Haulage.DatabaseExecutionServices
             var vehicles = new List<Vehicle>();
             var sql = $"DELETE FROM [Vehicle] WHERE [VehicleId] = {vehicleId};";
 
-            if (connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    command.ExecuteNonQuery();
-                }
-            }
 
-            else
+            using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
+
         }
         public static void SaveVehicle(Vehicle vehicle, SQLiteConnection? connection = null)
         {
@@ -72,24 +57,14 @@ namespace Haulage.DatabaseExecutionServices
             ",[Status])  " +
             $"VALUES ({vehicle.VehicleId},{vehicle.tripID},'{vehicle.LicensePlate}',{vehicle.Capacity},{vehicle.DriverId},'{vehicle.Status}');";
 
-            if (connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    command.ExecuteNonQuery();
-                }
-            }
 
-            else
+            using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
-
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
-
             }
+
         }
     }
 }

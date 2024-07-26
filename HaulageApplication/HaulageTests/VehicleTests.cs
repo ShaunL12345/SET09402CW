@@ -5,6 +5,7 @@ using SQLite;
 using Haulage.DatabaseExecutionServices;
 using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
+using Haulage.viewModel;
 
 namespace HaulageTests
 {
@@ -14,48 +15,34 @@ namespace HaulageTests
     /// </summary>
     public class VehicleTest
     {
-        private SQLiteConnection GetInMemoryConnection()
-        {
-            var connection = new SQLiteConnection(":memory:");
-            return connection;
-        }
-
-
         [Fact]
         public void GetVehiclesFromDatabse()
         {
-            var connection = GetInMemoryConnection();
             DatabaseSetup.InitializeDatabase();
-            DatabaseSetup.CreateTables(connection);
-            DatabaseSetup.GenerateData(connection);
-            var vehicles = VehicleExecutionService.GetVehicles(connection);
+            var vehicles = VehicleExecutionService.GetVehicles();
             Assert.NotNull(vehicles);
             Assert.True(vehicles.Count > 0,"Did not recieve any records from GetVehicles method");
         }
         [Fact]
         public void DeleteVehicleFromDatabse()
         {
-            var connection = GetInMemoryConnection();
 
             DatabaseSetup.InitializeDatabase();
-            DatabaseSetup.CreateTables(connection);
-            DatabaseSetup.GenerateData(connection);
-            var vehicles = VehicleExecutionService.GetVehicles(connection);
+
+            var vehicles = VehicleExecutionService.GetVehicles();
 
             var vehicleToRemove = vehicles.First();
             var initialVehicleCount = vehicles.Count;
-            VehicleExecutionService.DeleteVehicle(vehicleToRemove.VehicleId,connection);
-            var vehicleCountAfter = VehicleExecutionService.GetVehicles(connection).Count;
+            VehicleExecutionService.DeleteVehicle(vehicleToRemove.VehicleId);
+            var vehicleCountAfter = VehicleExecutionService.GetVehicles().Count;
             Assert.True(vehicleCountAfter == initialVehicleCount - 1, "Failed to delete a vehicle record");
         }
         [Fact]
         public void SaveVehicleToDatabse()
         {
-            var connection = GetInMemoryConnection();
             DatabaseSetup.InitializeDatabase();
-            DatabaseSetup.CreateTables(connection);
-            DatabaseSetup.GenerateData(connection);
-            var vehiclesCountBefore = VehicleExecutionService.GetVehicles(connection).Count;
+
+            var vehiclesCountBefore = VehicleExecutionService.GetVehicles().Count;
 
             Vehicle vehicle = new Vehicle()
             {
@@ -66,9 +53,16 @@ namespace HaulageTests
                 LicensePlate = "ASD23HF",
                 Status = Vehicle.StatusType.TestEnum1
             };
-            VehicleExecutionService.SaveVehicle(vehicle,connection);
-            var vehiclesCountAfter = VehicleExecutionService.GetVehicles(connection).Count;
+            VehicleExecutionService.SaveVehicle(vehicle);
+            var vehiclesCountAfter = VehicleExecutionService.GetVehicles().Count;
             Assert.True(vehiclesCountAfter== vehiclesCountBefore+1, "VehiclesRecord was not saved");
+        }
+        [Fact]
+        public void GetVehicleViewModel()
+        {
+            var model = new VehicleViewModel();
+            Assert.NotNull(model);
+            Assert.True(model.Vehicles.Count > 0);
         }
     }
 }
