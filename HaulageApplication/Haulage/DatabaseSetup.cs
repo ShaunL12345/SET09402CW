@@ -6,17 +6,20 @@ using System.Security.Cryptography.X509Certificates;
 
 public static class DatabaseSetup
 {
+    /// <summary>
+    /// This method is currently assuming that the project where it is being called from has its own db.
+    /// This should be changed in the future to add a flag which indicts which db to use
+    /// </summary>
+    /// <returns></returns>
     public static string GetDatabasePath()
     {
-        // This will get the current WORKING directory (i.e. \bin\Debug)
-        string workingDirectory = Environment.CurrentDirectory;
-        if (!Directory.Exists(workingDirectory)) throw new Exception("unable to find working directory");
-
         // Get the base directory of the application
-        string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-
-        // Combine the base directory with the relative path to the database
-        string relativePath = Path.Combine(projectDirectory, @"Database\Haulage.db");
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        //Gets the relative path to a database where it is being called from. 
+        
+        string[] parts = baseDirectory.Split("HaulageApplication");
+        var project = parts[1].Split(Path.DirectorySeparatorChar)[1];
+        var relativePath = Path.Combine(parts[0], "HaulageApplication" ,project, "Database\\Haulage.db");
 
         // Resolve to a full absolute path
         return Path.GetFullPath(relativePath);
@@ -24,11 +27,11 @@ public static class DatabaseSetup
 
     public static string connectionString = $"Data Source={GetDatabasePath()};Version=3;";
 
-    public static void InitializeDatabase(SQLiteConnection? connection = null)
+    public static void InitializeDatabase()
     {
         if (File.Exists($@"{GetDatabasePath()}"))
         {
-            using (connection = new SQLiteConnection(GetDatabasePath()))
+            using (var connection = new SQLiteConnection(GetDatabasePath()))
             {
                 DropTables(connection);
                 CreateTables(connection);

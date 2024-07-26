@@ -23,8 +23,8 @@ public partial class ManageVehiclesPage : ContentPage
         {
             var vehicleId = entryId.Text.Trim();
 
-            if (Int32.TryParse(vehicleId, out var parsedID)) 
-            { 
+            if (Int32.TryParse(vehicleId, out var parsedID))
+            {
                 VehicleExecutionService.DeleteVehicle(parsedID);
                 Console.WriteLine("Vehicle Removed Successfully");
             }
