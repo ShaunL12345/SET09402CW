@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haulage", "Haulage\Haulage.csproj", "{8EA6C7C9-68B0-4BD4-89D8-2C9BC964F5BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaulageTests", "HaulageTests\HaulageTests.csproj", "{8A3E15FF-6CCF-4922-89EA-2DB6DF16947F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaulageTests", "HaulageTests\HaulageTests.csproj", "{8A3E15FF-6CCF-4922-89EA-2DB6DF16947F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

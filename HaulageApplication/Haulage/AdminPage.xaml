@@ -11,5 +11,11 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+                x:Name="ManageVehicles"
+                Text="Manage Vehicles" 
+                SemanticProperties.Hint="Manage the vehicles"
+                Clicked="VehiclesNavigationButtonClicked"
+                HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>
