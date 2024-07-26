@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Haulage.BaseClasses;
 using Haulage.BaseClasses.BillingHandler;
 
+
 namespace Haulage.DatabaseExecutionServices
 {
     public static class BillExecutionService
@@ -19,12 +20,23 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Email]     " +
                 "FROM [Bill];";
 
-            using (var connection1 = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            if (connection == null)
+            {
+                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+                {
+                    var command = new SQLite.SQLiteCommand(connection);
+                    command.CommandText = sql;
+                    bills = command.ExecuteQuery<Billing>();
+                }
+
+            }
+            else
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 bills = command.ExecuteQuery<Billing>();
             }
+
             return bills;
         }
 
@@ -42,8 +54,16 @@ namespace Haulage.DatabaseExecutionServices
                     command.ExecuteNonQuery();
                 }
             }
+            else
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
            
         }
+
+        //Save Method
         
     }
 }

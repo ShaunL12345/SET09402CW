@@ -1,6 +1,8 @@
+using Haulage.BillviewModel;
+using SQLite;
+using System.Runtime.CompilerServices;
+using Haulage.CustomerPages;
 namespace Haulage;
-using System;
-
 
 public partial class CustomerPage : ContentPage
 {
