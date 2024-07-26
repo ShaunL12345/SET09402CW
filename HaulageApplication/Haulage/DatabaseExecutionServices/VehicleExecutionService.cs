@@ -11,7 +11,7 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class VehicleExecutionService
     {
-        public static List<Vehicle> GetVehicles(SQLiteConnection? connection = null)
+        public static List<Vehicle> GetVehicles()
         {
             var vehicles = new List<Vehicle>();
             var sql = "SELECT [VehicleId]" +
@@ -22,7 +22,7 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Status]  " +
                 "FROM [Vehicle];";
 
-            using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
@@ -31,13 +31,13 @@ namespace Haulage.DatabaseExecutionServices
 
             return vehicles;
         }
-        public static void DeleteVehicle(int vehicleId, SQLiteConnection? connection = null)
+        public static void DeleteVehicle(int vehicleId)
         {
             var vehicles = new List<Vehicle>();
             var sql = $"DELETE FROM [Vehicle] WHERE [VehicleId] = {vehicleId};";
 
 
-            using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
@@ -45,7 +45,7 @@ namespace Haulage.DatabaseExecutionServices
             }
 
         }
-        public static void SaveVehicle(Vehicle vehicle, SQLiteConnection? connection = null)
+        public static void SaveVehicle(Vehicle vehicle)
         {
             var vehicles = new List<Vehicle>();
             var sql = $"Insert into [Vehicle]" +
@@ -58,7 +58,7 @@ namespace Haulage.DatabaseExecutionServices
             $"VALUES ({vehicle.VehicleId},{vehicle.tripID},'{vehicle.LicensePlate}',{vehicle.Capacity},{vehicle.DriverId},'{vehicle.Status}');";
 
 
-            using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;

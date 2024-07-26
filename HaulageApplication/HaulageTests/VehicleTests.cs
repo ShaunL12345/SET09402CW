@@ -6,7 +6,7 @@ using Haulage.DatabaseExecutionServices;
 using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModel;
-
+using Haulage.AdminPages;
 namespace HaulageTests
 {
 
@@ -21,7 +21,7 @@ namespace HaulageTests
             DatabaseSetup.InitializeDatabase();
             var vehicles = VehicleExecutionService.GetVehicles();
             Assert.NotNull(vehicles);
-            Assert.True(vehicles.Count > 0,"Did not recieve any records from GetVehicles method");
+            Assert.True(vehicles.Count > 0, "Did not recieve any records from GetVehicles method");
         }
         [Fact]
         public void DeleteVehicleFromDatabse()
@@ -55,11 +55,13 @@ namespace HaulageTests
             };
             VehicleExecutionService.SaveVehicle(vehicle);
             var vehiclesCountAfter = VehicleExecutionService.GetVehicles().Count;
-            Assert.True(vehiclesCountAfter== vehiclesCountBefore+1, "VehiclesRecord was not saved");
+            Assert.True(vehiclesCountAfter == vehiclesCountBefore + 1, "VehiclesRecord was not saved");
         }
         [Fact]
         public void GetVehicleViewModel()
         {
+            DatabaseSetup.InitializeDatabase();
+
             var model = new VehicleViewModel();
             Assert.NotNull(model);
             Assert.True(model.Vehicles.Count > 0);
