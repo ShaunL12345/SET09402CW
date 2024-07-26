@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 
 namespace Haulage.viewModel
 {
-    public class VehicleViewModel : INotifyPropertyChanged
+    public class VehicleViewModel
     {
         public ObservableCollection<Vehicle> Vehicles { get; set; }
         public VehicleViewModel() 
@@ -23,6 +23,5 @@ namespace Haulage.viewModel
                 Vehicles.Add(vehicleObject);
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

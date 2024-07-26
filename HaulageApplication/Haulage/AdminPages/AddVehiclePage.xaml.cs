@@ -34,7 +34,7 @@ public partial class AddVehiclePage : ContentPage
             DisplayAlert("Success", "Vehicle details updated successfully.", "OK");
             Console.WriteLine("Vehicle successfully Added");
         }
-        catch (Exception ex) 
+        catch (Exception) 
         {
             Console.WriteLine("Error saving data into the vehicle table");
             DisplayAlert("Error", $"Failed to update Vehicle details.", "OK");
