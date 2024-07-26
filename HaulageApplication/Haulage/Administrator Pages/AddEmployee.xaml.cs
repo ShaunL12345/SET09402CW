@@ -37,8 +37,10 @@ public partial class AddEmployee : ContentPage
         {
             var command = new SQLite.SQLiteCommand(connection);
             command.CommandText = sql;
-            command.ExecuteQuery<DBNull>(); //maybe user
+            command.ExecuteQuery<DBNull>(); 
         }
+
+        Console.WriteLine("Employee saved successfully!");
 
     }
 

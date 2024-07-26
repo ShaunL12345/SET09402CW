@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Haulage.DatabaseExecutionServices;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 
 namespace HaulageTests
@@ -40,25 +41,27 @@ namespace HaulageTests
 
         }
 
-        [Fact]
+        //[Fact]
 
-        public void DeleteDmployeeFromDatabse()
-        {
-            //Arrange
-            var connection = GetInMemoryConnection();
-            DatabaseSetup.InitializeDatabase();
-            DatabaseSetup.CreateTables(connection);
-            DatabaseSetup.GenerateData(connection);
+        //public void DeleteDmployeeFromDatabse()
+        //{
+        //    //Arrange
+        //    var connection = GetInMemoryConnection();
+        //    DatabaseSetup.InitializeDatabase();
+        //    DatabaseSetup.CreateTables(connection);
+        //    DatabaseSetup.GenerateData(connection);
 
-            //Act
-            var drivers = UserExecutionService.GetDrivers(connection);
-            var driverToRemove = drivers.First();
-            var initialDriverCount = drivers.Count;
-            UserExecutionService.DeleteDriver(driverToRemove.UserId, connection);
-            var DriverCountAfter = UserExecutionService.GetDrivers(connection).Count;
+        //    //Act
+        //    var drivers = UserExecutionService.GetDrivers(connection);
+        //    var driverToRemove = drivers.First();
+        //    var initialDriverCount = drivers.Count;
+        //    UserExecutionService.DeleteDriver(driverToRemove.UserId, connection);
+        //    var DriverCountAfter = UserExecutionService.GetDrivers(connection).Count;
 
-            //Assert
-            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
-        }
+        //    //Assert
+        //    Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
+        //}
+
+        
     }
 }

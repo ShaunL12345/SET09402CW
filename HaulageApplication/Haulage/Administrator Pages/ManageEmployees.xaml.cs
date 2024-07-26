@@ -35,6 +35,8 @@ public partial class ManageEmployees : ContentPage
             command.ExecuteNonQuery();
         }
 
+        Console.WriteLine("Employee deleted successfully!");
+
         //DriversCollectionView.ItemsSource = null;
         //DriversCollectionView.ItemsSource = "{Binding drivers}";
     }

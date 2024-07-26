@@ -34,7 +34,7 @@ namespace Haulage.DatabaseExecutionServices
                     drivers = command.ExecuteQuery<Driver>();
                 }
 
-            } 
+            }
             else
             {
                 var command = new SQLite.SQLiteCommand(connection);
@@ -56,14 +56,16 @@ namespace Haulage.DatabaseExecutionServices
                     command.CommandText = sql;
                     command.ExecuteNonQuery();
                 }
-            } 
-
-
-
-            
+            }
+            else
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
         }
 
-       
-    
+
     }
+
 }
