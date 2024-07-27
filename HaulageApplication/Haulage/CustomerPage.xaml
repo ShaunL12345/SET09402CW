@@ -11,5 +11,11 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+        x:Name="TrackItems"
+        Text="Track Items" 
+        SemanticProperties.Hint="Track customer items"
+        Clicked="CustomerNavigationButtonClicked"
+        HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>

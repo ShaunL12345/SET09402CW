@@ -47,6 +47,7 @@ public static class DatabaseSetup
         List<string> dropTableScripts = new List<string>
         {
             "DROP TABLE IF EXISTS [User]",
+            "DROP TABLE IF EXISTS [PickupRequest]",
             "DROP TABLE IF EXISTS [Bill]",
             "DROP TABLE IF EXISTS [Event]",
             "DROP TABLE IF EXISTS [Expense]",
@@ -68,7 +69,43 @@ public static class DatabaseSetup
     {
         //Vehicle data
         CreateVehicles(connection);
+        CreateItems(connection);
+        CreatePickupRequests(connection);
     }
+
+
+    private static void CreateItems(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff]) VALUES (1, 'fragile item name test 1', 'item description test 1', 1, TRUE);",
+            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff]) VALUES (2, 'dangerous item name test 2', 'item description test 2', 2, TRUE);",
+            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff]) VALUES (3, 'item name test 3', 'item description test 3', 3, TRUE);"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
+    private static void CreatePickupRequests(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [PickupRequest] ([RequestId], [CustomerId], [PickupLocation], [DeliverLocation], [ItemId]) VALUES (1, 1, 'edinburgh waverley', 'glasgow central station', 1);",
+            @"INSERT INTO [PickupRequest] ([RequestId], [CustomerId], [PickupLocation], [DeliverLocation], [ItemId]) VALUES (2, 1, 'livingston south', 'livingston north', 2);"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
+
 
     private static void CreateVehicles(SQLiteConnection connection)
     {
@@ -92,11 +129,12 @@ public static class DatabaseSetup
         List<string> createTableScripts = new List<string>
         {
             @"CREATE TABLE IF NOT EXISTS User (UserID INTEGER PRIMARY KEY AUTOINCREMENT, RoleID INTEGER NOT NULL, FullName TEXT NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Description TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL , Description TEXT NOT NULL, ItemCategory INTEGER NOT NULL, SignedOff BOOL NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Trip (TripId INTEGER PRIMARY KEY AUTOINCREMENT, StartLocation TEXT NOT NULL, EndLocation TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT UNIQUE NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS PickupRequest (RequestId INTEGER PRIMARY KEY AUTOINCREMENT, CustomerId INTEGER NOT NULL, PickupLocation TEXT NOT NULL, DeliverLocation TEXT NOT NULL, ItemId INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL);"

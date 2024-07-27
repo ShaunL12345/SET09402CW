@@ -6,4 +6,9 @@ public partial class CustomerPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void CustomerNavigationButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CustomerPages.TrackItemPage());
+    }
 }

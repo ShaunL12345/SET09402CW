@@ -6,13 +6,26 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.TripHandler
 {
+    
     public class Item
     {
+        public enum ItemCategoryType
+        {
+            Fragile,
+            Dangerous,
+            None
+        }
         public Guid itemID;
         public string description;
-        public bool itemCategory;
+        public ItemCategoryType itemCategory;
         public bool signedOff;
         public Item() { }
+        public int ItemId { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public bool SignedOff { get; set; }
+        public ItemCategoryType ItemCategory { get; set; }
+
 
         public void inspectItem(){
 
