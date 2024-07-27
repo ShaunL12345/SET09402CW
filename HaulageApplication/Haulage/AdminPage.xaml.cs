@@ -6,4 +6,8 @@ public partial class AdminPage : ContentPage
 	{
 		InitializeComponent();
 	}
+    private async void VehiclesNavigationButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ManageVehiclesPage()); 
+    }
 }
