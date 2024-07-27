@@ -8,8 +8,13 @@ public partial class AdminPage : ContentPage
 	}
     private async void VehiclesNavigationButtonClicked(object sender, EventArgs e)
     {
-        //await Navigation.PushAsync(new CustomerPage());
+
         await Navigation.PushAsync(new ManageVehiclesPage()); 
 
+    }
+
+    private async void ManageCustomers_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CustomerPage());
     }
 }
