@@ -13,7 +13,7 @@ namespace Haulage.Models
     public static class VehicleModel
     {
         
-        public static readonly List<Vehicle> vehicles = VehicleExecutionService.GetVehicles();
+        public static List<Vehicle> vehicles = VehicleExecutionService.GetVehicles();
 
     }
 }
