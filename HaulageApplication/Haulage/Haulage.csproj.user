@@ -12,6 +12,10 @@
   </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="Administrator Pages\AddEmployee.xaml">
+    <MauiXaml Update="AdminPages\ManageVehiclesPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="AdminPages\AddVehiclePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="CustomerPage.xaml">
