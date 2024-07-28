@@ -76,11 +76,7 @@ public static class DatabaseSetup
         {
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (1, 1, 'test1', 1, 1, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (2, 2, 'test2', 2, 2, 1);",
-            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);",
-            @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 92742442424, 'John Smith', 'john.smith@gmail.com', '07908 923349', 'Driver', '26 Edinburgh Way', 'Fragile');",
-            @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 92742442424, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', 'Driver', '22 ParkHill Avenue', 'Fragile');",
-            @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9826492, 94828458292, 'Abigail Park', 'abigail.park@gmail.com', '07908 729593', 'Administrator', '14 Roger Hill', 'N/A');",
-             @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384838, 94828458292, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', 'Administrator', '17 Castle Road', 'N/A');",
+            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);"
         };
         foreach (string tableScript in dataScripts)
         {

@@ -11,16 +11,6 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Image
-        Source="administrator.jpeg"
-        HeightRequest="200"
-        Aspect="AspectFit"
-        SemanticProperties.Description="Administrator Image" />
-        <Button
-        x:Name="ManageEmployees"
-        Text="Manage Employees" 
-        Clicked="ManageEmployees_Clicked"
-        HorizontalOptions="Center" />
         <Button
                 x:Name="ManageVehicles"
                 Text="Manage Vehicles" 
