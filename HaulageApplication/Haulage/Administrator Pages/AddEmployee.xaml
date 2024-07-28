@@ -36,7 +36,6 @@
                      Text ="Address"/>
                 <Label Grid.Row="0" Grid.Column="7" TextColor="White" Grid.RowSpan="2"
                      Text ="Qualification"/>
-
                 <Entry
                     x:Name="UserIdEntry"
                     Placeholder="UserId"
@@ -87,7 +86,6 @@
                     Grid.Row="1"
                     Grid.Column="7">
                 </Entry>
-
             </Grid>
             <CollectionView x:Name="DriversCollectionView" ItemsSource="{Binding drivers}">
                 <CollectionView.ItemTemplate>
@@ -113,37 +111,30 @@
                                Grid.Column="0"
                                Text="{Binding UserId}"
                                FontAttributes="Bold"/>
-                                    
                                     <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" 
                                 Grid.Column="1"
                                 Text="{Binding RoleId}"
                                 FontAttributes="Bold"/>
-                                    
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="2"
                                Text="{Binding Fullname}"
                                FontAttributes="Italic"/>
-                                    
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="3"
                                Text="{Binding Email}"
                                FontAttributes="Italic"/>
-                                    
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="4"
                                Text="{Binding PhoneNumber}"
                                FontAttributes="Italic"/>
-
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="5"
                                Text="{Binding Role}"
                                FontAttributes="Italic"/>
-
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                Grid.Column="6"
                                Text="{Binding Address}"
                                FontAttributes="Italic"/>
-
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                               Grid.Column="7"
                               Text="{Binding Qualification}"
@@ -156,7 +147,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-
         <HorizontalStackLayout>
             <Button
 x:Name="SaveEmployee"
@@ -164,7 +154,6 @@ Text="Save Employee Record"
 Clicked="SaveEmployee_Clicked" 
 Padding="10"
 BorderColor="#9D00FF"/>
-
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

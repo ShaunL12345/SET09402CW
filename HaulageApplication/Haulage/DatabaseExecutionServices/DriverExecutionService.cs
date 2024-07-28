@@ -10,20 +10,20 @@ using Haulage.BaseClasses.Accounting;
 
 namespace Haulage.DatabaseExecutionServices
 {
-    public static class UserExecutionService
+    public static class DriverExecutionService
     {
         public static List<Driver> GetDrivers(SQLiteConnection? connection = null)
         {
             var drivers = new List<Driver>();
             var sql = "SELECT [UserId]" +
-                ",[RoleId]    " +
-                ",[Fullname]    " +
-                ",[Email]     " +
-                ",[PhoneNumber]      " +
-                ",[Role]  " +
-                ",[Address]  " +
-                ",[Qualification] " +
-                "FROM [User];";
+                ",[RoleId]" +
+                ",[Fullname]" +
+                ",[Email]" +
+                ",[PhoneNumber]" +
+                ",[Role]" +
+                ",[Address]" +
+                ",[Qualification]" +
+                "FROM [User] WHERE [Role] = 'Driver' ;";
 
             if (connection == null)
             {

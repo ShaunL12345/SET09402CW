@@ -26,9 +26,9 @@ public static class DatabaseSetup
         {
             using (var connection = new SQLiteConnection(GetDatabasePath()))
             {
-                DropTables(connection);
-                CreateTables(connection);   
-                GenerateData(connection);
+               // DropTables(connection);
+               // CreateTables(connection);   
+               // GenerateData(connection);
             }
         }
     }
@@ -73,8 +73,9 @@ public static class DatabaseSetup
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (2, 2, 'test2', 2, 2, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);",
             @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 92742442424, 'John Smith', 'john.smith@gmail.com', '07908 923349', 'Driver', '26 Edinburgh Way', 'Fragile');",
-            @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 99048249284, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', 'Driver', '22 ParkHill Avenue', 'Fragile');",
+            @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 92742442424, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', 'Driver', '22 ParkHill Avenue', 'Fragile');",
             @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9826492, 94828458292, 'Abigail Park', 'abigail.park@gmail.com', '07908 729593', 'Administrator', '14 Roger Hill', 'N/A');",
+             @"INSERT INTO [User] ([UserId], [RoleId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384838, 94828458292, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', 'Administrator', '17 Castle Road', 'N/A');",
         };
 
         foreach (string tableScript in dataScripts)
@@ -92,7 +93,7 @@ public static class DatabaseSetup
         //Create User Table for Haulage Data;
         List<string> createTableScripts = new List<string>
         {
-            @"CREATE TABLE IF NOT EXISTS User (UserID INTEGER PRIMARY KEY AUTOINCREMENT, RoleID INTEGER NOT NULL, FullName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, Role TEXT NOT NULL, Address TEXT NOT NULL, Qualification TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS User (UserID INTEGER PRIMARY KEY AUTOINCREMENT, RoleID INTEGER NOT NULL, FullName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, Role TEXT NOT NULL, Address TEXT NOT NULL, Qualification TEXT);",
             @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Description TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Trip (TripId INTEGER PRIMARY KEY AUTOINCREMENT, StartLocation TEXT NOT NULL, EndLocation TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",

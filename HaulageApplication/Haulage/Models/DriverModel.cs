@@ -13,7 +13,7 @@ namespace Haulage.DatabaseExecutionServices
     public static class DriverModel
     {
 
-        public static List<Driver> Drivers = UserExecutionService.GetDrivers();
+        public static List<Driver> Drivers = DriverExecutionService.GetDrivers();
 
     }
 }

@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
-using Haulage.DatabaseExecutionServices;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using Haulage.BaseClasses.Accounting;
 
 
 namespace HaulageTests
@@ -32,36 +32,47 @@ namespace HaulageTests
             DatabaseSetup.GenerateData(connection);
 
             //Act
-            var drivers = UserExecutionService.GetDrivers(connection);
+            var drivers = DriverExecutionService.GetDrivers(connection);
 
             //Assert
             Assert.NotNull(drivers);
-            Assert.True(drivers.Count > 0, "Did not recieve any records from GetDrivers method");
+            Assert.True(drivers.Count < 0, "Did not recieve any records from GetDrivers method");
 
 
         }
 
-        //[Fact]
+        [Fact]
 
-        //public void DeleteDmployeeFromDatabse()
-        //{
-        //    //Arrange
-        //    var connection = GetInMemoryConnection();
-        //    DatabaseSetup.InitializeDatabase();
-        //    DatabaseSetup.CreateTables(connection);
-        //    DatabaseSetup.GenerateData(connection);
+        public void DeleteEmployeeFromDatabse()
+        {
+            //Arrange
+            var connection = GetInMemoryConnection();
+            DatabaseSetup.InitializeDatabase();
+            DatabaseSetup.CreateTables(connection);
+            DatabaseSetup.GenerateData(connection);
 
-        //    //Act
-        //    var drivers = UserExecutionService.GetDrivers(connection);
-        //    var driverToRemove = drivers.First();
-        //    var initialDriverCount = drivers.Count;
-        //    UserExecutionService.DeleteDriver(driverToRemove.UserId, connection);
-        //    var DriverCountAfter = UserExecutionService.GetDrivers(connection).Count;
+            //Act
+            var drivers = DriverExecutionService.GetDrivers(connection);
+            var driverToRemove = drivers.First();
+            var initialDriverCount = drivers.Count;
+            DriverExecutionService.DeleteDriver(driverToRemove.UserId, connection);
+            var DriverCountAfter = DriverExecutionService.GetDrivers(connection).Count;
 
-        //    //Assert
-        //    Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
-        //}
+            //Assert
+            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
+        }
 
+        [Fact]
+
+        public void SaveEmployeeInDatabase()
+        {
+            //Arrange
+           
+
+
+
+
+        }
         
     }
 }
