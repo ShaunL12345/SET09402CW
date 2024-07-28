@@ -16,13 +16,14 @@ namespace Haulage.DatabaseExecutionServices
         {
             var drivers = new List<Driver>();
             var sql = "SELECT [UserId]" +
+                ",[RoleId]" +
                 ",[Fullname]" +
                 ",[Email]" +
                 ",[PhoneNumber]" +
                 ",[Role]" +
                 ",[Address]" +
                 ",[Qualification]" +
-                $"FROM [User] WHERE [Role] = {Role.Driver} ;";
+                "FROM [User] WHERE [Role] = 'Driver' ;";
 
             if (connection == null)
             {
