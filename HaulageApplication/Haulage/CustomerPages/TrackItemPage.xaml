@@ -2,15 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local ="clr-namespace:Haulage"
+             xmlns:viewModel ="clr-namespace:Haulage.ViewModels"
              x:Class="Haulage.CustomerPages.TrackItemPage"
-             xmlns:viewModel ="clr-namespace:Haulage.DatabaseExecutionServices"
              Title="Tracking Items">
+    <ContentPage.BindingContext>
+        <viewModel:CustomerItemView/>
+    </ContentPage.BindingContext>
     <VerticalStackLayout>
         <Label 
             Text="Track items"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <ListView BindingContext="{Binding CustomerExecutionService}" ItemsSource="{Binding CustomerItems}">
+        <Entry Keyboard="Numeric" Completed="OnEntryCompleted">
+            
+        </Entry>
+        <ListView x:Name="CustomerItemTrackView" ItemsSource="{Binding CustomerItems}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -18,19 +24,43 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="1"
-                           Text="{Binding Name}"
-                           FontAttributes="Bold" />
+                                   Grid.Row="1"
+                                Text="{Binding Name}"
+                                FontAttributes="Bold" />
                             <Label Grid.Row="1"
-                           Grid.Column="1"
-                           Text="{Binding Location}"
-                           FontAttributes="Italic"
-                           VerticalOptions="End" />
+                                Grid.Column="2"
+                                Text="{Binding Description}"
+                                FontAttributes="Italic"
+                                 />
+                            <Label Grid.Row="2"
+                                Grid.Column="1"
+                                Text="Item Category"
+                                FontAttributes="Italic"
+                                 />
+                            <Label Grid.Row="2"
+                                   Grid.Column="3"
+                                   Text="{Binding ItemCategory}"
+                                   FontAttributes="Italic"
+                                    />
+                            <Label Grid.Row="3"
+                                Grid.Column="1"
+                                Text="Item Status"
+                                FontAttributes="Italic"
+                            />
+                            <Label Grid.Row="3"
+                                Grid.Column="3"
+                                Text="{Binding RequestStatus}"
+                                FontAttributes="Italic"
+                                 />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

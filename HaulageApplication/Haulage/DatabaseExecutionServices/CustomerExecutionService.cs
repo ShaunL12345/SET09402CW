@@ -15,13 +15,15 @@ namespace Haulage.DatabaseExecutionServices
     public class CustomerExecutionService
     {
 
-
-        public static ObservableCollection<BaseClasses.TripHandler.Item> GetCustomerItems()
+        public static ObservableCollection<BaseClasses.TripHandler.Item> CustomerItems { get {
+                return GetCustomerItems(1);
+            } }
+        public static ObservableCollection<BaseClasses.TripHandler.Item> GetCustomerItems(int customerId)
         {
-            int customerId = 1;
+            
             var customerItems = new List<BaseClasses.TripHandler.Item>();
-            var sql = "SELECT [Item].[ItemID], [Item].[Name], [Item].[Description], [Item].[ItemCategory], [Item].[SignedOff] FROM [RequestPickup], [Item] WHERE [RequestPickup].[CustomerId]=";
-            sql = sql + customerId + "AND [Item].[ItemID] = [RequestPickup].[ItemId];";
+            var sql = "SELECT [Item].[ItemID], [Item].[Name], [Item].[Description], [Item].[ItemCategory], [Item].[SignedOff], [PickupRequest].[RequestStatus] FROM [PickupRequest], [Item] WHERE [PickupRequest].[CustomerId]=";
+            sql = sql + customerId + " AND [Item].[ItemID] = [PickupRequest].[ItemId];";
             
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {

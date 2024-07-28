@@ -15,6 +15,12 @@ namespace Haulage.BaseClasses.TripHandler
             Dangerous,
             None
         }
+        //public enum RequestStatusType
+        //{
+        //    pickUpRequested,
+        //    EnRouteToPickup,
+        //    PickedUp,
+        //}
         public Guid itemID;
         public string description;
         public ItemCategoryType itemCategory;
@@ -25,7 +31,7 @@ namespace Haulage.BaseClasses.TripHandler
         public string? Description { get; set; }
         public bool SignedOff { get; set; }
         public ItemCategoryType ItemCategory { get; set; }
-
+        public PickupRequest.requestStatus RequestStatus { get; set; }
 
         public void inspectItem(){
 
