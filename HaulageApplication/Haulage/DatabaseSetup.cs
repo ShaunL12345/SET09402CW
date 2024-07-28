@@ -68,6 +68,8 @@ public static class DatabaseSetup
     {
         //Vehicle data
         CreateVehicles(connection);
+        CreateBills(connection);
+        CreateUsers(connection);
     }
 
     private static void CreateVehicles(SQLiteConnection connection)
@@ -86,6 +88,41 @@ public static class DatabaseSetup
         }
     }
 
+
+    private static void CreateBills(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [Bill] ([BillId], [UserId], [ItemId], [Status], [TotalAmount]) VALUES (1, 1, 1, 1, 30.99);",
+            @"INSERT INTO [Bill] ([BillId], [UserId], [ItemId], [Status], [TotalAmount]) VALUES (2, 1, 3, 0, 40.99);",
+            @"INSERT INTO [Bill] ([BillId], [UserId], [ItemId], [Status], [TotalAmount]) VALUES (3, 3, 2, 1, 35.00);"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
+
+    private static void CreateUsers(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [User] ([UserID], [RoleID], [FullName]) VALUES (1, 2, 'John Smith');",
+           @"INSERT INTO [User] ([UserID], [RoleID], [FullName]) VALUES (2, 2, 'Joan Smith');",
+           @"INSERT INTO [User] ([UserID], [RoleID], [FullName]) VALUES (3, 2, 'Juan Smith');"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
+
     public static void CreateTables(SQLiteConnection connection)
     {
 
@@ -97,7 +134,7 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT UNIQUE NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, UserId INTEGER NOT NULL, ItemId INTEGER NOT NULL, Status INTEGER NOT NULL, TotalAmount decimal(10, 2) NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL);"
         };

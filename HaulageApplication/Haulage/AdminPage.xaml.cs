@@ -10,4 +10,9 @@ public partial class AdminPage : ContentPage
     {
         await Navigation.PushAsync(new ManageVehiclesPage()); 
     }
+
+    private async void CustomerBillsNavigationButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ManageCustomerBillsPage());
+    }
 }

@@ -17,5 +17,11 @@
                 SemanticProperties.Hint="Manage the vehicles"
                 Clicked="VehiclesNavigationButtonClicked"
                 HorizontalOptions="Fill" />
+        <Button
+        x:Name="ManageCustomerBills"
+        Text="Manage Customer Bills" 
+        SemanticProperties.Hint="Manage customer bills"
+        Clicked="CustomerBillsNavigationButtonClicked"
+        HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>

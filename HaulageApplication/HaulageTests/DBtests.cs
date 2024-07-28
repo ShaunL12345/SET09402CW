@@ -7,7 +7,8 @@ using System.IO;
 using System.Collections.Generic;
 using Xunit;
 using SQLite;
-using Haulage.BaseClasses.BillingHandler; // Update the namespace to match your project's structure
+using Haulage.BaseClasses.
+    ingHandler; // Update the namespace to match your project's structure
 
 namespace HaulageTests
 {
