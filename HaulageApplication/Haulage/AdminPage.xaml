@@ -7,15 +7,19 @@
              BackgroundColor="White">
     <VerticalStackLayout>
         <Label 
-            Text="&#10; Welcome to Admin Page!"
+            Text="&#10; Welcome to the Admin Page!"
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Image
+        Source="administrator.jpeg"
+        HeightRequest="200"
+        Aspect="AspectFit"
+        SemanticProperties.Description="Administrator Image" />
         <Button
-                x:Name="ManageVehicles"
-                Text="Manage Vehicles" 
-                SemanticProperties.Hint="Manage the vehicles"
-                Clicked="VehiclesNavigationButtonClicked"
-                HorizontalOptions="Fill" />
+        x:Name="ManageEmployees"
+        Text="Manage Employees" 
+        Clicked="ManageEmployees_Clicked"
+        HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

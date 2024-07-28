@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.Accounting
 {
-
     public class Vehicle
     {
-        public int VehicleId { get; set; }
-        public int tripID { get; set; }
-        public string? LicensePlate { get; set; }
-        public int Capacity { get; set; }
-        public int DriverId { get; set; }
-        public StatusType Status { get; set; }
-        public enum StatusType
+        public Guid tripID;
+        public string licensePlate;
+        public int capacity;
+        public Guid driverID;
+        public enum status
         {
-            onroute, finishedroute, atdropoff
+
         }
+
+
         public void assignTrip()
         {
             
