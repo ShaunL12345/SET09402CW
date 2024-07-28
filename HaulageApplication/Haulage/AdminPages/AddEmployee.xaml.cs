@@ -4,7 +4,9 @@ using Haulage.BaseClasses.Accounting;
 using SQLite;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
-
+using Haulage.DatabaseExecutionServices;
+using System.Text;
+using Haulage.BaseClasses;
 public partial class AddEmployee : ContentPage
 {
    
@@ -15,38 +17,25 @@ public partial class AddEmployee : ContentPage
 
         Button SaveEmployee = FindByName("SaveEmployee") as Button;
         SaveEmployee.Clicked += SaveEmployee_Clicked;
-       
+
+        
     }
 
     public void SaveEmployee_Clicked(object sender, EventArgs e)
     {
 
         string employeeUserId = UserIdEntry.Text;
-        string employeeRoleId = RoleIdEntry.Text;
         string employeeFullname = FullnameEntry.Text;
         string employeeEmail = emailEntry.Text;
         string employeeNumber = phoneNumberEntry.Text;
         string employeeRole = roleEntry.Text;
+        Role employeeRoleEnum = Enum.Parse<Role>(roleEntry.Text.ToLower());
         string employeeAddress = addressEntry.Text;
         string employeeQualification = qualificationEntry.Text;
 
-        var sql = $"INSERT INTO User VALUES ({employeeUserId}, {employeeRoleId},'{employeeFullname}', '{employeeEmail}', '{employeeNumber}', '{employeeRole}', '{employeeAddress}', '{employeeQualification}');";
-            
-        
-        using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-        {
-            var command = new SQLite.SQLiteCommand(connection);
-            command.CommandText = sql;
-            command.ExecuteQuery<DBNull>(); 
-        }
-
-        Console.WriteLine("Employee saved successfully!");
-
+        Driver driver = new Driver(Int32.Parse(employeeUserId), employeeFullname, employeeEmail, employeeNumber, employeeRoleEnum, employeeAddress, employeeQualification);
+        DriverExecutionService.SaveDriver(driver);
     }
 
 
-    private void Collection_Loaded(object sender, EventArgs e)
-    {
-        OnPropertyChanged(nameof(DriversCollectionView));
-    }
 }

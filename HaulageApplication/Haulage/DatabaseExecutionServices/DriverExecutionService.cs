@@ -22,7 +22,7 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Role]" +
                 ",[Address]" +
                 ",[Qualification]" +
-                $"FROM [User] WHERE [Role] = {Role.Driver} ;";
+                $"FROM [User] WHERE [Role] = '{Role.driver.ToString()}' ;";
 
             if (connection == null)
             {
@@ -40,6 +40,8 @@ namespace Haulage.DatabaseExecutionServices
                 command.CommandText = sql;
                 drivers = command.ExecuteQuery<Driver>();
             }
+
+            
             return drivers;
         }
         public static void DeleteDriver(int UserId, SQLiteConnection? connection = null)
@@ -64,6 +66,19 @@ namespace Haulage.DatabaseExecutionServices
             }
         }
 
+        public static void SaveDriver(Driver driver)
+        {
+            var sql = $"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES ('{driver.UserId}','{driver.Fullname}', '{driver.Email}', '{driver.PhoneNumber}', '{driver.UserRole}','{driver.Address}','{driver.Qualification}');";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+
+
+        }
 
     }
 

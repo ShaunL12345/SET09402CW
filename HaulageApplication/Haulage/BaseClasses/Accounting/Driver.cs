@@ -8,15 +8,22 @@ namespace Haulage.BaseClasses.Accounting
 {
     public class Driver : User
     {
+        public Driver() { }
 
-        public string qualification {  get; set; }
-        public Driver() 
-        { 
-
+        public Driver(int employeeUserId, string employeeFullname, string employeeEmail, string employeeNumber, Role employeeRoleEnum, string employeeAddress, string employeeQualification)
+        {
+            this.UserId = employeeUserId;
+            this.Fullname = employeeFullname;
+            this.Email = employeeEmail;
+            this.PhoneNumber = employeeNumber;
+            this.UserRole = employeeRoleEnum;
+            this.Address = employeeAddress;
+            this.Qualification = employeeQualification;
         }
 
+        
 
-      
+
     }
 
     

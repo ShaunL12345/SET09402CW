@@ -98,7 +98,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Administrator Pages\AddEmployee.xaml">
+	  <MauiXaml Update="AdminPages\AddEmployee.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="AdminPage.xaml">
@@ -110,7 +110,7 @@
 	  <MauiXaml Update="DriverPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Administrator Pages\ManageEmployees.xaml">
+	  <MauiXaml Update="AdminPages\ManageEmployees.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Team.xaml">

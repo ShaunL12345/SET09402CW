@@ -17,10 +17,10 @@
         Aspect="AspectFit"
         SemanticProperties.Description="Administrator Image" />
         <Button
-        x:Name="ManageEmployees"
-        Text="Manage Employees" 
-        Clicked="ManageEmployees_Clicked"
-        HorizontalOptions="Center" />
+                x:Name="ManageEmployees"
+                Text="Manage Employees" 
+                Clicked="ManageEmployees_Clicked"
+                HorizontalOptions="Fill" />
         <Button
                 x:Name="ManageVehicles"
                 Text="Manage Vehicles" 
