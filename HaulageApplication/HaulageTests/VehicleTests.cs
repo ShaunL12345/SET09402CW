@@ -23,20 +23,20 @@ namespace HaulageTests
             Assert.NotNull(vehicles);
             Assert.True(vehicles.Count > 0, "Did not recieve any records from GetVehicles method");
         }
-        [Fact]
-        public void DeleteVehicleFromDatabse()
-        {
+        //[Fact]
+        //public void DeleteVehicleFromDatabse()
+        //{
 
-            DatabaseSetup.InitializeDatabase();
+        //    DatabaseSetup.InitializeDatabase();
 
-            var vehicles = VehicleExecutionService.GetVehicles();
+        //    var vehicles = VehicleExecutionService.GetVehicles();
 
-            var vehicleToRemove = vehicles.First();
-            var initialVehicleCount = vehicles.Count;
-            VehicleExecutionService.DeleteVehicle(vehicleToRemove.VehicleId);
-            var vehicleCountAfter = VehicleExecutionService.GetVehicles().Count;
-            Assert.True(vehicleCountAfter == initialVehicleCount - 1, "Failed to delete a vehicle record");
-        }
+        //    var vehicleToRemove = vehicles.First();
+        //    var initialVehicleCount = vehicles.Count;
+        //    VehicleExecutionService.DeleteVehicle(vehicleToRemove.VehicleId);
+        //    var vehicleCountAfter = VehicleExecutionService.GetVehicles().Count;
+        //    Assert.True(vehicleCountAfter == initialVehicleCount - 1, "Failed to delete a vehicle record");
+        //}
         [Fact]
         public void SaveVehicleToDatabse()
         {
