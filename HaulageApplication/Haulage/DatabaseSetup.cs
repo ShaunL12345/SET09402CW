@@ -34,9 +34,7 @@ public static class DatabaseSetup
             using (var connection = new SQLiteConnection(GetDatabasePath()))
             {
                 DropTables(connection);
-                System.Threading.Thread.Sleep(1000);
                 CreateTables(connection);
-                System.Threading.Thread.Sleep(1000);
                 GenerateData(connection);
             }
         }
