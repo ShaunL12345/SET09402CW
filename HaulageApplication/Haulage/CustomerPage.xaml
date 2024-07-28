@@ -15,7 +15,7 @@
         x:Name="TrackItems"
         Text="Track Items" 
         SemanticProperties.Hint="Track customer items"
-        Clicked="CustomerNavigationButtonClicked"
+        Clicked="CustomerTrackItemNavigationButtonClicked"
         HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>
