@@ -9,7 +9,7 @@ using Haulage.viewModel;
 using Haulage.AdminPages;
 namespace HaulageTests
 {
-
+    [CollectionDefinition("VehicleTests", DisableParallelization = true)]
     /// <summary>
     /// 
     /// </summary>

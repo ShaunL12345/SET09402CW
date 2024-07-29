@@ -15,6 +15,7 @@ using Haulage.BaseClasses.TripHandler;
 
 namespace HaulageTests
 {
+    [CollectionDefinition("DriverRaiseEventTests", DisableParallelization = true)]
     public class DriverRaiseEventTests
     {
         [Fact]
