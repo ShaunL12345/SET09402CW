@@ -11,5 +11,21 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Image
+        Source="administrator.jpeg"
+        HeightRequest="200"
+        Aspect="AspectFit"
+        SemanticProperties.Description="Administrator Image" />
+        <Button
+                x:Name="ManageEmployees"
+                Text="Manage Employees" 
+                Clicked="ManageEmployees_Clicked"
+                HorizontalOptions="Fill" />
+        <Button
+                x:Name="ManageVehicles"
+                Text="Manage Vehicles" 
+                SemanticProperties.Hint="Manage the vehicles"
+                Clicked="VehiclesNavigationButtonClicked"
+                HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>
