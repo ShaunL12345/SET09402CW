@@ -16,11 +16,11 @@ public partial class AddBillPage : ContentPage
 
     private void SaveBill_Clicked(object sender, EventArgs e)
     {
-		string billId = BillIdEntry.Text;
-		string Fullname = FullnameEntry.Text;
-		string Email = EmailEntry.Text;
+		string customerBillId = BillIdEntry.Text;
+		string customerFullname = FullnameEntry.Text;
+		string customerEmail = EmailEntry.Text;
 
-		var sql = $"INSERT INTO Bill VALUES ({billId}, '{Fullname}', '{Email}');";
+		var sql = $"INSERT INTO Bill VALUES ({customerBillId}, '{customerFullname}', '{customerEmail}');";
 
         using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
         {
@@ -29,7 +29,8 @@ public partial class AddBillPage : ContentPage
             command.ExecuteQuery<DBNull>();
         }
 
-		Console.WriteLine("Bill saved successfully!");
+        DisplayAlert("Success", "Bill details saved successfully.", "OK");
+        Console.WriteLine("Bill successfully Added");
 
     }
 }

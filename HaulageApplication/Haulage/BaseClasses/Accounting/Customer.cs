@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.Accounting
 {
-    public class Customer : Person
+    public class Customer : User
     {
         public Customer() { }
 

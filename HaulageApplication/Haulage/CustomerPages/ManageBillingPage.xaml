@@ -23,8 +23,8 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="2.0*"/>
+                    <ColumnDefinition Width="1.0*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" TextColor="White" Grid.RowSpan="2"
                              Text ="BillId"/>
@@ -44,24 +44,23 @@
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1.5*" />
-                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="2.0*"/>
                                         <ColumnDefinition Width="1.5*"/>
                                     </Grid.ColumnDefinitions>
                                     
-                                    <Label  TextColor="Black" Grid.RowSpan="2" Grid.Row="1" 
+                                    <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" 
                                        Grid.Column="0"
                                        Text="{Binding BillId}"
                                        FontAttributes="Italic"/>
 
-                                    <Label Grid.Row="1" TextColor="Black" Grid.RowSpan="2"
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="1"
                                        Text="{Binding Fullname}"
                                        FontAttributes="Italic"/>
 
-                                    <Label Grid.Row="1" TextColor="Black" Grid.RowSpan="2"
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="2"
                                        Text="{Binding Email}"
                                        FontAttributes="Italic"/>
@@ -91,7 +90,7 @@
     Padding="10"
     HorizontalOptions="End" 
     BorderColor="#9D00FF"/>
-            <Entry x:Name="BillId" Placeholder="BillId to delete" />
+            <Entry x:Name="EntryBillId" Placeholder="BillId to delete" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

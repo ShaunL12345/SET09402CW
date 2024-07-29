@@ -12,25 +12,15 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class BillExecutionService
     {
-        public static List<Billing> GetBills(SQLiteConnection? connection = null)
+        public static List<Billing> GetBills()
         {
             var bills = new List<Billing>();
             var sql = "SELECT [BillId]" +
-                ",[Fullname]    " +
-                ",[Email]     " +
+                ",[Fullname]" +
+                ",[Email]" +
                 "FROM [Bill];";
 
-            if (connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    bills = command.ExecuteQuery<Billing>();
-                }
-
-            }
-            else
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
@@ -40,30 +30,33 @@ namespace Haulage.DatabaseExecutionServices
             return bills;
         }
 
-        public static void DeleteBill(int BillId, SQLiteConnection? connection = null)
+        public static void DeleteBill(int BillId)
         {
             var bills = new List<Billing>();
             var sql = $"DELETE FROM [Bill] WHERE [BillId] = {BillId}";
 
-            if(connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    command.ExecuteNonQuery();
-                }
-            }
-            else
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
-           
+
+        }
+        public static void SaveBill(Billing billing)
+        {
+            var sql = $"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES ('{billing.BillId}','{billing.Fullname}', '{billing.Email}');";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+
+
         }
 
-        //Save Method
-        
     }
 }
