@@ -13,13 +13,13 @@ namespace HaulageTests
     /// <summary>
     /// 
     /// </summary>
-    public class VehicleTest
+    [CollectionDefinition("databaseTests", DisableParallelization = true)]
+    public class DatabaseTests
     {
         [Fact]
         public void GetVehiclesFromDatabse()
         {
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             var vehicles = VehicleExecutionService.GetVehicles();
             Assert.NotNull(vehicles);
             Assert.True(vehicles.Count > 0, "Did not recieve any records from GetVehicles method");
@@ -30,7 +30,6 @@ namespace HaulageTests
         {
 
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             var vehicles = VehicleExecutionService.GetVehicles();
 
             var vehicleToRemove = vehicles.First();
@@ -44,9 +43,7 @@ namespace HaulageTests
         public void SaveVehicleToDatabse()
         {
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             var vehiclesCountBefore = VehicleExecutionService.GetVehicles().Count;
-            System.Threading.Thread.Sleep(150);
             Vehicle vehicle = new Vehicle()
             {
                 VehicleId = 132321,
@@ -76,10 +73,8 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             //Act
             var drivers = DriverExecutionService.GetDrivers();
-            System.Threading.Thread.Sleep(150);
             //Assert
             Assert.NotNull(drivers);
             Assert.True(drivers.Count > 0, "Did not recieve any records from GetDrivers method");
@@ -91,19 +86,15 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             //Act
             var drivers = DriverExecutionService.GetDrivers();
-            System.Threading.Thread.Sleep(150);
 
             var driverToRemove = drivers.First();
             var initialDriverCount = drivers.Count;
 
             DriverExecutionService.DeleteDriver(driverToRemove.UserId);
-            System.Threading.Thread.Sleep(150);
 
             var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
-            System.Threading.Thread.Sleep(150);
 
             //Assert
             Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
@@ -115,7 +106,6 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
 
             //Act
             var drivers = DriverExecutionService.GetDrivers();
