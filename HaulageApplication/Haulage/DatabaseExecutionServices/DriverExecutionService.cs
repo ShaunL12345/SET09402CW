@@ -16,7 +16,6 @@ namespace Haulage.DatabaseExecutionServices
         {
             var drivers = new List<Driver>();
             var sql = "SELECT [UserId]" +
-                ",[RoleId]" +
                 ",[Fullname]" +
                 ",[Email]" +
                 ",[PhoneNumber]" +
