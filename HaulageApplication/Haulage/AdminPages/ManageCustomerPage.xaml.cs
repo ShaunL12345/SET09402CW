@@ -7,12 +7,10 @@ public partial class ManageCustomerPage : ContentPage
 	public ManageCustomerPage()
 	{
 		InitializeComponent();
-	}
-
-    private void AddCustomer_Clicked(object sender, EventArgs e)
-    {
-
+        AddEmployee.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddEmployee()); };
     }
+
+
 
     private void DeleteCustomer_Clicked(object sender, EventArgs e)
     {

@@ -93,9 +93,8 @@
         </StackLayout>
         <HorizontalStackLayout>
             <Button
-x:Name="AddCustomer"
-Text="Add Customer Record" 
-Clicked="AddCustomer_Clicked" 
+x:Name="AddEmployee"
+Text="Add Employee Record" 
 Padding="10"
 BorderColor="#9D00FF"/>
             <Button
