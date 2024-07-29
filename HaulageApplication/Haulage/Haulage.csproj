@@ -111,6 +111,8 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPages\DriverRaiseEventPage.xaml">
+	  	<Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="AdminPages\ManageEmployees.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
