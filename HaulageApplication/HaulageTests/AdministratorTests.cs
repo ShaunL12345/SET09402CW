@@ -75,7 +75,7 @@ namespace HaulageTests
             using (var sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                admin.trackProgress(trips);
+                admin.TrackProgress(trips);
 
                 // Assert
                 var output = sw.ToString();
