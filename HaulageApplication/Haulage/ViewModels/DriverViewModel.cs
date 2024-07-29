@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
 
-namespace Haulage.viewModel
+namespace Haulage.viewModels
 {
     public class DriverViewModel : INotifyPropertyChanged
     {

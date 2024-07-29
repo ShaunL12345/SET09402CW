@@ -5,24 +5,8 @@
     <ActiveDebugFramework>net8.0-windows10.0.19041.0</ActiveDebugFramework>
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
-  </PropertyGroup>
   <ItemGroup>
-  
-    <MauiXaml Update="AdminPages\AddCustomer.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="AdminPages\CustomerPage.xaml">
-
-    <MauiXaml Update="AdminPages\ManageVehiclesPage.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="AdminPages\AddVehiclePage.xaml">
-
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="CustomerPage.xaml">
+    <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

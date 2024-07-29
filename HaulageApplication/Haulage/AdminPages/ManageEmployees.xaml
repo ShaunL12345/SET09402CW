@@ -4,7 +4,7 @@
     x:Class="Haulage.ManageEmployees"
              Title="ManageEmployees"
              xmlns:local ="clr-namespace:Haulage"
-    xmlns:viewModel ="clr-namespace:Haulage.viewModel">
+    xmlns:viewModel ="clr-namespace:Haulage.viewModels">
 
     <ContentPage.BindingContext>
         <viewModel:DriverViewModel/>

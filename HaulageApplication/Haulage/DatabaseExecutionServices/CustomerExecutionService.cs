@@ -1,4 +1,5 @@
 ﻿using Haulage.BaseClasses.Accounting;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,49 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class CustomerExecutionService
     {
-        public static List<Customer> GetCustomers() 
+        public static List<Customer> GetCustomers()
         {
-            return new List<Customer>();
+            var customers = new List<Customer>();
+            var sql = "SELECT [UserId]" +
+                ",[Fullname]" +
+                ",[Email]" +
+                ",[PhoneNumber]" +
+                ",[Role]" +
+                ",[Address]" +
+                $"FROM [User] WHERE [Role] = '{Role.customer.ToString()}' ;";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                customers = command.ExecuteQuery<Customer>();
+            }
+
+            return customers;
+        }
+        public static void deleteCustomer(int UserId)
+        {
+            var sql = $"DELETE FROM [User] WHERE [UserId] = {UserId};";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+
+        }
+
+        public static void SaveCustomer(Customer customer)
+        {
+            var sql = $"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES ('{customer.UserId}','{customer.Fullname}', '{customer.Email}', '{customer.PhoneNumber}', '{customer.UserRole}','{customer.Address}';";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

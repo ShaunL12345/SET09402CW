@@ -61,8 +61,6 @@ namespace Haulage.DatabaseExecutionServices
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
-
-
         }
 
     }

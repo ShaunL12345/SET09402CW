@@ -1,6 +1,6 @@
 using Haulage.BaseClasses.Accounting;
 using Haulage.DatabaseExecutionServices;
-using Haulage.viewModel;
+using Haulage.viewModels;
 using SQLite;
 using System.Runtime.CompilerServices;
 

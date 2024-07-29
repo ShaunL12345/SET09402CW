@@ -15,7 +15,7 @@ namespace Haulage.BaseClasses.Accounting
         public string? PhoneNumber { get; set; }
         public Role UserRole { get; set; }
         public string? Address { get; set; }
-        public string? Qualification {get; set; }
+
 
         
     }

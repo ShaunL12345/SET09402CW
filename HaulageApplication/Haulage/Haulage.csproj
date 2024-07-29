@@ -98,12 +98,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="AdminPages\CustomerPage.xaml.cs">
-	    <DependentUpon>CustomerPage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="AdminPages\AddEmployee.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -113,7 +107,7 @@
 	  <MauiXaml Update="AdminPages\AddCustomer.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="AdminPages\CustomerPage.xaml">
+	  <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="CustomerPage.xaml">
