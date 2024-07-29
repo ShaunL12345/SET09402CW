@@ -6,14 +6,31 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.Accounting
 {
-    public class Customer : Person
+    public class Customer : User
     {
         public Customer() { }
 
-        public void manageAccount()
-        {
+// = MANAGE ACCOUNT = START ========================================================================================================= //
 
+        public void ManageAccount(Account account, string billingDetails, string contactDetails)
+        {
+            if (account == null) throw new ArgumentNullException(nameof(account));
+            if (billingDetails == null) throw new ArgumentNullException(nameof(billingDetails));
+            if (contactDetails == null) throw new ArgumentNullException(nameof(contactDetails));
+
+            account.BillingDetails = billingDetails;
+            account.ContactDetails = contactDetails;
+
+            // Future Dev - save account details
+            Console.WriteLine("Account details managed successfully.");
         }
+
+        public void RequestPickupOrDelivery() { }
+        public void ConfirmPickupOrDelivery() { }
+        public void TrackItem() { }
+        public void ManageBilling() { }
+
+// = MANAGE ACCOUNT = END =========================================================================================================== //
 
         public void requestPickupOrDelivery()
         {
@@ -36,4 +53,22 @@ namespace Haulage.BaseClasses.Accounting
         }
 
     }
+
+// = ACCOUNT = START ================================================================================================================ //
+    public class Account
+    {
+        public Guid AccountId { get; set; }
+        public string BillingDetails { get; set; }
+        public string ContactDetails { get; set; }
+
+        public Account(Guid accountId, string billingDetails, string contactDetails)
+        {
+            AccountId = accountId;
+            BillingDetails = billingDetails ?? throw new ArgumentNullException(nameof(billingDetails));
+            ContactDetails = contactDetails ?? throw new ArgumentNullException(nameof(contactDetails));
+        }
+    }
+
+// = ACCOUNT = END ================================================================================================================== //
+
 }
