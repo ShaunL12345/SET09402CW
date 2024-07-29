@@ -10,27 +10,27 @@ namespace Haulage.BaseClasses.Accounting
     {
         public Administrator() { }
 
-        public void manageEmployees()
+        public void ManageEmployees()
         {
 
         }
 
-        public void manageVehicles()
+        public void ManageVehicles()
         {
 
         }
 
-        public void manageCustomers()
+        public void ManageCustomers()
         {
 
         }
 
-        public void manageBills()
+        public void ManageBills()
         {
 
         }
 
-        public void manageManifests()
+        public void ManageManifests()
         {
 
         }
@@ -54,17 +54,17 @@ namespace Haulage.BaseClasses.Accounting
             }
         }
 
-        public void planRoutes()
+        public void PlanRoutes()
         {
             // Plan routes logic here
         }
 
-        public void resourceTrips()
+        public void ResourceTrips()
         {
             // Resource trips logic here
         }
 
-        public void trackProgress(List<Trip> trips)
+        public void TrackProgress(List<Trip> trips)
         {
             foreach (var trip in trips)
             {
