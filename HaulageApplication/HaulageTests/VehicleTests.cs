@@ -23,22 +23,7 @@ namespace HaulageTests
             Assert.NotNull(vehicles);
             Assert.True(vehicles.Count > 0, "Did not recieve any records from GetVehicles method");
         }
-<<<<<<< HEAD
-        //[Fact]
-        //public void DeleteVehicleFromDatabse()
-        //{
 
-        //    DatabaseSetup.InitializeDatabase();
-
-        //    var vehicles = VehicleExecutionService.GetVehicles();
-
-        //    var vehicleToRemove = vehicles.First();
-        //    var initialVehicleCount = vehicles.Count;
-        //    VehicleExecutionService.DeleteVehicle(vehicleToRemove.VehicleId);
-        //    var vehicleCountAfter = VehicleExecutionService.GetVehicles().Count;
-        //    Assert.True(vehicleCountAfter == initialVehicleCount - 1, "Failed to delete a vehicle record");
-        //}
-=======
         [Fact]
         public void DeleteVehicleFromDatabse()
         {
@@ -53,7 +38,7 @@ namespace HaulageTests
             var vehicleCountAfter = VehicleExecutionService.GetVehicles().Count;
             Assert.True(vehicleCountAfter == initialVehicleCount - 1, "Failed to delete a vehicle record");
         }
->>>>>>> parent of ba53301 (AG - Fixed Role column)
+
         [Fact]
         public void SaveVehicleToDatabse()
         {
@@ -82,6 +67,68 @@ namespace HaulageTests
             var model = new VehicleViewModel();
             Assert.NotNull(model);
             Assert.True(model.Vehicles.Count > 0);
+        }
+
+        [Fact]
+        public void GetDriversFromDatabase()
+        {
+            //Arrange
+            var connection = GetInMemoryConnection();
+            DatabaseSetup.InitializeDatabase();
+            DatabaseSetup.CreateTables(connection);
+            DatabaseSetup.GenerateData(connection);
+
+            //Act
+            var drivers = DriverExecutionService.GetDrivers(connection);
+
+            //Assert
+            Assert.NotNull(drivers);
+            Assert.True(drivers.Count < 0, "Did not recieve any records from GetDrivers method");
+
+
+        }
+
+        [Fact]
+
+        public void DeleteDriversFromDatabse()
+        {
+            //Arrange
+            var connection = GetInMemoryConnection();
+            DatabaseSetup.InitializeDatabase();
+            DatabaseSetup.CreateTables(connection);
+            DatabaseSetup.GenerateData(connection);
+
+            //Act
+            var drivers = DriverExecutionService.GetDrivers(connection);
+            var driverToRemove = drivers.First();
+            var initialDriverCount = drivers.Count;
+            DriverExecutionService.DeleteDriver(driverToRemove.UserId, connection);
+            var DriverCountAfter = DriverExecutionService.GetDrivers(connection).Count;
+
+            //Assert
+            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
+        }
+
+        [Fact]
+
+        public void SaveDriverInDatabase()
+        {
+            //Arrange
+            var connection = GetInMemoryConnection();
+            DatabaseSetup.InitializeDatabase();
+            DatabaseSetup.CreateTables(connection);
+            DatabaseSetup.GenerateData(connection);
+
+            //Act
+            var drivers = DriverExecutionService.GetDrivers(connection);
+            var aNewDriver = new Driver(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "12345 239387", Role.driver, "21 Test street", "fragile");
+            var initialDriverCount = drivers.Count;
+            DriverExecutionService.SaveDriver(aNewDriver);
+            var DriverCountAfter = DriverExecutionService.GetDrivers(connection).Count;
+
+            //Assert
+            Assert.True(DriverCountAfter == initialDriverCount + 1, "Saved employee record successfully");
+
         }
     }
 }
