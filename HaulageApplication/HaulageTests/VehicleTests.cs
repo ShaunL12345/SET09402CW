@@ -7,6 +7,7 @@ using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModel;
 using Haulage.AdminPages;
+using Haulage.BaseClasses.TripHandler;
 namespace HaulageTests
 {
 
@@ -65,6 +66,25 @@ namespace HaulageTests
             var model = new VehicleViewModel();
             Assert.NotNull(model);
             Assert.True(model.Vehicles.Count > 0);
+        }
+        [Fact]
+        public void SaveVehicleToDatabse()
+        {
+            DatabaseSetup.InitializeDatabase();
+
+            var eventCountBefore = DriverExecutionService.GetEvents().Count;
+
+            TripEvent evt = new TripEvent()
+            {
+                DriverId = 1,
+                TripId = 1,
+                EventType = 0,
+                Description = "Sheep in road"
+            };
+            DriverExecutionService.RaiseEvent(evt);
+
+            var eventCountAfter = DriverExecutionService.GetEvents().Count;
+            Assert.True(eventCountAfter == eventCountBefore + 1, "trip event record was not saved");
         }
     }
 }
