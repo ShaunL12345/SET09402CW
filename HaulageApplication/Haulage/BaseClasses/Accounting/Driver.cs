@@ -8,7 +8,7 @@ namespace Haulage.BaseClasses.Accounting
 {
     public class Driver : User
     {
-        public string? Qualification { get; set; }
+
         public Driver() { }
 
         public Driver(int employeeUserId, string employeeFullname, string employeeEmail, string employeeNumber, Role employeeRoleEnum, string employeeAddress, string employeeQualification)

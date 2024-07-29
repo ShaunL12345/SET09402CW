@@ -40,8 +40,6 @@
                              Text ="Role"/>
                 <Label Grid.Row="0" Grid.Column="5" TextColor="White" Grid.RowSpan="2"
                              Text ="Address"/>
-                <Label Grid.Row="0" Grid.Column="6" TextColor="White" Grid.RowSpan="2"
-                             Text ="Qualification"/>
             </Grid>
 
             <CollectionView x:Name="CustomerCollectionView" ItemsSource="{Binding Customers}">
@@ -108,7 +106,7 @@ Clicked="DeleteCustomer_Clicked"
 Padding="10"
 HorizontalOptions="End" 
 BorderColor="#9D00FF"/>
-            <Entry x:Name="CustomerUserId" Placeholder="Id to delete" />
+            <Entry x:Name="EntryCustomerId" Placeholder="Id to delete" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

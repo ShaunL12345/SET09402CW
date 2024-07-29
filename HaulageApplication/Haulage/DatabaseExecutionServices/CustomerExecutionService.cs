@@ -17,9 +17,10 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Fullname]" +
                 ",[Email]" +
                 ",[PhoneNumber]" +
-                ",[Role]" +
+                ",[UserRole]" +
                 ",[Address]" +
-                $"FROM [User] WHERE [Role] = '{Role.customer.ToString()}' ;";
+                ",[Qualification]" +
+                $"FROM [User] WHERE [UserRole] = '{Role.customer.ToString()}' ;";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -45,7 +46,7 @@ namespace Haulage.DatabaseExecutionServices
 
         public static void SaveCustomer(Customer customer)
         {
-            var sql = $"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES ('{customer.UserId}','{customer.Fullname}', '{customer.Email}', '{customer.PhoneNumber}', '{customer.UserRole}','{customer.Address}';";
+            var sql = $"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [UserRole], [Address], [Qualification]) VALUES ('{customer.UserId}','{customer.Fullname}', '{customer.Email}', '{customer.PhoneNumber}', '{customer.UserRole}','{customer.Address}','{customer.Qualification}');";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {

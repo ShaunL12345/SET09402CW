@@ -19,10 +19,10 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Fullname]" +
                 ",[Email]" +
                 ",[PhoneNumber]" +
-                ",[Role]" +
+                ",[UserRole]" +
                 ",[Address]" +
                 ",[Qualification]" +
-                $"FROM [User] WHERE [Role] = '{Role.driver.ToString()}' ;";
+                $"FROM [User] WHERE [UserRole] = '{Role.driver.ToString()}' ;";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -53,7 +53,7 @@ namespace Haulage.DatabaseExecutionServices
 
         public static void SaveDriver(Driver driver)
         {
-            var sql = $"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES ('{driver.UserId}','{driver.Fullname}', '{driver.Email}', '{driver.PhoneNumber}', '{driver.UserRole}','{driver.Address}','{driver.Qualification}');";
+            var sql = $"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [UserRole], [Address], [Qualification]) VALUES ('{driver.UserId}','{driver.Fullname}', '{driver.Email}', '{driver.PhoneNumber}', '{driver.UserRole}','{driver.Address}','{driver.Qualification}');";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
