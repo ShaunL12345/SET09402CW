@@ -19,7 +19,10 @@ namespace Haulage.BaseClasses.TripHandler
             EnRouteToPickup,
             PickedUp,
         }
-        public PickupRequest() { }
+        public PickupRequest()
+        {
+
+        }
 
         public void inspectitem()
         {
