@@ -4,8 +4,13 @@ public partial class AdminPage : ContentPage
 {
 	public AdminPage()
 	{
-		InitializeComponent();
+        InitializeComponent();
+
 	}
+    private void ManageEmployees_Clicked(object sender, EventArgs e)
+    {
+    }
+
     private async void VehiclesNavigationButtonClicked(object sender, EventArgs e)
     {
 
@@ -16,5 +21,7 @@ public partial class AdminPage : ContentPage
     private async void ManageCustomers_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CustomerPage());
+        Button ManageEmployees = FindByName("ManageEmployees") as Button;
+        ManageEmployees.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageEmployees()); };
     }
 }
