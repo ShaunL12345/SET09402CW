@@ -7,13 +7,20 @@ using Haulage.BaseClasses.Accounting;
 
 public static class DatabaseSetup
 {
+    /// <summary>
+    /// This method is currently assuming that the project where it is being called from has its own db.
+    /// This should be changed in the future to add a flag which indicts which db to use
+    /// </summary>
+    /// <returns></returns>
     public static string GetDatabasePath()
     {
         // Get the base directory of the application
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-        // Combine the base directory with the relative path to the database
-        string relativePath = Path.Combine(baseDirectory, @"..\..\..\..\..\Database\Haulage.db");
+        //Gets the relative path to a database where it is being called from. 
+        
+        string[] parts = baseDirectory.Split("HaulageApplication");
+        var project = parts[1].Split(Path.DirectorySeparatorChar)[1];
+        var relativePath = Path.Combine(parts[0], "HaulageApplication" ,project, "Database\\Haulage.db");
 
         // Resolve to a full absolute path
         return Path.GetFullPath(relativePath);
@@ -32,6 +39,7 @@ public static class DatabaseSetup
                 GenerateData(connection);
             }
         }
+
     }
 
     //Drops all the tables inside the database 
@@ -49,13 +57,10 @@ public static class DatabaseSetup
             "DROP TABLE IF EXISTS [TripManifest]",
             "DROP TABLE IF EXISTS [Vehicle]"
         };
-
         foreach (string table in dropTableScripts)
         {
-            var command = new SQLiteCommand(connection)
-            {
-                CommandText = table
-            };
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = table;
             command.ExecuteNonQuery();
         }
     }
@@ -66,7 +71,7 @@ public static class DatabaseSetup
         CreateVehicles(connection);
     }
 
-    public static void CreateVehicles(SQLiteConnection connection)
+    private static void CreateVehicles(SQLiteConnection connection)
     {
         List<string> dataScripts = new List<string>
         {
@@ -77,20 +82,17 @@ public static class DatabaseSetup
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', '{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', '{Role.driver}', '17 Castle Road', 'Fragile');",
         };
-
         foreach (string tableScript in dataScripts)
         {
-            var command = new SQLiteCommand(connection)
-            {
-                CommandText = tableScript
-            };
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
             command.ExecuteNonQuery();
         }
     }
 
     public static void CreateTables(SQLiteConnection connection)
     {
-        //Create User Table for Haulage Data;
+
         List<string> createTableScripts = new List<string>
         {
             @"CREATE TABLE IF NOT EXISTS User (UserID TEXT NOT NULL, FullName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, Role TEXT NOT NULL, Address TEXT NOT NULL, Qualification TEXT);",
@@ -106,10 +108,8 @@ public static class DatabaseSetup
 
         foreach (string tableScript in createTableScripts)
         {
-            var command = new SQLiteCommand(connection)
-            {
-                CommandText = tableScript
-            };
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
             command.ExecuteNonQuery();
         }
 

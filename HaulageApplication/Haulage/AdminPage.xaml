@@ -7,7 +7,7 @@
              BackgroundColor="White">
     <VerticalStackLayout>
         <Label 
-            Text="&#10; Welcome to the Admin Page!"
+            Text="&#10; Welcome to Admin Page!"
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
