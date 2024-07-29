@@ -4,15 +4,21 @@
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugFramework>net8.0-windows10.0.19041.0</ActiveDebugFramework>
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
+    <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
+    <DefaultDevice>Pixel_7</DefaultDevice>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="CustomerPage.xaml">
+    <MauiXaml Update="Administrator Pages\AddEmployee.xaml">
+    <MauiXaml Update="AdminPages\ManageVehiclesPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="CustomerPages\TrackItemPage.xaml">
+    <MauiXaml Update="AdminPages\AddVehiclePage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="CustomerPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

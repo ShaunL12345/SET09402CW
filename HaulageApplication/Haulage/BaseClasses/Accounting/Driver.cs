@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.Accounting
 {
-    public class Driver : Person
+    public class Driver : User
     {
-        enum qualifications
-        {
-            fragileAllowed,
-            qualification2,
-            qualification3,
-        }
-        public void recordExpenses()
-        {
+        public Driver() { }
 
-        }
-
-        public void reportDelays()
+        public Driver(int employeeUserId, string employeeFullname, string employeeEmail, string employeeNumber, Role employeeRoleEnum, string employeeAddress, string employeeQualification)
         {
-
+            this.UserId = employeeUserId;
+            this.Fullname = employeeFullname;
+            this.Email = employeeEmail;
+            this.PhoneNumber = employeeNumber;
+            this.UserRole = employeeRoleEnum;
+            this.Address = employeeAddress;
+            this.Qualification = employeeQualification;
         }
 
-        public void confirmPickupOrDelivery()
-        {
+        
 
-        }
+
     }
 
     
