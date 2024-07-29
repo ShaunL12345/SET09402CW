@@ -7,6 +7,7 @@ using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModel;
 using Haulage.AdminPages;
+using Haulage.BaseClasses.BillingHandler;
 namespace HaulageTests
 {
 
@@ -128,5 +129,64 @@ namespace HaulageTests
             Assert.True(DriverCountAfter == initialDriverCount + 1, "Saved employee record successfully");
 
         }
+
+        [Fact]
+
+        public void GetBillsFromDatabase()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+            System.Threading.Thread.Sleep(1000);
+
+            //Act
+            var bills = BillExecutionService.GetBills();
+
+            //Assert
+            Assert.NotNull(bills);
+            Assert.True(bills.Count > 0, "Did not recieve any records from GetBills method");
+        }
+
+        [Fact]
+
+        public void DeleteBillsFromDatabase()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+            System.Threading.Thread.Sleep(1000);
+
+            //Act
+            var bills = BillExecutionService.GetBills();
+            System.Threading.Thread.Sleep(150);
+            var billsToRemove = bills.First();
+            var initialBillCount = bills.Count;
+            BillExecutionService.DeleteBill(billsToRemove.BillId);
+            System.Threading.Thread.Sleep(150);
+            var BillCountAfter = BillExecutionService.GetBills().Count;
+            System.Threading.Thread.Sleep(150);
+
+            //Assert
+            Assert.True(BillCountAfter == initialBillCount - 1, "Failed to delete a bill record");
+        }
+
+        [Fact]
+
+        public void SaveBillInDatabase()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+            System.Threading.Thread.Sleep(1000);
+
+            //Act
+            var bills = BillExecutionService.GetBills();
+            var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com");
+            var initialBillCount = bills.Count;
+            BillExecutionService.SaveBill(aNewBill);
+            var BillCountAfter = BillExecutionService.GetBills().Count;
+
+            //Assert
+            Assert.True(BillCountAfter == initialBillCount + 1, "Saved bill record successfully");
+
+        }
+
     }
 }
