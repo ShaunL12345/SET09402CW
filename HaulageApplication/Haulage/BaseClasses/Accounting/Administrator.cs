@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Haulage.BaseClasses.Accounting
 {
-    public  class Administrator : Person
+    public  class Administrator : User
     {
+
         public Administrator() { }
 
         public void ManageEmployees()
