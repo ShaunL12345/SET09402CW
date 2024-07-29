@@ -12,7 +12,7 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class DriverExecutionService
     {
-        public static List<Driver> GetDrivers(SQLiteConnection? connection = null)
+        public static List<Driver> GetDrivers()
         {
             var drivers = new List<Driver>();
             var sql = "SELECT [UserId]" +
@@ -24,46 +24,31 @@ namespace Haulage.DatabaseExecutionServices
                 ",[Qualification]" +
                 $"FROM [User] WHERE [Role] = '{Role.driver.ToString()}' ;";
 
-            if (connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    drivers = command.ExecuteQuery<Driver>();
-                }
-
-            }
-            else
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 drivers = command.ExecuteQuery<Driver>();
             }
 
-            
+
+
+
             return drivers;
         }
-        public static void DeleteDriver(int UserId, SQLiteConnection? connection = null)
+        public static void DeleteDriver(int UserId)
         {
             var drivers = new List<Driver>();
             var sql = $"DELETE FROM [User] WHERE [UserId] = {UserId};";
 
-            if (connection == null)
-            {
-                using (connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-                {
-                    var command = new SQLite.SQLiteCommand(connection);
-                    command.CommandText = sql;
-                    command.ExecuteNonQuery();
-                }
-            }
-            else
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
                 command.ExecuteNonQuery();
             }
+
         }
 
         public static void SaveDriver(Driver driver)
