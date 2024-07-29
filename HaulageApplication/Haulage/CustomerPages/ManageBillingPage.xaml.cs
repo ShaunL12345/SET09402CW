@@ -33,7 +33,6 @@ public partial class ManageBillingPage : ContentPage
 
             if (Int32.TryParse(billId, out var parsedID))
             {
-                BillExecutionService.DeleteBill(parsedID);
                 DisplayAlert("Success", "Bill details removed successfully.", "OK");
                 Console.WriteLine("Bill successfully removed");
             }
