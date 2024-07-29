@@ -82,7 +82,7 @@ namespace HaulageTests
             System.Threading.Thread.Sleep(150);
             //Assert
             Assert.NotNull(drivers);
-            Assert.True(drivers.Count < 0, "Did not recieve any records from GetDrivers method");
+            Assert.True(drivers.Count > 0, "Did not recieve any records from GetDrivers method");
         }
 
         [Fact]
@@ -109,26 +109,24 @@ namespace HaulageTests
             Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
         }
 
-        //[Fact]
+        [Fact]
 
-        //public void SaveDriverInDatabase()
-        //{
-        //    //Arrange
-        //    var connection = GetInMemoryConnection();
-        //    DatabaseSetup.InitializeDatabase();
-        //    DatabaseSetup.CreateTables(connection);
-        //    DatabaseSetup.GenerateData(connection);
+        public void SaveDriverInDatabase()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+            System.Threading.Thread.Sleep(1000);
 
-        //    //Act
-        //    var drivers = DriverExecutionService.GetDrivers(connection);
-        //    var aNewDriver = new Driver(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "12345 239387", Role.driver, "21 Test street", "fragile");
-        //    var initialDriverCount = drivers.Count;
-        //    DriverExecutionService.SaveDriver(aNewDriver);
-        //    var DriverCountAfter = DriverExecutionService.GetDrivers(connection).Count;
+            //Act
+            var drivers = DriverExecutionService.GetDrivers();
+            var aNewDriver = new Driver(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "12345 239387", Role.driver, "21 Test street", "fragile");
+            var initialDriverCount = drivers.Count;
+            DriverExecutionService.SaveDriver(aNewDriver);
+            var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
 
-        //    //Assert
-        //    Assert.True(DriverCountAfter == initialDriverCount + 1, "Saved employee record successfully");
+            //Assert
+            Assert.True(DriverCountAfter == initialDriverCount + 1, "Saved employee record successfully");
 
-        //}
+        }
     }
 }
