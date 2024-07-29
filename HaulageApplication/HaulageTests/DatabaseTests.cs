@@ -156,7 +156,7 @@ namespace HaulageTests
 
             //Act
             var bills = BillExecutionService.GetBills();
-            System.Threading.Thread.Sleep(150);
+            System.Threading.Thread.Sleep(300);
             var billsToRemove = bills.First();
             var initialBillCount = bills.Count;
             BillExecutionService.DeleteBill(billsToRemove.BillId);
