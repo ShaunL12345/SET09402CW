@@ -12,13 +12,19 @@ namespace Haulage.BaseClasses.BillingHandler
        public int BillId { get; set; }
        public string Fullname { get; set; }
        public string Email { get; set; }
+       public string Item {  get; set; }
+       public string ItemDesc { get; set; }
+       public string Cost { get; set; }
         public Billing() { }
 
-        public Billing(int customerBillId, string customerFullname, string customerEmail)
+        public Billing(int customerBillId, string customerFullname, string customerEmail, string customerItem, string customerItemDesc, string customerItemCost)
         {
             this.BillId = customerBillId;
             this.Fullname = customerFullname;
             this.Email = customerEmail;
+            this.Item = customerItem;
+            this.ItemDesc = customerItemDesc;
+            this.Cost = customerItemCost;
           
         }
 

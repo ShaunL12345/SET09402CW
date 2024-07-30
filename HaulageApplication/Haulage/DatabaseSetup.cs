@@ -81,9 +81,9 @@ public static class DatabaseSetup
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 'John Smith', 'john.smith@gmail.com', '07908 923349', '{Role.driver}', '26 Edinburgh Way', 'Fragile');",
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', '{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', '{Role.driver}', '17 Castle Road', 'Fragile');",
-            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES (928483, 'Aidan Gallagher', 'aidan.gallagher@gmail.com');",
-            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES (948248, 'Aidan Gallagher', 'aidan.gallagher@gmail.com');",
-            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES (827648, 'Aidan Gallagher', 'aidan.gallagher@gmail.com');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost]) VALUES (728472, 'Peter Hill', 'peter.hill@gmail.com', 'Exhaust', 'exhaust for 1.2 litre Honda', '£89.90');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost]) VALUES (928483, 'Peter Hill', 'peter.hill@gmail.com', 'Gearbox', 'Gearbox for 1.2 litre Honda', '£150.45');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost]) VALUES (123829, 'Peter Hill', 'peter.hill@gmail.com', 'Brake Pads', 'Brake Pads for 1.2 litre Honda', '£140.00');",
         };
         foreach (string tableScript in dataScripts)
         {
@@ -104,7 +104,7 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT UNIQUE NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL, Item TEXT NOT NULL, ItemDesc TEXT NOT NULL, Cost TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL);"
         };

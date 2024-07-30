@@ -18,6 +18,9 @@ namespace Haulage.DatabaseExecutionServices
             var sql = "SELECT [BillId]" +
                 ",[Fullname]" +
                 ",[Email]" +
+                ",[Item]" +
+                ",[ItemDesc]" +
+                ",[Cost]" +
                 "FROM [Bill];";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
@@ -46,7 +49,7 @@ namespace Haulage.DatabaseExecutionServices
         }
         public static void SaveBill(Billing billing)
         {
-            var sql = $"INSERT INTO [Bill] ([BillId], [Fullname], [Email]) VALUES ('{billing.BillId}','{billing.Fullname}', '{billing.Email}');";
+            var sql = $"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost]) VALUES ('{billing.BillId}','{billing.Fullname}', '{billing.Email}', '{billing.Item}', '{billing.ItemDesc}', '{billing.Cost}');";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {

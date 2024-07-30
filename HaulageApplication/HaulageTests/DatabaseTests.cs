@@ -8,9 +8,11 @@ using Haulage.BaseClasses.Accounting;
 using Haulage.viewModel;
 using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
+
+
 namespace HaulageTests
 {
-
+    [CollectionDefinition("databaseTests", DisableParallelization = true)]
     /// <summary>
     /// 
     /// </summary>
