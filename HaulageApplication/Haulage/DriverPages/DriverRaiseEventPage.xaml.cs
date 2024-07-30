@@ -1,6 +1,9 @@
 namespace Haulage.DriverPages;
 using Haulage.BaseClasses.TripHandler;
 using Haulage.DatabaseExecutionServices;
+using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
+
 public partial class DriverRaiseEventPage : ContentPage
 {
 	public DriverRaiseEventPage()
@@ -10,6 +13,20 @@ public partial class DriverRaiseEventPage : ContentPage
 
     private void SaveTripEvent_Clicked(object sender, EventArgs e)
     {
+
+
+        (string status, string message, string button) =  raiseEvent(DriverIdEntry, TripIdEntry, EventTypeEntry, DescriptionEntry);
+        DisplayAlert(status, message, button);
+    }
+
+    
+
+    public static (string, string, string) raiseEvent(Entry DriverIdEntry,
+                                    Entry TripIdEntry,
+                                    Entry EventTypeEntry,
+                                    Entry DescriptionEntry
+         )
+    {
         try
         {
             TripEvent evt = new TripEvent()
@@ -17,7 +34,7 @@ public partial class DriverRaiseEventPage : ContentPage
                 DriverId = Int32.Parse(DriverIdEntry.Text),
                 TripId = Int32.Parse(TripIdEntry.Text),
                 EventType = (TripEvent.Eventtype)Int32.Parse(EventTypeEntry.Text),
-                Description = DriverIdEntry.Text
+                Description = DescriptionEntry.Text
             };
             DriverExecutionService.RaiseEvent(evt);
 
@@ -25,13 +42,11 @@ public partial class DriverRaiseEventPage : ContentPage
             TripIdEntry.Text = "";
             EventTypeEntry.Text = "";
             DescriptionEntry.Text = "";
-            DisplayAlert("Success", "Vehicle details updated successfully.", "OK");
+            return ("Success", "Vehicle details updated successfully.", "OK");
         }
         catch (Exception)
         {
-            DisplayAlert("Error", $"Failed to update Vehicle details.", "OK");
+            return ("Error", $"Failed to update Vehicle details.", "OK");
         }
-
-
     }
 }
