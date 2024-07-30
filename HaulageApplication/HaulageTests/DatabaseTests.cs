@@ -180,7 +180,7 @@ namespace HaulageTests
 
             //Act
             var bills = BillExecutionService.GetBills();
-            var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com");
+            var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "Brake Pads", "Brake pads for test vehicle", "£80.00");
             var initialBillCount = bills.Count;
             BillExecutionService.SaveBill(aNewBill);
             var BillCountAfter = BillExecutionService.GetBills().Count;
