@@ -16,8 +16,16 @@ namespace Haulage.DatabaseExecutionServices
 
         public static List<TripEvent> GetEvents()
         {
-            var vehicles = new List<TripEvent>();
+            var events = new List<TripEvent>();
             var sql = "SELECT [EventId], [DriverId], [EventType], [Description] FROM [Event];";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                events = command.ExecuteQuery<TripEvent>();
+            }
+            return events;
         }
         
         public static List<Driver> GetDrivers()
@@ -36,19 +44,23 @@ namespace Haulage.DatabaseExecutionServices
             {
                 var command = new SQLite.SQLiteCommand(connection);
                 command.CommandText = sql;
-                vehicles = command.ExecuteQuery<TripEvent>();
+                drivers= command.ExecuteQuery<Driver>();
             }
-            return vehicles;
+            return drivers;
         }
 
 
         public static void RaiseEvent(TripEvent evt) 
         {
-            var sql = $"Insert into [Event] ([EventId], [DriverId], [TripId], [EventType]) VALUES ({evt.DriverId},{evt.TripId},'{evt.EventType}','{evt.Description}');";
-                drivers = command.ExecuteQuery<Driver>();
-    
+            var sql = $"Insert into [Event] ([DriverId], [TripId], [EventType], [Description]) VALUES ({evt.DriverId},{evt.TripId},'{evt.EventType}','{evt.Description}');";
 
-            return drivers;
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+
         }
         
         public static void DeleteDriver(int UserId)

@@ -19,7 +19,7 @@ namespace HaulageTests
     public class DriverRaiseEventTests
     {
         [Fact]
-        public void SaveVehicleToDatabse()
+        public void DriverRaiseEvent()
         {
             DatabaseSetup.InitializeDatabase();
 
