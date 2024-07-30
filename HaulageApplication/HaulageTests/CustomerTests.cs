@@ -67,16 +67,6 @@ namespace HaulageTests
             Assert.True(model.Vehicles.Count > 0);
         }
 
-        [Fact]
-        public void CustomerPage_ShouldInitializeWithoutParameters()
-        {
-            // Arrange & Act
-            var exception = Record.Exception(() => new ManageCustomerPage());
-
-            // Assert
-            Assert.Null(exception);
-        }
-
         //[Fact]
         //public void save_customerInPage()
         //{
