@@ -9,7 +9,13 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="DriverPages\AddTripExpensePage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="CustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="DriverPages\ManageExpensesPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

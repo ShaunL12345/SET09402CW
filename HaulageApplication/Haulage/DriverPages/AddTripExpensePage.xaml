@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Haulage.DriverPages.AddTripExpensePage"
+             Title="AddEmployee">
+    <VerticalStackLayout>
+        <StackLayout>
+            <Grid  BackgroundColor="DarkGrey" Margin="30,20,30,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.9*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="White" Grid.RowSpan="2"
+                     Text ="ExpenseId"/>
+                <Label Grid.Row="0" Grid.Column="1" TextColor="White" Grid.RowSpan="2"
+                     Text ="DriverId"/>
+                <Label Grid.Row="0" Grid.Column="2" TextColor="White" Grid.RowSpan="2"
+                     Text ="VehicleId"/>
+                <Label Grid.Row="0" Grid.Column="3" TextColor="White" Grid.RowSpan="2"
+                     Text ="Fullname"/>
+                <Label Grid.Row="0" Grid.Column="4" TextColor="White" Grid.RowSpan="2"
+                     Text ="Expense"/>
+                <Label Grid.Row="0" Grid.Column="5" TextColor="White" Grid.RowSpan="2"
+                     Text ="Expense Description"/>
+                <Label Grid.Row="0" Grid.Column="6" TextColor="White" Grid.RowSpan="2"
+                     Text ="Expense Cost"/>
+
+                <Entry
+                    x:Name="ExpenseIdEntry"
+                    Placeholder="ExpenseId"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Keyboard="Numeric">
+                </Entry>
+                <Entry
+                    x:Name="DriverIdEntry"
+                    Placeholder="DriverId"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Keyboard="Numeric">
+                </Entry>
+                <Entry
+                    x:Name="VehicleIdEntry"
+                    Placeholder="VehicleId"
+                    Grid.Row="1"
+                    Grid.Column="2">
+                </Entry>
+                <Entry
+                    x:Name="FullnameEntry"
+                    Placeholder="Fullname"
+                    Grid.Row="1"
+                    Grid.Column="3">
+                </Entry>
+                <Entry
+                    x:Name="ExpenseEntry"
+                    Placeholder="Expense"
+                    Grid.Row="1"
+                    Grid.Column="4">
+                </Entry>
+                <Entry
+                    x:Name="ExpenseDescEntry"
+                    Placeholder="Expense Description"
+                    Grid.Row="1"
+                    Grid.Column="5">
+                </Entry>
+                <Entry
+                    x:Name="ExpenseCostEntry"
+                    Placeholder="Expense Cost"
+                    Grid.Row="1"
+                    Grid.Column="6">
+                </Entry>
+
+            </Grid>
+            <CollectionView x:Name="DriversCollectionView" ItemsSource="{Binding expenses}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame BackgroundColor="#ac99ea" Margin="30,15,30,0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*" />
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" Grid.Column="0"
+                               Text="{Binding ExpenseId}"
+                               FontAttributes="Bold"/>
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                               Grid.Column="1"
+                               Text="{Binding DriverId}"
+                               FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                               Grid.Column="2"
+                               Text="{Binding VehicleId}"
+                               FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                               Grid.Column="3"
+                               Text="{Binding Fullname}"
+                               FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                               Grid.Column="4"
+                               Text="{Binding Expense}"
+                               FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                               Grid.Column="5"
+                               Text="{Binding ExpenseDescription}"
+                               FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                              Grid.Column="6"
+                              Text="{Binding ExpenseCost}"
+                              FontAttributes="Italic"/>
+
+                                </Grid>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+        <HorizontalStackLayout>
+            <Button
+x:Name="SaveExpenseRecord"
+Text="Save Expense Record" 
+Clicked="SaveExpenseRecord_Clicked"
+Padding="10"
+BorderColor="#9D00FF"/>
+
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

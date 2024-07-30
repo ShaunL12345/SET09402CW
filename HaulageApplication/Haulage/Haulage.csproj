@@ -59,6 +59,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Administrator.jpeg" />
 	  <None Remove="Resources\Images\administrator.jpeg" />
+	  <None Remove="Resources\Images\driver.jpeg" />
 	  <None Remove="Resources\Images\hh_admin_icon.png" />
 	  <None Remove="Resources\Images\hh_checked_icon.png" />
 	  <None Remove="Resources\Images\hh_check_list_icon.png" />
@@ -98,6 +99,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="DriverPages\AddTripExpensePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="AdminPages\AddEmployee.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -107,19 +111,18 @@
 	  <MauiXaml Update="CustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="DriverPage.xaml">
+	  <MauiXaml Update="DriverPages\DriverPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="AdminPages\ManageEmployees.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="DriverPages\ManageExpensesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Team.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Models\" />
 	</ItemGroup>
 
 </Project>
