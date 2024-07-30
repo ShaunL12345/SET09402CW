@@ -8,6 +8,7 @@ using System;
 
 namespace HaulageTests
 {
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class CustomerTests
     {
         private Customer _customer;
