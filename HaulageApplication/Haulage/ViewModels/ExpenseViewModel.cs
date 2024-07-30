@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using Haulage.BaseClasses.BillingHandler;
-using Haulage.Models;
 using Haulage.DatabaseExecutionServices;
 
 namespace Haulage.viewModel
@@ -17,7 +16,7 @@ namespace Haulage.viewModel
         public ExpenseViewModel()
         {
             Expenses = new ObservableCollection<Expense>();
-            var ExpenseObjects = ExpenseModel.expenses;
+            var ExpenseObjects = ExpenseModel.Expenses;
             foreach (var ExpenseObject in ExpenseObjects)
             {
                 Expenses.Add(ExpenseObject);

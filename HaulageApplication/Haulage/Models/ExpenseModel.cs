@@ -12,7 +12,7 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class ExpenseModel
     {
-        public static List<Expense> expenses = ExpenseExecutionService.GetExpenses();
+        public static List<Expense> Expenses = ExpenseExecutionService.GetExpenses();
 
     }
 }

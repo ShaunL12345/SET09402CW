@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Haulage.DriverPages.AddTripExpensePage"
-             Title="AddEmployee">
+             Title="AddExpense">
     <VerticalStackLayout>
         <StackLayout>
             <Grid  BackgroundColor="DarkGrey" Margin="30,20,30,10">
@@ -80,7 +80,7 @@
                 </Entry>
 
             </Grid>
-            <CollectionView x:Name="DriversCollectionView" ItemsSource="{Binding expenses}">
+            <CollectionView x:Name="ExpensesCollectionView" ItemsSource="{Binding Expenses}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -91,12 +91,12 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.5*" />
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.0*"/>
+                                        <ColumnDefinition Width="1.0*"/>
+                                        <ColumnDefinition Width="1.0*"/>
+                                        <ColumnDefinition Width="1.0*"/>
+                                        <ColumnDefinition Width="1.0*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" Grid.Column="0"
                                Text="{Binding ExpenseId}"

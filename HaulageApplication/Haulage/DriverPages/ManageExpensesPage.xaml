@@ -7,14 +7,14 @@
              xmlns:viewModel ="clr-namespace:Haulage.viewModel">
 
     <ContentPage.BindingContext>
-        <viewModel:DriverViewModel/>
+        <viewModel:ExpenseViewModel/>
     </ContentPage.BindingContext>
     <VerticalStackLayout>
         <Label 
             Text="Welcome Administrator Here You Can Manage Haulage Employees"
             FontSize="Medium"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"/>
         <StackLayout>
             <Grid  BackgroundColor="DarkGrey" Margin="30,40,40,10">
                 <Grid.RowDefinitions>
@@ -46,7 +46,7 @@
                              Text ="ExpenseCost"/>
             </Grid>
 
-            <CollectionView Loaded="Collection_Loaded" x:Name="ExpensesCollectionView" ItemsSource="{Binding expenses}">
+            <CollectionView Loaded="Collection_Loaded" x:Name="ExpensesCollectionView" ItemsSource="{Binding Expenses}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -57,46 +57,46 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1.0*" />
-                                        <ColumnDefinition Width="1.0*"/>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*"/>
                                         <ColumnDefinition Width="2.0*"/>
                                         <ColumnDefinition Width="2.0*"/>
-                                        <ColumnDefinition Width="1.0*"/>
                                         <ColumnDefinition Width="2.0*"/>
+                                        <ColumnDefinition Width="2.3*"/>
                                         <ColumnDefinition Width="2.0*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" Grid.Column="0"
-                                       Text="{Binding ExpenseId}"
+                                       Text="{Binding expenseId}"
                                        FontAttributes="Bold"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="1"
-                                       Text="{Binding DriverId}"
+                                       Text="{Binding driverId}"
                                        FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="2"
-                                       Text="{Binding VehicleId}"
+                                       Text="{Binding vehicleId}"
                                        FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="3"
-                                       Text="{Binding Fullname}"
+                                       Text="{Binding fullname}"
                                        FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="4"
-                                       Text="{Binding Expense}"
+                                       Text="{Binding expense}"
                                        FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                        Grid.Column="5"
-                                       Text="{Binding ExpenseDescription}"
+                                       Text="{Binding expenseDescription}"
                                        FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="3"
                                       Grid.Column="6"
-                                      Text="{Binding ExpenseCost}"
+                                      Text="{Binding exspenseCost}"
                                       FontAttributes="Italic"/>
                                 </Grid>
                             </Frame>

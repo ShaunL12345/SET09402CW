@@ -1,5 +1,6 @@
 using Haulage.BaseClasses.Accounting;
 using Haulage.DatabaseExecutionServices;
+using Haulage.Models;
 using Haulage.viewModel;
 using SQLite;
 using System.Runtime.CompilerServices;
@@ -13,13 +14,14 @@ public partial class ManageExpensesPage : ContentPage
 	{
 		InitializeComponent();
 
-        Button AddExpenses = FindByName("AddExpenses") as Button;
-        AddExpenses.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddTripExpensePage()); };
+        //Button AddExpenses = FindByName("AddExpenses") as Button;
+        //AddExpenses.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddTripExpensePage()); };
 
     }
 
     private void DeleteExpense_Clicked(object sender, EventArgs e)
     {
+
         var sql = $"DELETE FROM Expense WHERE ExpenseId = {entryExpenseId.Text}";
 
         using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
@@ -54,7 +56,7 @@ public partial class ManageExpensesPage : ContentPage
     }
 
     private void AddExpenses_Clicked(object sender, EventArgs e)
-    {        
-
+    {
+        AddExpenses.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddTripExpensePage()); };
     }
 }
