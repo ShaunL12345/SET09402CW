@@ -12,7 +12,7 @@ public partial class ManageCustomerPage : ContentPage
 
 
 
-    private void DeleteCustomer_Clicked(object sender, EventArgs e)
+    public void DeleteCustomer_Clicked(object sender, EventArgs e)
     {
         if (EntryCustomerId.Text != null)
         {

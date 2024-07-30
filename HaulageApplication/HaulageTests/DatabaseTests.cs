@@ -54,7 +54,6 @@ namespace HaulageTests
                 Status = Vehicle.StatusType.onroute
             };
             VehicleExecutionService.SaveVehicle(vehicle);
-            System.Threading.Thread.Sleep(150);
             var vehiclesCountAfter = VehicleExecutionService.GetVehicles().Count;
             Assert.True(vehiclesCountAfter == vehiclesCountBefore + 1, "VehiclesRecord was not saved");
         }
