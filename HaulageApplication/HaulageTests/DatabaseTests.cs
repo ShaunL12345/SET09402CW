@@ -8,6 +8,7 @@ using Haulage.BaseClasses.Accounting;
 using Haulage.viewModel;
 using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
+using Haulage.BillviewModel;
 
 
 namespace HaulageTests
@@ -133,12 +134,24 @@ namespace HaulageTests
         }
 
         [Fact]
+        public void GetBillViewModel()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
 
+            //Act
+            var model = new BillViewModel();
+
+            //Assert
+            Assert.NotNull(model);
+            Assert.True(model.Bills.Count > 0);
+        }
+
+        [Fact]
         public void GetBillsFromDatabase()
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
 
             //Act
             var bills = BillExecutionService.GetBills();
@@ -158,7 +171,6 @@ namespace HaulageTests
 
             //Act
             var bills = BillExecutionService.GetBills();
-            System.Threading.Thread.Sleep(300);
             var billsToRemove = bills.First();
             var initialBillCount = bills.Count;
             BillExecutionService.DeleteBill(billsToRemove.BillId);
@@ -180,7 +192,7 @@ namespace HaulageTests
 
             //Act
             var bills = BillExecutionService.GetBills();
-            var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "Brake Pads", "Brake pads for test vehicle", "£80.00");
+            var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "Brake Pads", "Brake pads for test vehicle", 80.00);
             var initialBillCount = bills.Count;
             BillExecutionService.SaveBill(aNewBill);
             var BillCountAfter = BillExecutionService.GetBills().Count;

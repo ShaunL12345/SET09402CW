@@ -14,8 +14,12 @@ public partial class CustomerPage : ContentPage
         ManageBilling.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageBillingPage()); };
     }
 
-    private void ManageBilling_Clicked(object sender, EventArgs e)
+   private void ManageBilling_Clicked(object sender, EventArgs e)
     {
 
+
     }
+    
+       
+    
 }
