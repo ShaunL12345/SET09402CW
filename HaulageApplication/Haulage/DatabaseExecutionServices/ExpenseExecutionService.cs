@@ -39,7 +39,7 @@ namespace Haulage.DatabaseExecutionServices
         }
         public static void SaveExpense(Expense expense)
         {
-            var sql = $"Insert into [Expense] ([ExpenseId], [DriverID], [VehicleId], [Fullname], [Expense], [ExpenseDescription], [ExpenseCost]) VALUES ({expense.expenseId},{expense.driverId},'{expense.vehicleId}',{expense.fullname},{expense.expense},'{expense.expenseDescription}', '{expense.exspenseCost}');";
+            var sql = $"Insert into [Expense] ([ExpenseId], [DriverID], [VehicleId], [Fullname], [Expense], [ExpenseDescription], [ExpenseCost]) VALUES ({expense.expenseId},{expense.driverId},'{expense.vehicleId}',{expense.fullname},{expense.expense},'{expense.expenseDescription}', '{expense.expenseCost}');";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {

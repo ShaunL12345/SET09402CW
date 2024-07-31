@@ -14,7 +14,7 @@ namespace Haulage.BaseClasses.BillingHandler
         public string fullname { get; set; }
         public string expense { get; set; }
         public string expenseDescription { get; set; }
-        public string exspenseCost { get; set; }
+        public string expenseCost { get; set; }
 
         public Expense() { }
 
@@ -26,7 +26,7 @@ namespace Haulage.BaseClasses.BillingHandler
             this.fullname = driverFullname;
             this.expense = driverExpense;
             this.expenseDescription = driverExpenseDesc;
-            this.exspenseCost = driverExpenseCost;
+            this.expenseCost = driverExpenseCost;
         }
 
 

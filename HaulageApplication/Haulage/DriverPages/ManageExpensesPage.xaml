@@ -96,7 +96,7 @@
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="3"
                                       Grid.Column="6"
-                                      Text="{Binding exspenseCost}"
+                                      Text="{Binding expenseCost}"
                                       FontAttributes="Italic"/>
                                 </Grid>
                             </Frame>

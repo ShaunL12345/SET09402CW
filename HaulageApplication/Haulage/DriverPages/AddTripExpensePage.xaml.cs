@@ -34,6 +34,8 @@ public partial class AddTripExpensePage : ContentPage
             command.ExecuteQuery<DBNull>();
         }
 
+        DisplayAlert("Success", "Expense details saved successfully.", "OK");
+        Console.WriteLine("Expense successfully Added");
 
     }
 

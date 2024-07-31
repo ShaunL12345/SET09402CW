@@ -10,7 +10,7 @@ using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
 namespace HaulageTests
 {
-
+    [CollectionDefinition("databasetests", DisableParallelization = true)]
     /// <summary>
     /// 
     /// </summary>

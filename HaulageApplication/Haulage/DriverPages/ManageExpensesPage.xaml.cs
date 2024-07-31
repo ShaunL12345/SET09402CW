@@ -14,9 +14,6 @@ public partial class ManageExpensesPage : ContentPage
 	{
 		InitializeComponent();
 
-        //Button AddExpenses = FindByName("AddExpenses") as Button;
-        //AddExpenses.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddTripExpensePage()); };
-
     }
 
     private void DeleteExpense_Clicked(object sender, EventArgs e)
