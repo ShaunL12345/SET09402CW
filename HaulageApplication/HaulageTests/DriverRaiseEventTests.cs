@@ -51,14 +51,14 @@ namespace HaulageTests
 
             var eventCountBefore = DriverExecutionService.GetEvents().Count;
 
-            TripEvent evt = new TripEvent()
+            TripEvent raisedEvent = new TripEvent()
             {
                 DriverId = 1,
                 TripId = 1,
                 EventType = 0,
                 Description = "Sheep in road"
             };
-            DriverExecutionService.RaiseEvent(evt);
+            DriverExecutionService.RaiseEvent(raisedEvent);
             
             var eventCountAfter = DriverExecutionService.GetEvents().Count;
             Assert.True(eventCountAfter == eventCountBefore + 1, "trip event record was not saved");
