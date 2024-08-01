@@ -50,9 +50,9 @@ namespace Haulage.DatabaseExecutionServices
         }
 
 
-        public static void RaiseEvent(TripEvent evt) 
+        public static void RaiseEvent(TripEvent raisedEvent) 
         {
-            var sql = $"Insert into [Event] ([DriverId], [TripId], [EventType], [Description]) VALUES ({evt.DriverId},{evt.TripId},'{evt.EventType}','{evt.Description}');";
+            var sql = $"Insert into [Event] ([DriverId], [TripId], [EventType], [Description]) VALUES ({raisedEvent.DriverId},{raisedEvent.TripId},'{raisedEvent.EventType}','{raisedEvent.Description}');";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {

@@ -29,14 +29,14 @@ public partial class DriverRaiseEventPage : ContentPage
     {
         try
         {
-            TripEvent evt = new TripEvent()
+            TripEvent raisedEvent = new TripEvent()
             {
                 DriverId = Int32.Parse(DriverIdEntry.Text),
                 TripId = Int32.Parse(TripIdEntry.Text),
                 EventType = (TripEvent.Eventtype)Int32.Parse(EventTypeEntry.Text),
                 Description = DescriptionEntry.Text
             };
-            DriverExecutionService.RaiseEvent(evt);
+            DriverExecutionService.RaiseEvent(raisedEvent);
 
             DriverIdEntry.Text = "";
             TripIdEntry.Text = "";
