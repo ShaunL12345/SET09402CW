@@ -15,6 +15,7 @@ namespace Haulage.BaseClasses.BillingHandler
        public string Item {  get; set; }
        public string ItemDesc { get; set; }
        public double Cost { get; set; }
+       public string Paid { get; set; }
         public Billing() { }
 
         public Billing(int customerBillId, string customerFullname, string customerEmail, string customerItem, string customerItemDesc, double customerItemCost)

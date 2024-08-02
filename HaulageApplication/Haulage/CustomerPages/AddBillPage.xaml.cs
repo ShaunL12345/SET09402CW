@@ -22,8 +22,9 @@ public partial class AddBillPage : ContentPage
         string customerItem = ItemEntry.Text;
         string customerItemDesc = ItemDescEntry.Text;
         string customerItemCost = CostEntry.Text;
+        string customerPaid = PaidEntry.Text;
 
-		var sql = $"INSERT INTO Bill VALUES ({customerBillId}, '{customerFullname}', '{customerEmail}', '{customerItem}', '{customerItemDesc}', '{customerItemCost}');";
+		var sql = $"INSERT INTO Bill VALUES ({customerBillId}, '{customerFullname}', '{customerEmail}', '{customerItem}', '{customerItemDesc}', '{customerItemCost}', '{customerPaid}');";
 
         using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
         {

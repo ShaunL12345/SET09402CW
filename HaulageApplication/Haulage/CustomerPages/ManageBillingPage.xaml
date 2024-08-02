@@ -28,6 +28,7 @@
                     <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="2.0*"/>
                     <ColumnDefinition Width="1.0*"/>
+                    <ColumnDefinition Width="1.0*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" TextColor="White" Grid.RowSpan="2"
                              Text ="BillId"/>
@@ -41,6 +42,8 @@
                              Text ="ItemDesc"/>
                 <Label Grid.Row="0" Grid.Column="5" TextColor="White" Grid.RowSpan="2"
                              Text ="Cost"/>
+                <Label Grid.Row="0" Grid.Column="6" TextColor="White" Grid.RowSpan="2"
+                             Text ="Paid"/>
             </Grid>
 
             <CollectionView x:Name="BillingCollectionView" ItemsSource= "{Binding Bills}" >
@@ -58,7 +61,8 @@
                                         <ColumnDefinition Width="2.0*"/>
                                         <ColumnDefinition Width="1.5*"/>
                                         <ColumnDefinition Width="1.5*" />
-                                        <ColumnDefinition Width="2.0*"/>
+                                        <ColumnDefinition Width="2.3*"/>
+                                        <ColumnDefinition Width="1.0*"/>
                                         <ColumnDefinition Width="1.5*"/>
                                     </Grid.ColumnDefinitions>
                                     
@@ -91,6 +95,11 @@
                                        Grid.Column="5"
                                        Text="{Binding Cost}"
                                        FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                                      Grid.Column="6"
+                                      Text="{Binding Paid}"
+                                      FontAttributes="Italic"/>
 
                                 </Grid>
                             </Frame>
