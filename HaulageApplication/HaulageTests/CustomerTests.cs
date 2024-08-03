@@ -66,36 +66,5 @@ namespace HaulageTests
             Assert.NotNull(model);
             Assert.True(model.Vehicles.Count > 0);
         }
-
-        //[Fact]
-        //public void save_customerInPage()
-        //{
-        //    DatabaseSetup.InitializeDatabase();
-        //    // Arrange
-        //    var customer = new Customer()
-        //    {
-        //        UserId = 1234567,
-        //        Fullname = "Test user",
-        //        Email = "Test@testemail",
-        //        PhoneNumber = "123455676",
-        //        UserRole = Role.customer,
-        //        Address = "TestAddress"
-        //    };
-            
-        //    // Act
-        //    var page = new ManageCustomerPage();
-        //    page.FindByName<Entry>("EntryCustomerId").Text = "1";
-        //    var button = page.FindByName<Button>("DeleteCustomer");
-
-        //    var vehiclesCountBefore = CustomerExecutionService.GetCustomers().Count;
-
-        //    page.DeleteCustomer_Clicked(null,null);
-
-        //    var vehiclesCountAfter = CustomerExecutionService.GetCustomers().Count;
-
-        //    Assert.True(vehiclesCountAfter == vehiclesCountAfter - 1);
-
-        //    // Assert
-        //}
     }
 }

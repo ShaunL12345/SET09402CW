@@ -5,7 +5,7 @@ using SQLite;
 using Haulage.DatabaseExecutionServices;
 using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
-using Haulage.viewModel;
+using Haulage.viewModels;
 using Haulage.AdminPages;
 namespace HaulageTests
 {
