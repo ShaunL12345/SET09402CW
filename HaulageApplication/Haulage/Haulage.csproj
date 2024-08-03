@@ -98,12 +98,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AdminPage.xaml">
 	  <Compile Update="CustomerPages\TrackItemPage.xaml.cs">
 	    <DependentUpon>TrackItemPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
-
 	<ItemGroup>
 	  <MauiXaml Update="AdminPages\AddEmployee.xaml">
 	    <Generator>MSBuild:Compile</Generator>
