@@ -36,21 +36,21 @@
                                    Grid.Row="1"
                                 Text="{Binding FullName}"
                                 FontAttributes="Bold" />
-                            <Label Grid.Column="2"
-                                Grid.Row="1"
+                            <Label Grid.Column="1"
+                                Grid.Row="2"
                                 Text=" £"
                                  />
-                            <Label Grid.Row="1"
+                            <Label Grid.Row="2"
                                 Grid.Column="3"
                                 Text="{Binding TotalAmount}"
                                 FontAttributes="Italic"
                                  />
-                            <Label Grid.Row="2"
+                            <Label Grid.Row="3"
                                 Grid.Column="1"
                                 Text="Bill Status: "
                                 FontAttributes="Italic"
                                  />
-                            <Label Grid.Row="2"
+                            <Label Grid.Row="3"
                                    Grid.Column="3"
                                    Text="{Binding Status}"
                                    FontAttributes="Italic"

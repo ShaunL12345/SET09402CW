@@ -80,9 +80,9 @@ public static class DatabaseSetup
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (1, 1, 'test1', 1, 1, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (2, 2, 'test2', 2, 2, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);",
-            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 'John Smith', 'john.smith@gmail.com', '07908 923349', '{Role.driver}', '26 Edinburgh Way', 'Fragile');",
-            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', '{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
-            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', '{Role.driver}', '17 Castle Road', 'Fragile');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 'John Smith', 'john.smith@gmail.com', '07908 923349','{Role.driver}', '26 Edinburgh Way', 'Fragile');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284','{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929','{Role.driver}', '17 Castle Road', 'Fragile');",
         };
         foreach (string tableScript in dataScripts)
         {
@@ -114,9 +114,10 @@ public static class DatabaseSetup
     {
         List<string> dataScripts = new List<string>
         {
-            @"INSERT INTO [User] ([UserID], [RoleID], [FullName]) VALUES (1, 2, 'John Smith');",
-           @"INSERT INTO [User] ([UserID], [RoleID], [FullName]) VALUES (2, 2, 'Joan Smith');",
-           @"INSERT INTO [User] ([UserID], [RoleID], [FullName]) VALUES (3, 2, 'Juan Smith');"
+
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (1, 'John Smith', 'john.smith@gmail.com', '07908 923349', '{Role.customer}', '26 Edinburgh Way', 'None');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (2, 'Joan Smith', 'joan.smith@gmail.com', '07802 8248284', '{Role.customer}', '22 ParkHill Avenue', 'None');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (3, 'Juan Smith', 'juan.smith@gmail.com', '04838 385929','{Role.customer}', '17 Castle Road', 'None');",
         };
         foreach (string tableScript in dataScripts)
         {
