@@ -133,7 +133,6 @@ public static class DatabaseSetup
 
         List<string> createTableScripts = new List<string>
         {
-            @"CREATE TABLE IF NOT EXISTS User (UserID INTEGER PRIMARY KEY AUTOINCREMENT, RoleID INTEGER NOT NULL, FullName TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL , Description TEXT NOT NULL, ItemCategory INTEGER NOT NULL, SignedOff BOOL NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS User (UserID TEXT NOT NULL, FullName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, Role TEXT NOT NULL, Address TEXT NOT NULL, Qualification TEXT);",
             @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Description TEXT NOT NULL);",
