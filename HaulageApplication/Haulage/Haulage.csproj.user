@@ -9,5 +9,8 @@
     <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="DriverPages\DriverRaiseEventPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
 </Project>

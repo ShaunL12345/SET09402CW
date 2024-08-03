@@ -7,13 +7,15 @@ using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModels;
 using Haulage.AdminPages;
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace HaulageTests
 {
+    
 
     /// <summary>
     /// 
     /// </summary>
-    [CollectionDefinition("databaseTests", DisableParallelization = true)]
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class DatabaseTests
     {
         [Fact]

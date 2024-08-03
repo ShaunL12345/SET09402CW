@@ -12,7 +12,7 @@ using Haulage;
 using Haulage.AdminPages;
 namespace HaulageTests
 {
-    [CollectionDefinition("databaseTests", DisableParallelization = true)]
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class CustomerTests
     {
         [Fact]
