@@ -69,6 +69,8 @@ public static class DatabaseSetup
     {
         //Vehicle data
         CreateVehicles(connection);
+        CreateBills(connection);
+        CreateUsers(connection);
     }
 
     private static void CreateVehicles(SQLiteConnection connection)
@@ -78,9 +80,9 @@ public static class DatabaseSetup
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (1, 1, 'test1', 1, 1, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (2, 2, 'test2', 2, 2, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);",
-            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 'John Smith', 'john.smith@gmail.com', '07908 923349', '{Role.driver}', '26 Edinburgh Way', 'Fragile');",
-            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', '{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
-            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', '{Role.driver}', '17 Castle Road', 'Fragile');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9749274, 'John Smith', 'john.smith@gmail.com', '07908 923349','{Role.driver}', '26 Edinburgh Way', 'Fragile');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284','{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929','{Role.driver}', '17 Castle Road', 'Fragile');",
         };
         foreach (string tableScript in dataScripts)
         {
@@ -89,6 +91,42 @@ public static class DatabaseSetup
             command.ExecuteNonQuery();
         }
     }
+
+
+    private static void CreateBills(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [Bill] ([BillId], [UserId], [ItemId], [Status], [TotalAmount]) VALUES (1, 1, 1, 1, 30.99);",
+            @"INSERT INTO [Bill] ([BillId], [UserId], [ItemId], [Status], [TotalAmount]) VALUES (2, 1, 3, 0, 40.99);",
+            @"INSERT INTO [Bill] ([BillId], [UserId], [ItemId], [Status], [TotalAmount]) VALUES (3, 3, 2, 1, 35.00);"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
+
+    private static void CreateUsers(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (1, 'John Smith', 'john.smith@gmail.com', '07908 923349', '{Role.customer}', '26 Edinburgh Way', 'None');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (2, 'Joan Smith', 'joan.smith@gmail.com', '07802 8248284', '{Role.customer}', '22 ParkHill Avenue', 'None');",
+            $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [Role], [Address], [Qualification]) VALUES (3, 'Juan Smith', 'juan.smith@gmail.com', '04838 385929','{Role.customer}', '17 Castle Road', 'None');",
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
 
     public static void CreateTables(SQLiteConnection connection)
     {
@@ -101,7 +139,7 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT UNIQUE NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, UserId INTEGER NOT NULL, ItemId INTEGER NOT NULL, Status INTEGER NOT NULL, TotalAmount decimal(10, 2) NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, TripId INTEGER NOT NULL, EventType INTEGER NOT NULL, Description TEXT NOT NULL);"
         };

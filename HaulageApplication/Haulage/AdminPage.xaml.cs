@@ -17,4 +17,9 @@ public partial class AdminPage : ContentPage
         Button ManageEmployees = FindByName("ManageEmployees") as Button;
         ManageEmployees.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageEmployees()); };
     }
+
+    private async void CustomerBillsNavigationButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ManageCustomerBillsPage());
+    }
 }

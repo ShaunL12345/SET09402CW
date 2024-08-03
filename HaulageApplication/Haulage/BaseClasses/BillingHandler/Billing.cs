@@ -11,7 +11,19 @@ namespace Haulage.BaseClasses.BillingHandler
         public Guid BillID;
         public Guid customerID;
         public float totalAmount;
-        enum Billingstatus
+
+        public int BillId { get; set; }
+        public Billingstatus Status { get; set; }
+        public int UserId { get; set; }
+        public int ItemId { get; set; }
+
+        public string FullName { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+
+
+        public enum Billingstatus
         {
             notPaid,
             paid

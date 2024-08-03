@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:Haulage"
+             xmlns:viewModel ="clr-namespace:Haulage.ViewModels"
+              x:Class="Haulage.ManageCustomerBillsPage"
+             Title="Manage Customer Bills">
+    <ContentPage.BindingContext>
+        <viewModel:AdminManageCustomerBillView/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Label 
+            Text="Manage customer bills"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Entry Keyboard="Numeric" Completed="OnEntryCompleted">
+
+        </Entry>
+        <ListView x:Name="ManageCustomerBillView" ItemsSource="{Binding CustomerBills}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1"
+                                   Grid.Row="1"
+                                Text="{Binding FullName}"
+                                FontAttributes="Bold" />
+                            <Label Grid.Column="1"
+                                Grid.Row="2"
+                                Text=" £"
+                                 />
+                            <Label Grid.Row="2"
+                                Grid.Column="3"
+                                Text="{Binding TotalAmount}"
+                                FontAttributes="Italic"
+                                 />
+                            <Label Grid.Row="3"
+                                Grid.Column="1"
+                                Text="Bill Status: "
+                                FontAttributes="Italic"
+                                 />
+                            <Label Grid.Row="3"
+                                   Grid.Column="3"
+                                   Text="{Binding Status}"
+                                   FontAttributes="Italic"
+                                    />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
