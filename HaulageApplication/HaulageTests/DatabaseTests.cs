@@ -5,7 +5,7 @@ using SQLite;
 using Haulage.DatabaseExecutionServices;
 using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
-using Haulage.viewModel;
+using Haulage.viewModels;
 using Haulage.AdminPages;
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace HaulageTests
@@ -56,7 +56,6 @@ namespace HaulageTests
                 Status = Vehicle.StatusType.onroute
             };
             VehicleExecutionService.SaveVehicle(vehicle);
-            System.Threading.Thread.Sleep(150);
             var vehiclesCountAfter = VehicleExecutionService.GetVehicles().Count;
             Assert.True(vehiclesCountAfter == vehiclesCountBefore + 1, "VehiclesRecord was not saved");
         }
