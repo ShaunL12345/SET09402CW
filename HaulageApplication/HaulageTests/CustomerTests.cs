@@ -10,6 +10,7 @@ using Haulage.DatabaseExecutionServices;
 using Haulage.viewModels;
 using Haulage;
 using Haulage.AdminPages;
+using Haulage.ViewModels;
 namespace HaulageTests
 {
     [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
@@ -58,13 +59,13 @@ namespace HaulageTests
         }
 
         [Fact]
-        public void GetVehicleViewModel()
+        public void GetCustomerViewModel()
         {
             DatabaseSetup.InitializeDatabase();
 
-            var model = new VehicleViewModel();
+            var model = new CustomerViewModel();
             Assert.NotNull(model);
-            Assert.True(model.Vehicles.Count > 0);
+            Assert.True(model.Customers.Count > 0);
         }
     }
 }
