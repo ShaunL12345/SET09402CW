@@ -11,6 +11,7 @@ using Haulage.BaseClasses.BillingHandler; // Update the namespace to match your 
 
 namespace HaulageTests
 {
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class DatabaseSetupTests
     {
         private SQLiteConnection GetInMemoryConnection()
