@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Haulage.ManageEmployees"
-             Title="ManageEmployees"
+    x:Class="Haulage.ManageEmployeesPage"
+             Title="ManageEmployeesPage"
              xmlns:local ="clr-namespace:Haulage"
     xmlns:viewModel ="clr-namespace:Haulage.viewModels">
 
@@ -103,7 +103,7 @@
             <Button
 x:Name="AddEmployee"
 Text="Add Employee Record" 
-Clicked="AddEmployee_Clicked" 
+Clicked="AddEmployee_Clicked"
 Padding="10"
 BorderColor="#9D00FF"/>
             <Button

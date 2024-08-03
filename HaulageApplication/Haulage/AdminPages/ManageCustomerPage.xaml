@@ -95,6 +95,7 @@
             <Button
 x:Name="AddEmployee"
 Text="Add Employee Record" 
+Clicked="AddEmployee_Clicked"
 Padding="10"
 BorderColor="#9D00FF"/>
             <Button

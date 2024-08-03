@@ -7,14 +7,13 @@ public partial class ManageCustomerPage : ContentPage
 	public ManageCustomerPage()
 	{
 		InitializeComponent();
-        AddEmployee.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddEmployee()); };
     }
 
 
 
     public void DeleteCustomer_Clicked(object sender, EventArgs e)
     {
-        if (EntryCustomerId.Text != null)
+        if (!string.IsNullOrEmpty(EntryCustomerId.Text))
         {
             var userId = EntryCustomerId.Text.Trim();
 
@@ -30,5 +29,14 @@ public partial class ManageCustomerPage : ContentPage
                 DisplayAlert("Error", $"Failed to delete {userId}", "OK");
             }
         }
+        else 
+        {
+            DisplayAlert("Error", $"No user id has been entered", "OK");
+        }
+    }
+
+    private async void AddEmployee_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddEmployee());
     }
 }

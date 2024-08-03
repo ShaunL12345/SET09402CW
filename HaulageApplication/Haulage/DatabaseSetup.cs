@@ -34,9 +34,9 @@ public static class DatabaseSetup
         {
             using (var connection = new SQLiteConnection(GetDatabasePath()))
             {
-                DropTables(connection);
-                CreateTables(connection);   
-                GenerateData(connection);
+                //DropTables(connection);
+                //CreateTables(connection);   
+                //GenerateData(connection);
             }
         }
 
