@@ -12,7 +12,7 @@
     <MauiXaml Update="CustomerPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="DriverPages\DriverRaiseEventPage.xaml">
+    <MauiXaml Update="CustomerPages\TrackItemPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>
