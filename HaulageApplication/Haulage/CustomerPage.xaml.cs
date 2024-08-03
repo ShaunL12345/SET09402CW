@@ -6,12 +6,22 @@ namespace Haulage;
 
 public partial class CustomerPage : ContentPage
 {
+
+
+   
+
     private Customer _customer;
     private Account _account;
 
     public CustomerPage()
     {
         InitializeComponent();
+    }
+
+    private async void CustomerTrackItemNavigationButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CustomerPages.TrackItemPage());
+
     }
 
     public CustomerPage(Customer customer, Account account)
