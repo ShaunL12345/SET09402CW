@@ -5,25 +5,28 @@ using SQLite;
 using Haulage.DatabaseExecutionServices;
 using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
-using Haulage.viewModel;
+using Haulage.viewModels;
 using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
 using Haulage.BillviewModel;
 
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace HaulageTests
 {
     [CollectionDefinition("databaseTests", DisableParallelization = true)]
+    
+
     /// <summary>
     /// 
     /// </summary>
-    public class VehicleTest
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
+    public class DatabaseTests
     {
         [Fact]
         public void GetVehiclesFromDatabse()
         {
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             var vehicles = VehicleExecutionService.GetVehicles();
             Assert.NotNull(vehicles);
             Assert.True(vehicles.Count > 0, "Did not recieve any records from GetVehicles method");
@@ -34,7 +37,6 @@ namespace HaulageTests
         {
 
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             var vehicles = VehicleExecutionService.GetVehicles();
 
             var vehicleToRemove = vehicles.First();
@@ -48,9 +50,7 @@ namespace HaulageTests
         public void SaveVehicleToDatabse()
         {
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             var vehiclesCountBefore = VehicleExecutionService.GetVehicles().Count;
-            System.Threading.Thread.Sleep(150);
             Vehicle vehicle = new Vehicle()
             {
                 VehicleId = 132321,
@@ -61,7 +61,6 @@ namespace HaulageTests
                 Status = Vehicle.StatusType.onroute
             };
             VehicleExecutionService.SaveVehicle(vehicle);
-            System.Threading.Thread.Sleep(150);
             var vehiclesCountAfter = VehicleExecutionService.GetVehicles().Count;
             Assert.True(vehiclesCountAfter == vehiclesCountBefore + 1, "VehiclesRecord was not saved");
         }
@@ -80,10 +79,8 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             //Act
             var drivers = DriverExecutionService.GetDrivers();
-            System.Threading.Thread.Sleep(150);
             //Assert
             Assert.NotNull(drivers);
             Assert.True(drivers.Count > 0, "Did not recieve any records from GetDrivers method");
@@ -95,19 +92,15 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
             //Act
             var drivers = DriverExecutionService.GetDrivers();
-            System.Threading.Thread.Sleep(150);
 
             var driverToRemove = drivers.First();
             var initialDriverCount = drivers.Count;
 
             DriverExecutionService.DeleteDriver(driverToRemove.UserId);
-            System.Threading.Thread.Sleep(150);
 
             var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
-            System.Threading.Thread.Sleep(150);
 
             //Assert
             Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
@@ -119,7 +112,6 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
 
             //Act
             var drivers = DriverExecutionService.GetDrivers();
