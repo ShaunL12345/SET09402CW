@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Haulage.DriverPages.ConfirmPickupDeliveryPage"
+                          xmlns:viewModel ="clr-namespace:Haulage.viewModels"
              Title="Driver can confirm pickup and delivery of an item">
     <ContentPage.BindingContext>
-        <viewModel:itemViewModel/>
+        <viewModel:ItemViewModel/>
     </ContentPage.BindingContext>
     <VerticalStackLayout>
         <StackLayout>
@@ -54,27 +55,27 @@
                                         <ColumnDefinition Width="0.1*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" Grid.Column="0"
-                                Text="{Binding VehicleId}"
+                                Text="{Binding itemID}"
                                 FontAttributes="Bold"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="1"
-                                Text="{Binding tripID}"
+                                Text="{Binding description}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="2"
-                                Text="{Binding Capacity}"
+                                Text="{Binding itemCategory}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="3"
-                                Text="{Binding DriverId}"
+                                Text="{Binding signedOff}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="4"
-                                Text="{Binding LicensePlate}"
+                                Text="{Binding RequestStatus}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
