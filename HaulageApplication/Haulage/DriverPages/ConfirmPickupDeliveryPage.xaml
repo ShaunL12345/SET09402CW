@@ -55,32 +55,32 @@
                                         <ColumnDefinition Width="0.1*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" Grid.Column="0"
-                                Text="{Binding itemID}"
+                                Text="{Binding ItemId}"
                                 FontAttributes="Bold"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="1"
-                                Text="{Binding description}"
+                                Text="{Binding Name}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="2"
-                                Text="{Binding itemCategory}"
+                                Text="{Binding Description}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="3"
-                                Text="{Binding signedOff}"
+                                Text="{Binding SignedOff}"
+                                FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                                Grid.Column="5"
+                                Text="{Binding ItemCategory}"
                                 FontAttributes="Italic"/>
 
                                     <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
                                 Grid.Column="4"
                                 Text="{Binding RequestStatus}"
-                                FontAttributes="Italic"/>
-
-                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
-                                Grid.Column="5"
-                                Text="{Binding Status}"
                                 FontAttributes="Italic"/>
                                 </Grid>
                             </Frame>
