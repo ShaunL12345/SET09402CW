@@ -104,6 +104,9 @@
 	  <Compile Update="CustomerPages\TrackItemPage.xaml.cs">
 	    <DependentUpon>TrackItemPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="DriverPages\ConfirmPickupDeliveryPage.xaml.cs">
+	    <DependentUpon>ConfirmPickupDeliveryPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="AdminPages\AddEmployee.xaml">
@@ -119,6 +122,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DriverPages\ConfirmPickupDeliveryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPages\DriverRaiseEventPage.xaml">

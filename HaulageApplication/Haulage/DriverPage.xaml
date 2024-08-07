@@ -17,5 +17,11 @@
         SemanticProperties.Hint="Raise event"
         Clicked="DriverRaiseEventNavigationButtonClicked"
         HorizontalOptions="Fill" />
+        <Button
+        x:Name="pickup_delivery"
+        Text="Delivery/pickup" 
+        SemanticProperties.Hint="confirm delivery"
+        Clicked="pickup_delivery_Clicked"
+        HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>
