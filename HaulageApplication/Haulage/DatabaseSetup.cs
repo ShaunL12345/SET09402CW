@@ -99,9 +99,9 @@ public static class DatabaseSetup
     {
         List<string> dataScripts = new List<string>
         {
-            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff]) VALUES (1, 'fragile item name test 1', 'item description test 1', 1, TRUE);",
-            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff]) VALUES (2, 'dangerous item name test 2', 'item description test 2', 2, TRUE);",
-            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff]) VALUES (3, 'item name test 3', 'item description test 3', 0, TRUE);"
+            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus]) VALUES (1, 'fragile item name test 1', 'item description test 1', 1, TRUE,0);",
+            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus]) VALUES (2, 'dangerous item name test 2', 'item description test 2', 2, TRUE,1);",
+            @"INSERT INTO [Item] ([ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus]) VALUES (3, 'item name test 3', 'item description test 3', 0, TRUE,2);"
         };
         foreach (string tableScript in dataScripts)
         {
@@ -151,8 +151,7 @@ public static class DatabaseSetup
         List<string> createTableScripts = new List<string>
         {
             @"CREATE TABLE IF NOT EXISTS User (UserID TEXT NOT NULL, FullName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, UserRole TEXT NOT NULL, Address TEXT NOT NULL, Qualification TEXT);",
-            @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL , Description TEXT NOT NULL, ItemCategory INTEGER NOT NULL, SignedOff BOOL NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Description TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Item (ItemID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL , Description TEXT NOT NULL, ItemCategory INTEGER NOT NULL, SignedOff BOOL NOT NULL, RequestStatus INTEGER);",
             @"CREATE TABLE IF NOT EXISTS Trip (TripId INTEGER PRIMARY KEY AUTOINCREMENT, StartLocation TEXT NOT NULL, EndLocation TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT UNIQUE NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",

@@ -39,7 +39,5 @@ public partial class AddVehiclePage : ContentPage
             Console.WriteLine("Error saving data into the vehicle table");
             DisplayAlert("Error", $"Failed to update Vehicle details.", "OK");
         }
-
-
     }
 }

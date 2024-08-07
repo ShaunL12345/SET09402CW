@@ -90,12 +90,23 @@
             </CollectionView>
         </StackLayout>
         <HorizontalStackLayout>
-            <!--<Button
-x:Name="SaveVehicle"
-Text="Save Vehicle Record" 
-Clicked="SaveVehicle_Clicked" 
+            <Button
+x:Name="PickedUpItemButton"
+HeightRequest="10"
+Text="Confirm item pickup" 
+Clicked="PickedUpItemButton_Clicked" 
 Padding="10"
-BorderColor="#9D00FF"/>-->
+HorizontalOptions="End" 
+BorderColor="#9D00FF"/>
+            <Button   
+x:Name="DropOffItemButton"
+HeightRequest="10"
+Text="Confirm item dropOff" 
+Clicked="DropOffItemButton_Clicked" 
+Padding="10"
+HorizontalOptions="End" 
+BorderColor="#9D00FF"/>
+            <Entry x:Name="itemIDEntry" Placeholder="ItemID" />
 
         </HorizontalStackLayout>
     </VerticalStackLayout>

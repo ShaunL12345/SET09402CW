@@ -12,6 +12,30 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class ItemExecutionService
     {
+        public static void SetItemToDropOff(int itemID)
+        {
+            var sql = $"UPDATE [Item] SET [RequestStatus] = 'PickedUp' WHERE ItemID={itemID};";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public static void pickupItem(int itemID) 
+        {
+            var sql = $"UPDATE [Item] SET [RequestStatus] = 'PickedUp' WHERE ItemID={itemID};";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+        }
+
         public static List<Item> GetItems()
         {
             var items = new List<Item>();

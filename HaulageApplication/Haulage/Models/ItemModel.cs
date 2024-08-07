@@ -16,5 +16,8 @@ namespace Haulage.Models
         
         public static List<Item> Items = ItemExecutionService.GetItems();
 
+        public static void dropOffItem(int itemID) => ItemExecutionService.SetItemToDropOff(itemID);
+
+        public static void pickupItem(int itemID) => ItemExecutionService.pickupItem(itemID);
     }
 }
