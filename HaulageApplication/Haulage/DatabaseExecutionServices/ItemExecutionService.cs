@@ -39,7 +39,7 @@ namespace Haulage.DatabaseExecutionServices
         public static List<Item> GetItems()
         {
             var items = new List<Item>();
-            var sql = "SELECT [ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus] FROM [Item];";
+            var sql = $"SELECT [ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus] FROM [Item] WHERE [RequestStatus] <> '{PickupRequest.requestStatus.droppedoff}';";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
