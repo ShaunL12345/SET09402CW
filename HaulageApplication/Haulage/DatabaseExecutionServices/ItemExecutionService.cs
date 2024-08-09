@@ -14,7 +14,7 @@ namespace Haulage.DatabaseExecutionServices
     {
         public static void SetItemToDropOff(int itemID)
         {
-            var sql = $"UPDATE [Item] SET [RequestStatus] = 'PickedUp' WHERE ItemID={itemID};";
+            var sql = $"UPDATE [Item] SET [RequestStatus] = '{PickupRequest.requestStatus.droppedoff}' WHERE ItemID={itemID};";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -26,7 +26,7 @@ namespace Haulage.DatabaseExecutionServices
 
         public static void pickupItem(int itemID) 
         {
-            var sql = $"UPDATE [Item] SET [RequestStatus] = 'PickedUp' WHERE ItemID={itemID};";
+            var sql = $"UPDATE [Item] SET [RequestStatus] = '{PickupRequest.requestStatus.EnRouteToPickup}' WHERE ItemID={itemID};";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -39,7 +39,7 @@ namespace Haulage.DatabaseExecutionServices
         public static List<Item> GetItems()
         {
             var items = new List<Item>();
-            var sql = "SELECT [ItemID], [Name], [Description], [ItemCategory], [SignedOff] FROM [Item];";
+            var sql = "SELECT [ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus] FROM [Item];";
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
             {
@@ -60,17 +60,6 @@ namespace Haulage.DatabaseExecutionServices
                 command.ExecuteNonQuery();
             }
 
-        }
-        public static void SaveVehicle(Vehicle vehicle)
-        {
-            var sql = $"Insert into [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES ({vehicle.VehicleId},{vehicle.tripID},'{vehicle.LicensePlate}',{vehicle.Capacity},{vehicle.DriverId},'{vehicle.Status}');";
-
-            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
-            {
-                var command = new SQLite.SQLiteCommand(connection);
-                command.CommandText = sql;
-                command.ExecuteNonQuery();
-            }
         }
     }
 }

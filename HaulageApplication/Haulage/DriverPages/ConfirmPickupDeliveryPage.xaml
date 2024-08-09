@@ -23,17 +23,17 @@
                     <ColumnDefinition Width="0.1*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" TextColor="White" Grid.RowSpan="2"
-                      Text ="VehicleId"/>
+                      Text ="ItemId"/>
                 <Label Grid.Row="0" Grid.Column="1" TextColor="White" Grid.RowSpan="2"
-                      Text ="tripID"/>
+                      Text ="Name"/>
                 <Label Grid.Row="0" Grid.Column="2" TextColor="White" Grid.RowSpan="2"
-                      Text ="Capacity"/>
+                      Text ="Description"/>
                 <Label Grid.Row="0" Grid.Column="3" TextColor="White" Grid.RowSpan="2"
-                      Text ="DriverId"/>
+                      Text ="SignedOff"/>
                 <Label Grid.Row="0" Grid.Column="4" TextColor="White" Grid.RowSpan="2"
-                      Text ="LicensePlate"/>
+                      Text ="ItemCategory"/>
                 <Label Grid.Row="0" Grid.Column="5" TextColor="White" Grid.RowSpan="2"
-                      Text ="Status"/>
+                      Text ="RequestStatus"/>
             </Grid>
 
             <CollectionView x:Name="itemsCollectionView" ItemsSource="{Binding Items}">
