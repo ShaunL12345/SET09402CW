@@ -67,11 +67,11 @@ public static class DatabaseSetup
 
     public static void GenerateData(SQLiteConnection connection)
     {
-        //Vehicle data
-        CreateVehicles(connection);
+        // data
+        CreateData(connection);
     }
 
-    private static void CreateVehicles(SQLiteConnection connection)
+    private static void CreateData(SQLiteConnection connection)
     {
         List<string> dataScripts = new List<string>
         {
