@@ -67,7 +67,7 @@ public static class DatabaseSetup
 
     public static void GenerateData(SQLiteConnection connection)
     {
-        //Create database data
+        // data
         CreateData(connection);
     }
 
