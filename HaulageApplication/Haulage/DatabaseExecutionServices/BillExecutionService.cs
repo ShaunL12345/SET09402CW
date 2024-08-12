@@ -80,5 +80,20 @@ namespace Haulage.DatabaseExecutionServices
 
             return cardDetails;
         }
+
+        public static void DeleteCard(int CustomerId)
+        {
+            var cardDetails = new List<Billing>();
+            var sql = $"DELETE FROM [CustomerCardDetails] WHERE [CustomerId] = {CustomerId}";
+
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+
+        }
     }
 }

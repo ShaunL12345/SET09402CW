@@ -91,7 +91,15 @@
             </CollectionView>
         </StackLayout>
         <HorizontalStackLayout>
-
+            <Button
+    x:Name="DeleteCard"
+    HeightRequest="10"
+    Text="Delete Card" 
+    Clicked="DeleteCard_Clicked"
+    Padding="10"
+    HorizontalOptions="End" 
+    BorderColor="#9D00FF"/>
+            <Entry x:Name="EntryCustomerId" Placeholder="CustomerId to delete" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
