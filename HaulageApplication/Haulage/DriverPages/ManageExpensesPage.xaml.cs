@@ -44,6 +44,10 @@ public partial class ManageExpensesPage : ContentPage
                 DisplayAlert("Error", $"Failed to delete {expenseId}", "OK");
             }
         }
+        else
+        {
+            DisplayAlert("Error", $"No Expense Id has been entered", "Ok");
+        }
 
     }
 
