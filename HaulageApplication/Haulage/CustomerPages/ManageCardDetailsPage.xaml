@@ -100,6 +100,14 @@
     HorizontalOptions="End" 
     BorderColor="#9D00FF"/>
             <Entry x:Name="EntryCustomerId" Placeholder="CustomerId to delete" />
+            <Button
+    x:Name="AddCard"
+    HeightRequest="10"
+    Text="Add New Card" 
+    Clicked="AddCard_Clicked"
+    Padding="10"
+    HorizontalOptions="End" 
+    BorderColor="#9D00FF"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

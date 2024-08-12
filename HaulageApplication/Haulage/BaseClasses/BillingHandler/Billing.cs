@@ -34,5 +34,14 @@ namespace Haulage.BaseClasses.BillingHandler
           
         }
 
+        public Billing(int customerId, string customerCardNumber, string customerExpiryDate, int customerSecurityCode, string customerNameOnCard)
+        {
+            this.CustomerId = customerId;
+            this.CardNumber = customerCardNumber;
+            this.ExpiryDate = customerExpiryDate;
+            this.SecurityCode = customerSecurityCode;
+            this.NameOnCard = customerNameOnCard;
+
+        }
     }
 }

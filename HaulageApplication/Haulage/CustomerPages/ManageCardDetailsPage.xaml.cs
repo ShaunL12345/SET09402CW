@@ -43,4 +43,9 @@ public partial class ManageCardDetailsPage : ContentPage
             DisplayAlert("Error", $"No Customer Id has been entered", "Ok");
         }
     }
+
+    private void AddCard_Clicked(object sender, EventArgs e)
+    {
+        AddCard.Clicked += async (sender, args) => { await Navigation.PushAsync(new AddCardPage()); };
+    }
 }

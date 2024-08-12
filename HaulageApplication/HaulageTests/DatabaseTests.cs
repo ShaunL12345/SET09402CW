@@ -202,5 +202,37 @@ namespace HaulageTests
 
         }
 
+        [Fact]
+        public void GetCardDetailsFromDatabase()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+
+            //Act
+            var cards = BillExecutionService.GetCardDetails();
+
+            //Assert
+            Assert.NotNull(cards);
+            Assert.True(cards.Count > 0, "Did not recieve any records from GetCards method");
+        }
+
+        [Fact]
+
+        public void DeleteCardsFromDatabase()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+
+            //Act
+            var cards = BillExecutionService.GetCardDetails();
+            var cardsToRemove = cards.First();
+            var initialCardCount = cards.Count;
+            BillExecutionService.DeleteCard(cardsToRemove.CustomerId);
+            var CardCountAfter = BillExecutionService.GetCardDetails().Count;
+            System.Threading.Thread.Sleep(150);
+
+            //Assert
+            Assert.True(CardCountAfter == initialCardCount - 1, "Failed to delete card");
+        }
     }
 }

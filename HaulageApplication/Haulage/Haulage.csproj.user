@@ -9,6 +9,9 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="CustomerPages\AddCardPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="CustomerPages\AddBillPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

@@ -95,5 +95,18 @@ namespace Haulage.DatabaseExecutionServices
             }
 
         }
+
+        public static void SaveCard(Billing billing)
+        {
+            var sql = $"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES ('{billing.CustomerId}','{billing.CardNumber}', '{billing.ExpiryDate}', '{billing.SecurityCode}', '{billing.NameOnCard}');";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                command.ExecuteNonQuery();
+            }
+
+        }
     }
 }
