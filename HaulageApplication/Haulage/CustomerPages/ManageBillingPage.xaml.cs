@@ -42,5 +42,9 @@ public partial class ManageBillingPage : ContentPage
                 DisplayAlert("Error", $"Failed to delete {EntryBillId}", "OK");
             }
         }
+        else
+        {
+            DisplayAlert("Error", $"No Bill Id has been entered", "Ok");
+        }
     }
 }
