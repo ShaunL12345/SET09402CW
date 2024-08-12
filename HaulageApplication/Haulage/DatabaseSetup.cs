@@ -55,7 +55,8 @@ public static class DatabaseSetup
             "DROP TABLE IF EXISTS [Role]",
             "DROP TABLE IF EXISTS [Trip]",
             "DROP TABLE IF EXISTS [TripManifest]",
-            "DROP TABLE IF EXISTS [Vehicle]"
+            "DROP TABLE IF EXISTS [Vehicle]",
+            "DROP TABLE IF EXISTS [CustomerCardDetails]",
         };
         foreach (string table in dropTableScripts)
         {
@@ -84,6 +85,8 @@ public static class DatabaseSetup
             @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (728472, 'Peter Hill', 'peter.hill@gmail.com', 'Exhaust', 'exhaust for 1.2 litre Honda', 89.20, 'Paid');",
             @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (928483, 'Peter Hill', 'peter.hill@gmail.com', 'Gearbox', 'Gearbox for 1.2 litre Honda', 150.50, 'Not Paid');",
             @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (123829, 'Peter Hill', 'peter.hill@gmail.com', 'Brake Pads', 'Brake Pads for 1.2 litre Honda', 140.02, 'Not Paid');",
+            @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942874, '8274723872', '10/25', 284, 'Peter Hill');",
+
         };
         foreach (string tableScript in dataScripts)
         {
@@ -106,7 +109,8 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL, Item TEXT NOT NULL, ItemDesc TEXT NOT NULL, Cost REAL NOT NULL, Paid TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL);"
+            @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS CustomerCardDetails (CustomerId INTEGER PRIMARY KEY AUTOINCREMENT, CardNumber TEXT NOT NULL, ExpiryDate TEXT NOT NULL, SecurityCode INTEGER NOT NULL, NameOnCard TEXT NOT NULL);",
         };
 
         foreach (string tableScript in createTableScripts)

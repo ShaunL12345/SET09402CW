@@ -14,5 +14,7 @@ namespace Haulage.DatabaseExecutionServices
     {
         public static List<Billing> Bills = BillExecutionService.GetBills();
 
+        public static List<Billing> CardDetails = BillExecutionService.GetCardDetails();
+
     }
 }

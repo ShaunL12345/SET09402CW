@@ -18,5 +18,8 @@
     <MauiXaml Update="CustomerPages\ManageBillingPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="CustomerPages\ManageCardDetailsPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
 </Project>

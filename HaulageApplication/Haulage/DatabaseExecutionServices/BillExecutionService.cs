@@ -59,8 +59,26 @@ namespace Haulage.DatabaseExecutionServices
                 command.ExecuteNonQuery();
             }
 
-
         }
 
+        public static List<Billing> GetCardDetails()
+        {
+            var cardDetails = new List<Billing>();
+            var sql = "SELECT [CustomerId]" +
+                ",[CardNumber]" +
+                ",[ExpiryDate]" +
+                ",[SecurityCode]" +
+                ",[NameOnCard]" +
+                "FROM [CustomerCardDetails];";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                cardDetails = command.ExecuteQuery<Billing>();
+            }
+
+            return cardDetails;
+        }
     }
 }

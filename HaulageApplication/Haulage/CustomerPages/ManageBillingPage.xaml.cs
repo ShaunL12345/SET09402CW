@@ -47,4 +47,9 @@ public partial class ManageBillingPage : ContentPage
             DisplayAlert("Error", $"No Bill Id has been entered", "Ok");
         }
     }
+
+    private void ManageCardDetails_Clicked(object sender, EventArgs e)
+    {
+        ManageCardDetails.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageCardDetailsPage()); };
+    }
 }

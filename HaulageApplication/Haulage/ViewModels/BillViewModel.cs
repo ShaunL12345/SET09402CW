@@ -15,6 +15,8 @@ namespace Haulage.BillviewModel
     public class BillViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Billing>? Bills { get; set; }
+
+        public ObservableCollection<Billing>? CardDetails { get; set; }
         public BillViewModel() 
         {
             Bills = new ObservableCollection<Billing>();
@@ -22,6 +24,13 @@ namespace Haulage.BillviewModel
             foreach (var BillObject in BillingObjects)
             {
                 Bills.Add(BillObject);
+            }
+
+            CardDetails = new ObservableCollection<Billing>();
+            var CardObjects = BillModel.CardDetails;
+            foreach (var CardObject in CardObjects)
+            {
+                CardDetails.Add(CardObject);
             }
 
         }
@@ -32,5 +41,7 @@ namespace Haulage.BillviewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+            
     }
 }
