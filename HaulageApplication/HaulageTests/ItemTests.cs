@@ -7,12 +7,14 @@ using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModels;
 using Haulage.AdminPages;
+using Haulage.BaseClasses.TripHandler;
 namespace HaulageTests
 {
 
     /// <summary>
     /// 
     /// </summary>
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class ItemTests
     {
         [Fact]
@@ -25,10 +27,28 @@ namespace HaulageTests
         }
 
         [Fact]
-        public void deleteItemFromDatabse() 
+        public void PickupItemTest() 
         {
-
+            DatabaseSetup.InitializeDatabase();
+            var items = ItemExecutionService.GetItems();
+            Assert.NotNull(items);
+            Assert.True(items.Count > 0,"there were no items gotten from the database");
+            var item = items[0];
+            item.RequestStatus = PickupRequest.requestStatus.pickUpRequested;
+            ItemExecutionService.PickupItem(item.ItemId);
+            var updatedItem = ItemExecutionService.GetItem(item.ItemId);
+            Assert.Equal(PickupRequest.requestStatus.EnRouteToPickup,updatedItem.RequestStatus);
         }
-   
+
+        [Fact]
+        public void DropOffItem()
+        {
+            DatabaseSetup.InitializeDatabase();
+            var items = ItemExecutionService.GetItems();
+            Assert.NotNull(items);
+            Assert.True(items.Count > 0, "there were no items gotten from the database");
+            var item = items[0];
+            item.RequestStatus = PickupRequest.requestStatus.EnRouteToPickup;
+        }
     }
 }

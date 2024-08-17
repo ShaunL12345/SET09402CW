@@ -12,7 +12,7 @@ namespace Haulage.DatabaseExecutionServices
 {
     public static class ItemExecutionService
     {
-        public static void SetItemToDropOff(int itemID)
+        public static void DropOffItem(int itemID)
         {
             var sql = $"UPDATE [Item] SET [RequestStatus] = '{PickupRequest.requestStatus.droppedoff}' WHERE ItemID={itemID};";
 
@@ -23,8 +23,11 @@ namespace Haulage.DatabaseExecutionServices
                 command.ExecuteNonQuery();
             }
         }
-
-        public static void pickupItem(int itemID) 
+        /// <summary>
+        /// Represents a driver picking up a package from a depot
+        /// </summary>
+        /// <param name="itemID"></param>
+        public static void PickupItem(int itemID) 
         {
             var sql = $"UPDATE [Item] SET [RequestStatus] = '{PickupRequest.requestStatus.EnRouteToPickup}' WHERE ItemID={itemID};";
 
@@ -49,6 +52,21 @@ namespace Haulage.DatabaseExecutionServices
             }
             return items;
         }
+
+        public static Item GetItem(int itemID)
+        {
+            var items = new List<Item>();
+            var sql = $"SELECT [ItemID], [Name], [Description], [ItemCategory], [SignedOff], [RequestStatus] FROM [Item] WHERE [ItemID] = '{itemID}';";
+
+            using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
+            {
+                var command = new SQLite.SQLiteCommand(connection);
+                command.CommandText = sql;
+                items = command.ExecuteQuery<Item>();
+            }
+            return items.First();
+        }
+
         public static void DeleteItem(int itemID)
         {
             var sql = $"DELETE FROM [Item] WHERE [ItemID] = {itemID};";
