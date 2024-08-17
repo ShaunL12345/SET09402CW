@@ -5,13 +5,16 @@
     <ActiveDebugFramework>net8.0-windows10.0.19041.0</ActiveDebugFramework>
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
-    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
-  </PropertyGroup>
   <ItemGroup>
     <MauiXaml Update="CustomerPages\AddCardPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="CustomerPages\TrackItemPage.xaml">
+		<SubType>Designer</SubType>
+	</MauiXaml>
     <MauiXaml Update="CustomerPages\AddBillPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
