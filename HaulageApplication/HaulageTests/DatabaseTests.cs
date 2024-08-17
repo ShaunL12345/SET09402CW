@@ -14,7 +14,6 @@ using Haulage.BillviewModel;
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace HaulageTests
 {
-    [CollectionDefinition("databaseTests", DisableParallelization = true)]
     
 
     /// <summary>
