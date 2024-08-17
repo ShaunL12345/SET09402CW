@@ -188,7 +188,6 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
 
             //Act
             var bills = BillExecutionService.GetBills();
