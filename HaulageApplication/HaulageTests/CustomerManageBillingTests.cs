@@ -9,110 +9,109 @@ using Haulage.viewModels;
 using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
 using Haulage.BillviewModel;
+namespace HaulageTests;
 
-namespace HaulageTests
+[CollectionDefinition("DatabaseTests", DisableParallelization = true)]
+public class CustomerManageBillingTests
 {
-    public class CustomerManageBillingTests
+    [Fact]
+    public void GetBillViewModel()
     {
-        [Fact]
-        public void GetBillViewModel()
-        {
-            //Arrange
-            DatabaseSetup.InitializeDatabase();
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
 
-            //Act
-            var model = new BillViewModel();
+        //Act
+        var model = new BillViewModel();
 
-            //Assert
-            Assert.NotNull(model);
-            Assert.True(model.Bills.Count > 0);
-        }
+        //Assert
+        Assert.NotNull(model);
+        Assert.True(model.Bills.Count > 0);
+    }
 
-        [Fact]
-        public void GetBillsFromDatabase()
-        {
-            //Arrange
-            DatabaseSetup.InitializeDatabase();
+    [Fact]
+    public void GetBillsFromDatabase()
+    {
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
 
-            //Act
-            var bills = BillExecutionService.GetBills();
+        //Act
+        var bills = BillExecutionService.GetBills();
 
-            //Assert
-            Assert.NotNull(bills);
-            Assert.True(bills.Count > 0, "Did not recieve any records from GetBills method");
-        }
+        //Assert
+        Assert.NotNull(bills);
+        Assert.True(bills.Count > 0, "Did not recieve any records from GetBills method");
+    }
 
-        [Fact]
+    [Fact]
 
-        public void DeleteBillsFromDatabase()
-        {
-            //Arrange
-            DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
+    public void DeleteBillsFromDatabase()
+    {
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
+        System.Threading.Thread.Sleep(1000);
 
-            //Act
-            var bills = BillExecutionService.GetBills();
-            var billsToRemove = bills.First();
-            var initialBillCount = bills.Count;
-            BillExecutionService.DeleteBill(billsToRemove.BillId);
-            System.Threading.Thread.Sleep(150);
-            var BillCountAfter = BillExecutionService.GetBills().Count;
-            System.Threading.Thread.Sleep(150);
+        //Act
+        var bills = BillExecutionService.GetBills();
+        var billsToRemove = bills.First();
+        var initialBillCount = bills.Count;
+        BillExecutionService.DeleteBill(billsToRemove.BillId);
+        System.Threading.Thread.Sleep(150);
+        var BillCountAfter = BillExecutionService.GetBills().Count;
+        System.Threading.Thread.Sleep(150);
 
-            //Assert
-            Assert.True(BillCountAfter == initialBillCount - 1, "Failed to delete a bill record");
-        }
+        //Assert
+        Assert.True(BillCountAfter == initialBillCount - 1, "Failed to delete a bill record");
+    }
 
-        [Fact]
+    [Fact]
 
-        public void SaveBillInDatabase()
-        {
-            //Arrange
-            DatabaseSetup.InitializeDatabase();
+    public void SaveBillInDatabase()
+    {
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
 
-            //Act
-            var bills = BillExecutionService.GetBills();
-            var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "Brake Pads", "Brake pads for test vehicle", 80.00);
-            var initialBillCount = bills.Count;
-            BillExecutionService.SaveBill(aNewBill);
-            var BillCountAfter = BillExecutionService.GetBills().Count;
+        //Act
+        var bills = BillExecutionService.GetBills();
+        var aNewBill = new Billing(123456, "Aidan Gallagher", "aidan.gallagher@gmail.com", "Brake Pads", "Brake pads for test vehicle", 80.00);
+        var initialBillCount = bills.Count;
+        BillExecutionService.SaveBill(aNewBill);
+        var BillCountAfter = BillExecutionService.GetBills().Count;
 
-            //Assert
-            Assert.True(BillCountAfter == initialBillCount + 1, "Saved bill record successfully");
+        //Assert
+        Assert.True(BillCountAfter == initialBillCount + 1, "Saved bill record successfully");
 
-        }
+    }
 
-        [Fact]
-        public void GetCardDetailsFromDatabase()
-        {
-            //Arrange
-            DatabaseSetup.InitializeDatabase();
+    [Fact]
+    public void GetCardDetailsFromDatabase()
+    {
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
 
-            //Act
-            var cards = BillExecutionService.GetCardDetails();
+        //Act
+        var cards = BillExecutionService.GetCardDetails();
 
-            //Assert
-            Assert.NotNull(cards);
-            Assert.True(cards.Count > 0, "Did not recieve any records from GetCards method");
-        }
+        //Assert
+        Assert.NotNull(cards);
+        Assert.True(cards.Count > 0, "Did not recieve any records from GetCards method");
+    }
 
-        [Fact]
+    [Fact]
 
-        public void DeleteCardsFromDatabase()
-        {
-            //Arrange
-            DatabaseSetup.InitializeDatabase();
+    public void DeleteCardsFromDatabase()
+    {
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
 
-            //Act
-            var cards = BillExecutionService.GetCardDetails();
-            var cardsToRemove = cards.First();
-            var initialCardCount = cards.Count;
-            BillExecutionService.DeleteCard(cardsToRemove.CustomerId);
-            var CardCountAfter = BillExecutionService.GetCardDetails().Count;
-            System.Threading.Thread.Sleep(150);
+        //Act
+        var cards = BillExecutionService.GetCardDetails();
+        var cardsToRemove = cards.First();
+        var initialCardCount = cards.Count;
+        BillExecutionService.DeleteCard(cardsToRemove.CustomerId);
+        var CardCountAfter = BillExecutionService.GetCardDetails().Count;
+        System.Threading.Thread.Sleep(150);
 
-            //Assert
-            Assert.True(CardCountAfter == initialCardCount - 1, "Failed to delete card");
-        }
+        //Assert
+        Assert.True(CardCountAfter == initialCardCount - 1, "Failed to delete card");
     }
 }
