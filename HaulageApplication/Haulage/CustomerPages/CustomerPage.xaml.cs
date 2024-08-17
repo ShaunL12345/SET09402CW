@@ -14,14 +14,15 @@ public partial class CustomerPage : ContentPage
 	{
 		InitializeComponent();
 
-        Button ManageBilling = FindByName("ManageBilling") as Button;
-        ManageBilling.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageBillingPage()); };
+        //Button ManageBilling = FindByName("ManageBilling") as Button;
+        //ManageBilling.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageBillingPage()); };
     }
 
    private void ManageBilling_Clicked(object sender, EventArgs e)
     {
 
-
+        Button ManageBilling = FindByName("ManageBilling") as Button;
+        ManageBilling.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageBillingPage()); };
     }
 
     private async void CustomerTrackItemNavigationButtonClicked(object sender, EventArgs e)
@@ -55,4 +56,8 @@ public partial class CustomerPage : ContentPage
 
     }
 
+    private void ManageBilling_Clicked_1(object sender, EventArgs e)
+    {
+
+    }
 }
