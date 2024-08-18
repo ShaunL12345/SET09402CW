@@ -91,19 +91,16 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(150);
+
             //Act
             var drivers = DriverExecutionService.GetDrivers();
-
-            var driverToRemove = drivers.FirstOrDefault();
+            var driverToRemove = drivers.First();
             var initialDriverCount = drivers.Count;
-
             DriverExecutionService.DeleteDriver(driverToRemove.UserId);
-
             var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
 
             //Assert
-            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
+            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete an employee record");
         }
 
         [Fact]
