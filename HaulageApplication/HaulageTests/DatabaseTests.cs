@@ -85,26 +85,26 @@ namespace HaulageTests
             Assert.True(drivers.Count > 0, "Did not recieve any records from GetDrivers method");
         }
 
-        //[Fact]
+        [Fact]
 
-        //public void DeleteDriversFromDatabse()
-        //{
-        //    //Arrange
-        //    DatabaseSetup.InitializeDatabase();
-        //    System.Threading.Thread.Sleep(150);
-        //    //Act
-        //    var drivers = DriverExecutionService.GetDrivers();
+        public void DeleteDriversFromDatabse()
+        {
+            //Arrange
+            DatabaseSetup.InitializeDatabase();
+            System.Threading.Thread.Sleep(150);
+            //Act
+            var drivers = DriverExecutionService.GetDrivers();
 
-        //    var driverToRemove = drivers.FirstOrDefault();
-        //    var initialDriverCount = drivers.Count;
+            var driverToRemove = drivers.FirstOrDefault();
+            var initialDriverCount = drivers.Count;
 
-        //    DriverExecutionService.DeleteDriver(driverToRemove.UserId);
+            DriverExecutionService.DeleteDriver(driverToRemove.UserId);
 
-        //    var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
+            var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
 
-        //    //Assert
-        //    Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
-        //}
+            //Assert
+            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
+        }
 
         [Fact]
 

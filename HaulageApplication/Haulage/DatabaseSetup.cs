@@ -4,7 +4,6 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Haulage.BaseClasses.Accounting;
 
-
 public static class DatabaseSetup
 {
     /// <summary>
