@@ -9,6 +9,8 @@ using Haulage.viewModels;
 using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
 using Haulage.BillviewModel;
+using Haulage;
+
 namespace HaulageTests;
 
 [CollectionDefinition("DatabaseTests", DisableParallelization = true)]

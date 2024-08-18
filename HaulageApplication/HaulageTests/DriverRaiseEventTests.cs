@@ -14,6 +14,7 @@ using Haulage.AdminPages;
 using Haulage.BaseClasses.TripHandler;
 using Haulage.DriverPages;
 using NuGet.Frameworks;
+using Haulage;
 
 namespace HaulageTests
 {
