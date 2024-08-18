@@ -59,7 +59,7 @@ namespace HaulageTests
                 Description = "Sheep in road"
             };
             DriverExecutionService.RaiseEvent(raisedEvent);
-            
+
             var eventCountAfter = DriverExecutionService.GetEvents().Count;
             Assert.True(eventCountAfter == eventCountBefore + 1, "trip event record was not saved");
         }

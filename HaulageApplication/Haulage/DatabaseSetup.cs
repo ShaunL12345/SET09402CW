@@ -141,7 +141,7 @@ public static class DatabaseSetup
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [UserRole], [Address], [Qualification]) VALUES (9749274, 'John Smith', 'john.smith@gmail.com', '07908 923349', '{Role.driver}', '26 Edinburgh Way', 'Fragile');",
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [UserRole], [Address], [Qualification]) VALUES (9272482, 'Richard Caldwell', 'richard.caldwell@gmail.com', '07802 8248284', '{Role.driver}', '22 ParkHill Avenue', 'Fragile');",
             $@"INSERT INTO [User] ([UserId], [Fullname], [Email], [PhoneNumber], [UserRole], [Address], [Qualification]) VALUES (8384839, 'Peter Hill', 'peter.hill@gmail.com', '04838 385929', '{Role.driver}', '17 Castle Road', 'Fragile');",
-            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (4, 4, 'test4', 4, 4, 4);"
+            //@"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);"
         };
         foreach (string tableScript in dataScripts)
         {
@@ -159,6 +159,8 @@ public static class DatabaseSetup
             @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (928483, 'Peter Hill', 'peter.hill@gmail.com', 'Gearbox', 'Gearbox for 1.2 litre Honda', 150.50, 'Not Paid');",
             @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (123829, 'Peter Hill', 'peter.hill@gmail.com', 'Brake Pads', 'Brake Pads for 1.2 litre Honda', 140.02, 'Not Paid');",
             @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942874, '8274723872', '10/25', 284, 'Peter Hill');",
+            @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942872, '8274756873', '12/30', 248, 'Peter Hill');",
+            @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942877, '1938395334', '10/27', 390, 'Peter Hill');",
         };
         foreach (string tableScript in dataScripts)
         {
@@ -182,7 +184,6 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS PickupRequest (RequestId INTEGER PRIMARY KEY AUTOINCREMENT, CustomerId INTEGER NOT NULL, PickupLocation TEXT NOT NULL, DeliverLocation TEXT NOT NULL, ItemId INTEGER NOT NULL, RequestStatus INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL, Item TEXT NOT NULL, ItemDesc, Cost TEXT NOT NULL, Paid TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS CustomerCardDetails (CustomerId INTEGER PRIMARY KEY AUTOINCREMENT, CardNumber TEXT NOT NULL, ExpiryDate TEXT NOT NULL, SecurityCode INTEGER NOT NULL, NameOnCard TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, TripId INTEGER NOT NULL, EventType INTEGER NOT NULL, Description TEXT NOT NULL);"
         };

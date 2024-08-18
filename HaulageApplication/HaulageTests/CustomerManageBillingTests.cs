@@ -48,7 +48,7 @@ public class CustomerManageBillingTests
     {
         //Arrange
         DatabaseSetup.InitializeDatabase();
-        System.Threading.Thread.Sleep(1000);
+        System.Threading.Thread.Sleep(800);
 
         //Act
         var bills = BillExecutionService.GetBills();
@@ -87,7 +87,7 @@ public class CustomerManageBillingTests
     {
         //Arrange
         DatabaseSetup.InitializeDatabase();
-
+        System.Threading.Thread.Sleep(150);
         //Act
         var cards = BillExecutionService.GetCardDetails();
 
