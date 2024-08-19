@@ -116,4 +116,22 @@ public class CustomerManageBillingTests
         //Assert
         Assert.True(CardCountAfter == initialCardCount - 1, "Failed to delete card");
     }
+
+    [Fact]
+    public void SaveCardInDatabase()
+    {
+        //Arrange
+        DatabaseSetup.InitializeDatabase();
+
+        //Act
+        var cards = BillExecutionService.GetCardDetails();
+        var aNewCard = new Billing(828377, "98548538", "10/27", 358, "Peter Hill");
+        var initialCardCount = cards.Count();
+        BillExecutionService.SaveCard(aNewCard);
+        var CardCountAfter = BillExecutionService.GetCardDetails().Count();
+
+        //Assert
+        Assert.True(CardCountAfter == initialCardCount + 1, "Saved card successfully");
+
+    }
 }
