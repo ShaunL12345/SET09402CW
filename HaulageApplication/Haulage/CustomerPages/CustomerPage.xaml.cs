@@ -56,8 +56,4 @@ public partial class CustomerPage : ContentPage
 
     }
 
-    private void ManageBilling_Clicked_1(object sender, EventArgs e)
-    {
-
-    }
 }
