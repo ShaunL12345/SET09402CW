@@ -8,6 +8,8 @@ using Haulage.BaseClasses.Accounting;
 using Haulage.viewModel;
 using Haulage.AdminPages;
 using Haulage.BaseClasses.BillingHandler;
+using Haulage;
+
 namespace HaulageTests
 {
     /// <summary>

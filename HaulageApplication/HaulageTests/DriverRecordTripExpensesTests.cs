@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Haulage;
 
 namespace HaulageTests
 {
@@ -77,5 +78,7 @@ namespace HaulageTests
             Assert.True(ExpenseCountAfter == initialExpenseCount + 1, "Saved expense record successfully");
 
         }
+
+
     }
 }
