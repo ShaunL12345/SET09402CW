@@ -75,6 +75,7 @@ public static class DatabaseSetup
         CreateItems(connection);
         CreatePickupRequests(connection);
         CreateBills(connection);
+        CreateExpenses(connection);
     }
 
     private static void CreateUsers(SQLiteConnection connection)
