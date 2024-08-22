@@ -129,6 +129,7 @@
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPages\ConfirmPickupDeliveryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	  <MauiXaml Update="CustomerPages\ManageCardDetailsPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
