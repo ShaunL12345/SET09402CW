@@ -1,4 +1,5 @@
 using Haulage.DriverPages;
+using Microsoft.Maui.Controls;
 namespace Haulage;
 
 public partial class DriverPage : ContentPage
@@ -11,8 +12,12 @@ public partial class DriverPage : ContentPage
     {
         ManageExpensesPage.Clicked += async (sender, args) => { await Navigation.PushAsync(new ManageExpensesPage()); };
     }
+    private async void DriverRaiseEventNavigationButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new DriverRaiseEventPage());
+    }
+
 }
 
-    
 
 
