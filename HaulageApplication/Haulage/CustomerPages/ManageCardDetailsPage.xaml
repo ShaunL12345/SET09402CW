@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Haulage.CustomerPages.ManageCardDetailsPage"
+             Title="ManageCardDetailsPage"
+             xmlns:local ="clr-namespace:Haulage"
+    xmlns:viewModel ="clr-namespace:Haulage.BillviewModel">
+
+    <ContentPage.BindingContext>
+        <viewModel:BillViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome Customer, Here you can view the card details we have on record for you"
+            FontSize="Medium"
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" />
+        <StackLayout>
+            <Grid  BackgroundColor="DarkGrey" Margin="10,50,100,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.9*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="White" Grid.RowSpan="2"
+                             Text ="CustomerId"/>
+                <Label Grid.Row="0" Grid.Column="1" TextColor="White" Grid.RowSpan="2"
+                             Text ="CardNumber"/>
+                <Label Grid.Row="0" Grid.Column="2" TextColor="White" Grid.RowSpan="2"
+                             Text ="ExpiryDate"/>
+                <Label Grid.Row="0" Grid.Column="3" TextColor="White" Grid.RowSpan="2"
+                             Text ="SecurityCode"/>
+                <Label Grid.Row="0" Grid.Column="4" TextColor="White" Grid.RowSpan="2"
+                             Text ="NameOnCard"/>
+            </Grid>
+
+            <CollectionView x:Name="BillingCollectionView" ItemsSource= "{Binding CardDetails}" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame BackgroundColor="#ac99ea" Margin="30,10,40,10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" 
+                                       Grid.Column="0"
+                                       Text="{Binding CustomerId}"
+                                       FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                                       Grid.Column="1"
+                                       Text="{Binding CardNumber}"
+                                       FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                                       Grid.Column="2"
+                                       Text="{Binding ExpiryDate}"
+                                       FontAttributes="Italic"/>
+
+                                    <Label  TextColor="White" Grid.RowSpan="2" Grid.Row="1" 
+                                       Grid.Column="3"
+                                       Text="{Binding SecurityCode}"
+                                       FontAttributes="Italic"/>
+
+                                    <Label Grid.Row="1" TextColor="White" Grid.RowSpan="2"
+                                       Grid.Column="4"
+                                       Text="{Binding NameOnCard}"
+                                       FontAttributes="Italic"/>
+
+                                </Grid>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <HorizontalStackLayout>
+            <Button
+    x:Name="DeleteCard"
+    HeightRequest="10"
+    Text="Delete Card" 
+    Clicked="DeleteCard_Clicked"
+    Padding="10"
+    HorizontalOptions="End" 
+    BorderColor="#9D00FF"/>
+            <Entry x:Name="EntryCustomerId" Placeholder="CustomerId to delete" />
+            <Button
+    x:Name="AddCard"
+    HeightRequest="10"
+    Text="Add New Card" 
+    Clicked="AddCard_Clicked"
+    Padding="10"
+    HorizontalOptions="End" 
+    BorderColor="#9D00FF"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

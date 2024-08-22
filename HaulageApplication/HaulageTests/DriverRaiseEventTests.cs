@@ -14,6 +14,7 @@ using Haulage.AdminPages;
 using Haulage.BaseClasses.TripHandler;
 using Haulage.DriverPages;
 using NuGet.Frameworks;
+using Haulage;
 
 namespace HaulageTests
 {
@@ -59,7 +60,7 @@ namespace HaulageTests
                 Description = "Sheep in road"
             };
             DriverExecutionService.RaiseEvent(raisedEvent);
-            
+
             var eventCountAfter = DriverExecutionService.GetEvents().Count;
             Assert.True(eventCountAfter == eventCountBefore + 1, "trip event record was not saved");
         }

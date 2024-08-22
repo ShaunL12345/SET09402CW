@@ -6,10 +6,25 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="CustomerPages\AddCardPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="CustomerPages\TrackItemPage.xaml">
+		<SubType>Designer</SubType>
+	</MauiXaml>
+    <MauiXaml Update="CustomerPages\AddBillPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="CustomerPages\CustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="CustomerPages\ManageBillingPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="CustomerPages\ManageCardDetailsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

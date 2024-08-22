@@ -98,6 +98,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="CustomerPages\AddCardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <Compile Update="AdminPages\ManageEmployeesPage.xaml.cs">
 	    <DependentUpon>ManageEmployeesPage.xaml</DependentUpon>
 	  </Compile>
@@ -112,7 +115,7 @@
 	  <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CustomerPage.xaml">
+	  <MauiXaml Update="CustomerPages\CustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="CustomerPages\TrackItemPage.xaml">
@@ -120,6 +123,9 @@
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CustomerPages\ManageCardDetailsPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DriverPages\DriverRaiseEventPage.xaml">
 	  	<Generator>MSBuild:Compile</Generator>

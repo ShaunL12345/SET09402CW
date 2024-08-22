@@ -7,6 +7,8 @@ using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModels;
 using Haulage.AdminPages;
+using Haulage;
+
 namespace HaulageTests
 {
 

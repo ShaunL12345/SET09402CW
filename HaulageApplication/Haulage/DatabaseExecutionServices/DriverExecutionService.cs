@@ -66,7 +66,7 @@ namespace Haulage.DatabaseExecutionServices
         public static void DeleteDriver(int UserId)
         {
             var drivers = new List<Driver>();
-            var sql = $"DELETE FROM [User] WHERE [UserId] = {UserId};";
+            var sql = $"DELETE FROM [User] WHERE [UserId] = '{UserId}';";
 
 
             using (var connection = new SQLiteConnection(DatabaseSetup.GetDatabasePath()))
