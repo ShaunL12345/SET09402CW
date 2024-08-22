@@ -59,7 +59,6 @@
 	<ItemGroup>
 	  <None Remove="Resources\Administrator.jpeg" />
 	  <None Remove="Resources\Images\administrator.jpeg" />
-	  <None Remove="Resources\Images\driver.jpeg" />
 	  <None Remove="Resources\Images\hh_admin_icon.png" />
 	  <None Remove="Resources\Images\hh_checked_icon.png" />
 	  <None Remove="Resources\Images\hh_check_list_icon.png" />
@@ -99,25 +98,39 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="DriverPages\AddTripExpensePage.xaml">
+	  <MauiXaml Update="CustomerPages\AddCardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <Compile Update="AdminPages\ManageEmployeesPage.xaml.cs">
+	    <DependentUpon>ManageEmployeesPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="CustomerPages\TrackItemPage.xaml.cs">
+	    <DependentUpon>TrackItemPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
 	  <MauiXaml Update="AdminPages\AddEmployee.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="AdminPage.xaml">
+	  <MauiXaml Update="AdminPages\ManageCustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CustomerPage.xaml">
+	  <MauiXaml Update="CustomerPages\CustomerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="DriverPages\DriverPage.xaml">
+	  <MauiXaml Update="CustomerPages\TrackItemPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="AdminPages\ManageEmployees.xaml">
+	  <MauiXaml Update="DriverPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="DriverPages\ManageExpensesPage.xaml">
+	  <MauiXaml Update="CustomerPages\ManageCardDetailsPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DriverPages\DriverRaiseEventPage.xaml">
+	  	<Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="AdminPages\ManageEmployeesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Team.xaml">

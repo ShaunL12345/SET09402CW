@@ -4,24 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Haulage.BaseClasses.Accounting;
-using Haulage.DatabaseExecutionServices;
+using Haulage.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 
-
-namespace Haulage.viewModels
+namespace Haulage.ViewModels
 {
-    public class DriverViewModel : INotifyPropertyChanged
+    public class CustomerViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Driver>? Drivers { get; set; }
-        public DriverViewModel()
+        public ObservableCollection<Customer> Customers { get; set; }
+        public CustomerViewModel()
         {
-            Drivers = new ObservableCollection<Driver>();
-            var DriverObjects = DriverModel.Drivers;
-            foreach (var DriverObject in DriverObjects)
+            Customers = new ObservableCollection<Customer>();
+            var customerObjects = CustomerModel.Customers;
+            foreach (var customer in customerObjects)
             {
-                Drivers.Add(DriverObject);
+                Customers.Add(customer);
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
