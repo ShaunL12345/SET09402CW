@@ -12,6 +12,7 @@ using Haulage;
 
 namespace HaulageTests
 {
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class DatabaseSetupTests
     {
         private SQLiteConnection GetInMemoryConnection()

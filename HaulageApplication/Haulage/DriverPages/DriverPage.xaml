@@ -11,6 +11,12 @@
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+        x:Name="RaiseEvent"
+        Text="Raise an event" 
+        SemanticProperties.Hint="Raise event"
+        Clicked="DriverRaiseEventNavigationButtonClicked"
+        HorizontalOptions="Fill" />
         <Image
             Source="driver.jpeg" 
             HeightRequest="200"
