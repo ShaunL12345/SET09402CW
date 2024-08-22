@@ -10,7 +10,7 @@ using Haulage;
 
 namespace HaulageTests
 {
-    [CollectionDefinition("DriverRecordTripExpensesTests", DisableParallelization = true)]
+    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class DriverRecordTripExpensesTests
     {
         [Fact]
@@ -33,7 +33,6 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
 
             //Act
             var expenses = ExpenseExecutionService.GetExpenses();
@@ -46,7 +45,7 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
+          
             var expenses = ExpenseExecutionService.GetExpenses();
 
             //Act
@@ -65,7 +64,6 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
-            System.Threading.Thread.Sleep(1000);
 
             //Act
             var expenses = ExpenseExecutionService.GetExpenses();
