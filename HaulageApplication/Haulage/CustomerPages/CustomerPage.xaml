@@ -5,16 +5,17 @@
              Title="Customer"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
-    
+
     <VerticalStackLayout Spacing="15">
 
         <!-- Page Title -->
         <Label 
-            Text="&#10; Welcome to Customer Page!"
+            Text="&#10; Welcome to the Customer Page!"
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            Margin="0,0,0,50" /><!-- Add margin to create space below the label -->
+            Margin="0,0,0,50" />
+        <!-- Add margin to create space below the label -->
 
         <Button
         x:Name="TrackItems"
@@ -31,7 +32,7 @@
 
 
 
-        
+
         <Entry 
             Placeholder="Enter Billing Details" 
             x:Name="BillingDetailsEntry" 
@@ -39,7 +40,7 @@
             TextColor="Black"
             WidthRequest="300"
             HorizontalOptions="Center" />
-        
+
         <Entry 
             Placeholder="Enter Contact Details" 
             x:Name="ContactDetailsEntry" 
@@ -56,7 +57,14 @@
             WidthRequest="300"
             HorizontalOptions="Center" />
         <!-- Content : Manage Account-Updated Details - End -->
-        
+
+        <Button
+        x:Name="ManageBilling"
+        Text="Manage Billing" 
+        Clicked="ManageBilling_Clicked"
+        WidthRequest="300"
+        HorizontalOptions="Center" />
+
     </VerticalStackLayout>
-    
+
 </ContentPage>

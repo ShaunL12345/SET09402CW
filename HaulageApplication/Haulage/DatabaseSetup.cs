@@ -5,6 +5,8 @@ using System.Security.Cryptography.X509Certificates;
 using Haulage.BaseClasses.Accounting;
 using Haulage.BaseClasses;
 using Haulage.BaseClasses.TripHandler;
+
+namespace Haulage;
 public static class DatabaseSetup
 {
     /// <summary>
@@ -56,7 +58,8 @@ public static class DatabaseSetup
             "DROP TABLE IF EXISTS [Role]",
             "DROP TABLE IF EXISTS [Trip]",
             "DROP TABLE IF EXISTS [TripManifest]",
-            "DROP TABLE IF EXISTS [Vehicle]"
+            "DROP TABLE IF EXISTS [Vehicle]",
+            "DROP TABLE IF EXISTS [CustomerCardDetails]",
         };
         foreach (string table in dropTableScripts)
         {
@@ -73,6 +76,7 @@ public static class DatabaseSetup
         CreateUsers(connection);
         CreateItems(connection);
         CreatePickupRequests(connection);
+        CreateBills(connection);
     }
 
     private static void CreateUsers(SQLiteConnection connection)
@@ -134,7 +138,27 @@ public static class DatabaseSetup
         {
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (1, 1, 'test1', 1, 1, 1);",
             @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (2, 2, 'test2', 2, 2, 1);",
-            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);"
+            @"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);",
+            //@"INSERT INTO [Vehicle] ([VehicleId], [tripID], [LicensePlate], [Capacity], [DriverId], [Status]) VALUES (3, 3, 'test3', 3, 3, 3);"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
+    private static void CreateBills(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (728472, 'Peter Hill', 'peter.hill@gmail.com', 'Exhaust', 'exhaust for 1.2 litre Honda', 89.20, 'Paid');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (928483, 'Peter Hill', 'peter.hill@gmail.com', 'Gearbox', 'Gearbox for 1.2 litre Honda', 150.50, 'Not Paid');",
+            @"INSERT INTO [Bill] ([BillId], [Fullname], [Email], [Item], [ItemDesc], [Cost], [Paid]) VALUES (123829, 'Peter Hill', 'peter.hill@gmail.com', 'Brake Pads', 'Brake Pads for 1.2 litre Honda', 140.02, 'Not Paid');",
+            @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942874, '8274723872', '10/25', 284, 'Peter Hill');",
+            @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942872, '8274756873', '12/30', 248, 'Peter Hill');",
+            @"INSERT INTO [CustomerCardDetails] ([CustomerId], [CardNumber], [ExpiryDate], [SecurityCode], [NameOnCard]) VALUES (942877, '1938395334', '10/27', 390, 'Peter Hill');",
         };
         foreach (string tableScript in dataScripts)
         {
@@ -153,11 +177,12 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS Item (ItemId INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL , Description TEXT NOT NULL, ItemCategory TEXT NOT NULL, SignedOff BOOL NOT NULL, RequestStatus INTEGER);",
             @"CREATE TABLE IF NOT EXISTS Trip (TripId INTEGER PRIMARY KEY AUTOINCREMENT, StartLocation TEXT NOT NULL, EndLocation TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Role (RoleId INTEGER PRIMARY KEY AUTOINCREMENT, RoleDesc TEXT NOT NULL, FullName TEXT NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT UNIQUE NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Vehicle (VehicleId INTEGER PRIMARY KEY AUTOINCREMENT, TripID INTEGER, LicensePlate TEXT NOT NULL, Capacity INTEGER NOT NULL, DriverId INTEGER NOT NULL, Status INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS PickupRequest (RequestId INTEGER PRIMARY KEY AUTOINCREMENT, CustomerId INTEGER NOT NULL, PickupLocation TEXT NOT NULL, DeliverLocation TEXT NOT NULL, ItemId INTEGER NOT NULL, RequestStatus INTEGER NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL, Item TEXT NOT NULL, ItemDesc, Cost TEXT NOT NULL, Paid TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS CustomerCardDetails (CustomerId INTEGER PRIMARY KEY AUTOINCREMENT, CardNumber TEXT NOT NULL, ExpiryDate TEXT NOT NULL, SecurityCode INTEGER NOT NULL, NameOnCard TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, TripId INTEGER NOT NULL, EventType INTEGER NOT NULL, Description TEXT NOT NULL);"
         };
 

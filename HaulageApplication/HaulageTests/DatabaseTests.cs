@@ -7,6 +7,11 @@ using Haulage.Models;
 using Haulage.BaseClasses.Accounting;
 using Haulage.viewModels;
 using Haulage.AdminPages;
+using Haulage.BaseClasses.BillingHandler;
+using Haulage.BillviewModel;
+using Haulage;
+
+
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
 namespace HaulageTests
 {
@@ -48,7 +53,7 @@ namespace HaulageTests
             var vehiclesCountBefore = VehicleExecutionService.GetVehicles().Count;
             Vehicle vehicle = new Vehicle()
             {
-                VehicleId = 132321,
+                VehicleId = 132322,
                 tripID = 4321321,
                 Capacity = 123321,
                 DriverId = 321213,
@@ -87,18 +92,16 @@ namespace HaulageTests
         {
             //Arrange
             DatabaseSetup.InitializeDatabase();
+
             //Act
             var drivers = DriverExecutionService.GetDrivers();
-
             var driverToRemove = drivers.First();
             var initialDriverCount = drivers.Count;
-
             DriverExecutionService.DeleteDriver(driverToRemove.UserId);
-
             var DriverCountAfter = DriverExecutionService.GetDrivers().Count;
 
             //Assert
-            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete a employee record");
+            Assert.True(DriverCountAfter == initialDriverCount - 1, "Failed to delete an employee record");
         }
 
         [Fact]
@@ -119,5 +122,6 @@ namespace HaulageTests
             Assert.True(DriverCountAfter == initialDriverCount + 1, "Saved employee record successfully");
 
         }
+
     }
 }

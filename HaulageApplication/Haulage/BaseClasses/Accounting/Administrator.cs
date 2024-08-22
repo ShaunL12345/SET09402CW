@@ -11,45 +11,7 @@ namespace Haulage.BaseClasses.Accounting
 
         public Administrator() { }
 
-        public void manageEmployees()
-        {
-
-        }
-
-        public void manageVehicles()
-        {
-
-        }
-
-        public void manageCustomers()
-        {
-
-        }
-
-        public void manageBills()
-        {
-
-        }
-
-        public void manageManifests()
-        {
-
-        }
-
-        public void planRoutes()
-        {
-
-        }
-
-        public void resourceTrips()
-        {
-
-        }
-
-        public void trackProgress()
-        {
-
-        }
+     
     }
 
 
