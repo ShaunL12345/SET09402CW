@@ -11,7 +11,6 @@ using Microsoft.Maui.Controls;
 
 namespace HaulageTests
 {
-    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class AppShellTests
     {
         [Fact]

@@ -10,7 +10,6 @@ using Moq;
 
 namespace HaulageTests
 {
-    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class CustomerPageTests
     {
         [Fact]

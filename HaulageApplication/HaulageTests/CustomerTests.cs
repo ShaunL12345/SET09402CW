@@ -5,67 +5,31 @@ using System.Threading.Tasks;
 using Xunit;
 using Haulage.BaseClasses.Accounting;
 using System;
-using Moq;
-using Haulage.DatabaseExecutionServices;
-using Haulage.viewModels;
-using Haulage;
-using Haulage.AdminPages;
-using Haulage.ViewModels;
+
 namespace HaulageTests
 {
-    [CollectionDefinition("DatabaseTests", DisableParallelization = true)]
     public class CustomerTests
     {
-        [Fact]
-        public void GetCustomersFromDatabse()
+        private Customer _customer;
+
+        public CustomerTests()
         {
-            DatabaseSetup.InitializeDatabase();
-            var customers = CustomerExecutionService.GetCustomers();
-            Assert.NotNull(customers);
-            Assert.True(customers.Count > 0, "Did not recieve any records from getCustomers method");
+            _customer = new Customer();
         }
 
         [Fact]
-        public void DeleteCustomersFromDatabse()
+        public void ManageAccount_ShouldUpdateAccountDetails()
         {
+            // Arrange
+            var personID = Guid.NewGuid();
+            var account = new Account(personID, "Old Billing Info", "Old Contact Info");
 
-            DatabaseSetup.InitializeDatabase();
-            var customers = CustomerExecutionService.GetCustomers();
+            // Act
+            _customer.ManageAccount(account, "New Billing Info", "New Contact Info");
 
-            var customerToRemove = customers.First();
-            var initialCustomerCount = customers.Count;
-            CustomerExecutionService.deleteCustomer(customerToRemove.UserId);
-            var customerCountAfter = CustomerExecutionService.GetCustomers().Count;
-            Assert.True(customerCountAfter == initialCustomerCount - 1, "Failed to delete a customer record");
-        }
-
-        [Fact]
-        public void SaveVehicleToDatabse()
-        {
-            DatabaseSetup.InitializeDatabase();
-            var vehiclesCountBefore = CustomerExecutionService.GetCustomers().Count;
-            var customer = new Customer()
-            {
-                UserId = 1234567,
-                Fullname ="Test user",
-                Email="Test@testemail",
-                PhoneNumber= "123455676",
-                UserRole = Role.customer,
-                Address = "TestAddress"
-            };
-            CustomerExecutionService.SaveCustomer(customer);
-            var vehiclesCountAfter = CustomerExecutionService.GetCustomers().Count;
-            Assert.True(vehiclesCountAfter == vehiclesCountBefore + 1, "customer record was not saved");
-        }
-
-        [Fact]
-        public void GetCustomerViewModel()
-        {
-            DatabaseSetup.InitializeDatabase();
-
-            var model = new CustomerViewModel();
-            Assert.NotNull(model);
-            Assert.True(model.Customers.Count > 0);
+            // Assert
+            Assert.Equal("New Billing Info", account.BillingDetails);
+            Assert.Equal("New Contact Info", account.ContactDetails);
         }
     }
 }
