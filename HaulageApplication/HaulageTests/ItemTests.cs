@@ -35,7 +35,6 @@ namespace HaulageTests
             Assert.NotNull(items);
             Assert.True(items.Count > 0,"there were no items gotten from the database");
             var item = items[0];
-            item.RequestStatus = PickupRequest.requestStatus.pickUpRequested;
             ItemExecutionService.PickupItem(item.ItemId);
             var updatedItem = ItemExecutionService.GetItem(item.ItemId);
             Assert.Equal(PickupRequest.requestStatus.EnRouteToPickup,updatedItem.RequestStatus);
@@ -49,7 +48,9 @@ namespace HaulageTests
             Assert.NotNull(items);
             Assert.True(items.Count > 0, "there were no items gotten from the database");
             var item = items[0];
-            item.RequestStatus = PickupRequest.requestStatus.EnRouteToPickup;
+            ItemExecutionService.DropOffItem(item.ItemId);
+            var updatedItem = ItemExecutionService.GetItem(item.ItemId);
+            Assert.Equal(PickupRequest.requestStatus.droppedoff, updatedItem.RequestStatus);
         }
     }
 }
