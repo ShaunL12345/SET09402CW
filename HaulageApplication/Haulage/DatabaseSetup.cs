@@ -5,7 +5,6 @@ using System.Security.Cryptography.X509Certificates;
 using Haulage.BaseClasses.Accounting;
 
 namespace Haulage;
-
 public static class DatabaseSetup
 {
     /// <summary>
@@ -76,6 +75,7 @@ public static class DatabaseSetup
         CreateItems(connection);
         CreatePickupRequests(connection);
         CreateBills(connection);
+        CreateExpenses(connection);
     }
 
     private static void CreateUsers(SQLiteConnection connection)
@@ -168,6 +168,22 @@ public static class DatabaseSetup
         }
     }
 
+    private static void CreateExpenses(SQLiteConnection connection)
+    {
+        List<string> dataScripts = new List<string>
+        {
+            @"INSERT INTO [Expense] ([ExpenseId], [DriverId], [VehicleId], [Fullname], [Expense], [ExpenseDescription], [ExpenseCost]) VALUES (438453, 99993, 4343, 'Aidan Gallagher', 'Food Allowance', 'Allowance provided by company', '£29.99');",
+            @"INSERT INTO [Expense] ([ExpenseId], [DriverId], [VehicleId], [Fullname], [Expense], [ExpenseDescription], [ExpenseCost]) VALUES (929484, 99993, 4343, 'Aidan Gallagher', 'Food Allowance', 'Allowance provided by company', '£29.99');",
+            @"INSERT INTO [Expense] ([ExpenseId], [DriverId], [VehicleId], [Fullname], [Expense], [ExpenseDescription], [ExpenseCost]) VALUES (023924, 99993, 4343, 'Aidan Gallagher', 'Food Allowance', 'Allowance provided by company', '£29.99');"
+        };
+        foreach (string tableScript in dataScripts)
+        {
+            var command = new SQLite.SQLiteCommand(connection);
+            command.CommandText = tableScript;
+            command.ExecuteNonQuery();
+        }
+    }
+
     public static void CreateTables(SQLiteConnection connection)
     {
 
@@ -181,7 +197,7 @@ public static class DatabaseSetup
             @"CREATE TABLE IF NOT EXISTS TripManifest (ManifestId INTEGER PRIMARY KEY AUTOINCREMENT, TripId INTEGER NOT NULL, PickUpRequest INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS PickupRequest (RequestId INTEGER PRIMARY KEY AUTOINCREMENT, CustomerId INTEGER NOT NULL, PickupLocation TEXT NOT NULL, DeliverLocation TEXT NOT NULL, ItemId INTEGER NOT NULL, RequestStatus INTEGER NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Bill (BillId INTEGER PRIMARY KEY AUTOINCREMENT, Fullname TEXT NOT NULL, Email TEXT NOT NULL, Item TEXT NOT NULL, ItemDesc, Cost TEXT NOT NULL, Paid TEXT NOT NULL);",
-            @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL);",
+            @"CREATE TABLE IF NOT EXISTS Expense (ExpenseId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, VehicleId INTEGER NOT NULL, Fullname TEXT NOT NULL, Expense TEXT NOT NULL, ExpenseDescription TEXT NOT NULL, ExpenseCost TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS CustomerCardDetails (CustomerId INTEGER PRIMARY KEY AUTOINCREMENT, CardNumber TEXT NOT NULL, ExpiryDate TEXT NOT NULL, SecurityCode INTEGER NOT NULL, NameOnCard TEXT NOT NULL);",
             @"CREATE TABLE IF NOT EXISTS Event (EventId INTEGER PRIMARY KEY AUTOINCREMENT, DriverId INTEGER NOT NULL, TripId INTEGER NOT NULL, EventType INTEGER NOT NULL, Description TEXT NOT NULL);"
         };
