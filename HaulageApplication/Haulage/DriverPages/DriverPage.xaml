@@ -7,7 +7,7 @@
              BackgroundColor="White">
     <VerticalStackLayout>
         <Label 
-            Text="&#10; Welcome to Driver Page!"
+            Text="&#10; Welcome to the Driver Page!"
             TextColor="Black"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
@@ -23,5 +23,15 @@
         SemanticProperties.Hint="confirm delivery"
         Clicked="pickup_delivery_Clicked"
         HorizontalOptions="Fill" />
+        <Image
+            Source="driver.jpeg" 
+            HeightRequest="200"
+            Aspect="AspectFit"
+            SemanticProperties.Description="Driver Image" />
+        <Button
+             x:Name="ManageExpensesPage"
+             Text="View Expenses" 
+             Clicked="ManageExpensesPage_Clicked"
+             HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>
