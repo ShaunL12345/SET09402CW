@@ -27,5 +27,8 @@
     <MauiXaml Update="CustomerPages\ManageCardDetailsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="DriverPages\ConfirmPickupDeliveryPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
 </Project>

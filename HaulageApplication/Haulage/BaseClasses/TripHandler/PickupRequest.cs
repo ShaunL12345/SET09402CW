@@ -18,6 +18,7 @@ namespace Haulage.BaseClasses.TripHandler
             pickUpRequested,
             EnRouteToPickup,
             PickedUp,
+            droppedoff
         }
         public PickupRequest()
         {

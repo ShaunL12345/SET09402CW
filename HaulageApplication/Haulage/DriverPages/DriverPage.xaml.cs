@@ -17,7 +17,8 @@ public partial class DriverPage : ContentPage
         await Navigation.PushAsync(new DriverRaiseEventPage());
     }
 
+    private async void pickup_delivery_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ConfirmPickupDeliveryPage());
+    }
 }
-
-
-
