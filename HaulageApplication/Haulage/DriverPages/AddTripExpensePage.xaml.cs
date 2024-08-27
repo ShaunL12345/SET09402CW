@@ -31,7 +31,7 @@ public partial class AddTripExpensePage : ContentPage
         {
             var command = new SQLite.SQLiteCommand(connection);
             command.CommandText = sql;
-            command.ExecuteQuery<DBNull>();
+            command.ExecuteNonQuery();
         }
 
         DisplayAlert("Success", "Expense details saved successfully.", "OK");
